@@ -1,0 +1,3729 @@
+{
+  "data": [
+    {
+      "id": "10.80424/36d7e0d8-27ac-4692-ad06-a2dda1b121e1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.80424/36d7e0d8-27ac-4692-ad06-a2dda1b121e1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "Jean-Philippe MEVY",
+            "nameType": "Personal",
+            "affiliation": ["IMBE UMR 6372 CNRS"],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "lang": "fre",
+            "title": "CLIMED : CLImate change effects on MEDiterranean biodiversity and consequences for ecosystem functioning"
+          }
+        ],
+        "publisher": "OSU Pytheas UMS 3470 CNRS",
+        "container": {},
+        "publicationYear": 2013,
+        "subjects": [
+          {
+            "lang": "fre",
+            "subject": "programme de suivi",
+            "subjectScheme": "GEMET - Concepts, version 2.4"
+          },
+          {
+            "lang": "fre",
+            "subject": "précipitation atmosphérique",
+            "subjectScheme": "GEMET - Concepts, version 2.4"
+          },
+          {
+            "lang": "fre",
+            "subject": "pluie",
+            "subjectScheme": "GEMET - Concepts, version 2.4"
+          },
+          {
+            "lang": "fre",
+            "subject": "cycle du carbone",
+            "subjectScheme": "GEMET - Concepts, version 2.4"
+          },
+          {
+            "lang": "fre",
+            "subject": "climat méditerranéen",
+            "subjectScheme": "GEMET - Concepts, version 2.4"
+          },
+          {
+            "lang": "fre",
+            "subject": "Conditions atmosphériques",
+            "subjectScheme": "GEMET - INSPIRE themes, version 1.0"
+          },
+          {
+            "lang": "fre",
+            "subject": "Habitats et biotopes",
+            "subjectScheme": "GEMET - INSPIRE themes, version 1.0"
+          },
+          {
+            "lang": "fre",
+            "subject": "Installations de suivi environnemental",
+            "subjectScheme": "GEMET - INSPIRE themes, version 1.0"
+          },
+          {
+            "lang": "fre",
+            "subject": "France",
+            "subjectScheme": "Continents, countries, sea regions of the world."
+          },
+          { "lang": "fre", "subject": "Changement climatique" },
+          { "lang": "fre", "subject": "garrigue" },
+          { "lang": "fre", "subject": "aridification" },
+          { "lang": "fre", "subject": "biodiversité" },
+          { "lang": "fre", "subject": "fonctionnement écosystème" },
+          {
+            "lang": "fre",
+            "subject": "PROVENCE-ALPES-COTE-D'AZUR",
+            "subjectScheme": "Nouvelles Régions de France"
+          }
+        ],
+        "contributors": [],
+        "dates": [{ "date": "2013", "dateType": "Issued" }],
+        "language": "en",
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "dataset/Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [],
+        "sizes": [],
+        "formats": [],
+        "version": "https://o3hpbd.obs-hp.fr/db/index.php/fr/home_cooperate_fr",
+        "rightsList": [],
+        "descriptions": [
+          {
+            "lang": "fre",
+            "description": "Principal objectif du projet: quantifier les effets d’une diminution des précipitations (30%) dans une garrigue, sur l’évolution de la biodiversité et ses effets directs et indirects sur le fonctionnement de l’écosystème. Précisément, il s’agissait de répondre à plusieurs questions: - Comment le changement climatique pourrait affecter la diversité des plantes, de la faune du sol et des microorganismes ? - En quoi les processus fonctionnels au cours des interactions entre espèces végétales seraient modifiés par une sécheresse aggravée ? - Comment le cycle du carbone et des éléments minéraux au cours de la croissance des plantes et de la décomposition de la litière seraient impactés par la diminution des précipitations ? - Quels sont les conséquences du changement du climat méditerranéen sur les services écosystémiques rendus aux sociétés humaines ? ==== Main objective of the project: to quantify the effects of a decrease in rainfall (30%) in a scrubland on the evolution of biodiversity and its direct and indirect effects on the functioning of the ecosystem. Specifically, the aim was to answer several questions: - How could climate change affect the diversity of plants, soil fauna and microorganisms? - How would the functional processes during interactions between plant species be modified by a worsening drought? - How would the cycling of carbon and mineral elements during plant growth and litter decomposition be impacted by reduced rainfall? - What are the consequences of Mediterranean climate change on the ecosystem services rendered to human societies?",
+            "descriptionType": "Abstract"
+          },
+          {
+            "lang": "2fre",
+            "description": "2Principal objectif du projet: quantifier les effets d’une diminution des précipitations (30%) dans une garrigue, sur l’évolution de la biodiversité et ses effets directs et indirects sur le fonctionnement de l’écosystème. Précisément, il s’agissait de répondre à plusieurs questions: - Comment le changement climatique pourrait affecter la diversité des plantes, de la faune du sol et des microorganismes ? - En quoi les processus fonctionnels au cours des interactions entre espèces végétales seraient modifiés par une sécheresse aggravée ? - Comment le cycle du carbone et des éléments minéraux au cours de la croissance des plantes et de la décomposition de la litière seraient impactés par la diminution des précipitations ? - Quels sont les conséquences du changement du climat méditerranéen sur les services écosystémiques rendus aux sociétés humaines ? ==== Main objective of the project: to quantify the effects of a decrease in rainfall (30%) in a scrubland on the evolution of biodiversity and its direct and indirect effects on the functioning of the ecosystem. Specifically, the aim was to answer several questions: - How could climate change affect the diversity of plants, soil fauna and microorganisms? - How would the functional processes during interactions between plant species be modified by a worsening drought? - How would the cycling of carbon and mineral elements during plant growth and litter decomposition be impacted by reduced rainfall? - What are the consequences of Mediterranean climate change on the ecosystem services rendered to human societies?",
+            "descriptionType": "2Abstract"
+          }
+        ],
+        "geoLocations": [
+          {
+            "geoLocationBox": {
+              "eastBoundLongitude": "5.426",
+              "northBoundLatitude": "43.371",
+              "southBoundLatitude": "43.366",
+              "westBoundLongitude": "5.423"
+            }
+          }
+        ],
+        "fundingReferences": [],
+        "url": "https://gndev.osupytheas.fr/geonetwork/srv/fre/catalog.search#/metadata/36d7e0d8-27ac-4692-ad06-a2dda1b121e1",
+        "contentUrl": null,
+        "metadataVersion": 2,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2020-07-03T14:21:12Z",
+        "registered": "2020-07-03T14:21:13Z",
+        "published": null,
+        "updated": "2022-07-04T08:03:24Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "inist.pythea", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.80605/isimip.982724",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.80605/isimip.982724",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "Mengel, Matthias",
+            "nameType": "Personal",
+            "givenName": "Matthias",
+            "familyName": "Mengel",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-6724-9685",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Treu, Simon",
+            "nameType": "Personal",
+            "givenName": "Simon",
+            "familyName": "Treu",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-7001-5983",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Lange, Stefan",
+            "nameType": "Personal",
+            "givenName": "Stefan",
+            "familyName": "Lange",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-2102-8873",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Büchner, Matthias",
+            "nameType": "Personal",
+            "givenName": "Matthias",
+            "familyName": "Büchner",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-1382-7424",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Müller Schmied, Hannes",
+            "nameType": "Personal",
+            "givenName": "Hannes",
+            "familyName": "Müller Schmied",
+            "affiliation": ["Goethe University Frankfurt"],
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-5330-9923",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          }
+        ],
+        "titles": [
+          {
+            "title": "ISIMIP3a atmospheric climate input data",
+            "titleType": "AlternativeTitle"
+          }
+        ],
+        "publisher": "ISIMIP Repository",
+        "container": {},
+        "publicationYear": 2020,
+        "subjects": [
+          {
+            "subject": "EARTH SCIENCE &gt; ATMOSPHERE",
+            "subjectScheme": "NASA/GCMD Earth Science Keywords"
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Büchner, Matthias",
+            "nameType": "Personal",
+            "givenName": "Matthias",
+            "familyName": "Büchner",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "DataCurator",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-1382-7424",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Klar, Jochen",
+            "nameType": "Personal",
+            "givenName": "Jochen",
+            "familyName": "Klar",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "DataManager",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-5883-4273",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Vega del Valle, Iliusi",
+            "nameType": "Personal",
+            "givenName": "Iliusi",
+            "familyName": "Vega del Valle",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "DataCurator",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-6902-2257",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Volkholz, Jan",
+            "nameType": "Personal",
+            "givenName": "Jan",
+            "familyName": "Volkholz",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "DataCurator",
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Schewe, Jacob",
+            "nameType": "Personal",
+            "givenName": "Jacob",
+            "familyName": "Schewe",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-9455-4159",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Lange, Stefan",
+            "nameType": "Personal",
+            "givenName": "Stefan",
+            "familyName": "Lange",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-2102-8873",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Piontek, Franziska",
+            "nameType": "Personal",
+            "givenName": "Franziska",
+            "familyName": "Piontek",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-4305-7552",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Reyer, Christopher",
+            "nameType": "Personal",
+            "givenName": "Christopher",
+            "familyName": "Reyer",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-1067-1492",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Mengel, Matthias",
+            "nameType": "Personal",
+            "givenName": "Matthias",
+            "familyName": "Mengel",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-6724-9685",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Rivas, Rocío",
+            "nameType": "Personal",
+            "givenName": "Rocío",
+            "familyName": "Rivas",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-1984-3070",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Otto, Christian",
+            "nameType": "Personal",
+            "givenName": "Christian",
+            "familyName": "Otto",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0001-5500-6774",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Soergel, Bjoern",
+            "nameType": "Personal",
+            "givenName": "Bjoern",
+            "familyName": "Soergel",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0002-2630-7081",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Gädeke, Anne",
+            "nameType": "Personal",
+            "givenName": "Anne",
+            "familyName": "Gädeke",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectMember",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-0514-2908",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Park, Martin",
+            "nameType": "Personal",
+            "givenName": "Martin",
+            "familyName": "Park",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectManager",
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Frieler, Katja",
+            "nameType": "Personal",
+            "givenName": "Katja",
+            "familyName": "Frieler",
+            "affiliation": ["Potsdam Institute for Climate Impact Research"],
+            "contributorType": "ProjectLeader",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifier": "https://orcid.org/0000-0003-4869-3013",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          },
+          {
+            "name": "Potsdam Institute For Climate Impact Research",
+            "nameType": "Organizational",
+            "affiliation": [],
+            "contributorType": "HostingInstitution",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ]
+          }
+        ],
+        "dates": [
+          { "date": "2020", "dateType": "Created" },
+          { "date": "2020-07-01", "dateType": "Issued" }
+        ],
+        "language": "en",
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Input dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsDocumentedBy",
+            "relatedIdentifier": "https://protocol.isimip.org",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "IsDocumentedBy",
+            "relatedIdentifier": "https://www.isimip.org/gettingstarted/input-data-bias-correction/details/4/",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "IsDocumentedBy",
+            "relatedIdentifier": "https://www.isimip.org/gettingstarted/input-data-bias-correction/details/80/",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "Cites",
+            "relatedIdentifier": "10.5194/gmd-2020-145",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsDerivedFrom",
+            "relatedIdentifier": "10.20783/dias.501",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsDerivedFrom",
+            "relatedIdentifier": "10.5880/pik.2019.023",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/5e95859b-3a83-4f5b-86cb-087a23d2b905",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/0bec6853-c180-43da-928f-018b0c89c423",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/5a6beb87-d4a0-41f8-9247-8de77e1049db",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/f148150a-ffb1-4083-be73-d0b700807285",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/527375e3-0031-4733-afa0-717fed18deb7",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/d6ef6751-922f-4eb1-ac2e-1b6dbb8e7d9f",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/9ebc9e91-f7d7-4186-91d8-35b97f56b100",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/33a5b078-79a2-4876-b674-491222534fd7",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/a7a909db-2e44-4628-90a6-ddbd3cbb8a93",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/13a09045-6ca2-4124-8f3e-f8779d8e4a87",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/0d5b094f-f8d3-40bd-9f0e-ffdbb1d73ac1",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/84fdef95-c7b4-4b74-b1cb-64e3e74b00fb",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/3e2b3c66-1802-409e-bd81-fa19b24b0757",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/7e5f5010-bfdb-4d83-b75c-c9e0b8669994",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/95914203-e039-4203-9bce-c4ee9f1981e0",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/4c4592ac-f461-4f5e-8aa0-bdc5f3943a0e",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/393833b5-7005-4c53-8a42-1905796a2e2f",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/8de3475e-bd26-481e-928d-dcb39dc7fafb",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/02d42af9-0292-4c53-8351-95a8be668976",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/0d2052c8-0bb6-4323-b276-6b3fc78a82ff",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/70875527-2d02-4799-b22e-f791c029f278",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/3ad1fcf8-10f9-4920-91ab-25d2ff2b48d6",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/fd1c3170-953c-4b99-b880-dceb6ffd47ac",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/571281d9-d77f-4f9c-9faa-ecb201a478b0",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/59d1f343-f521-4656-899f-68665e2a51a2",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/2fbf7475-331a-48df-80d6-2e797069a171",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/89b8b94f-9823-4289-9675-4607fc6a076d",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/ce462b66-1740-4a34-8b4e-56aa7e395b8f",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/3ff7d098-e160-4cb8-aa15-f2f431504e07",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/bc8f8b5f-a882-4ede-bf6a-63c773582ddc",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/e7cb1187-67a9-41cb-becc-f1ed8c51fd2a",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/694036b8-3729-4866-bb22-34e4ab4863f8",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/64531c3a-814a-4c27-ae01-acd98971aa8a",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/43bf1c71-d35a-4095-b132-c56d1cdf6c3d",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/846f5134-8aef-4ff5-839b-4066955345e2",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/286d0411-ef3f-41d2-89fc-95c262d6b879",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/c8205702-4b55-44c6-b0dd-811114a3c66d",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/8e0914b6-c97d-4ff7-afea-8a4cf047d53d",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/acd16cbc-7654-455c-9c2c-8f662d8fc452",
+            "relatedIdentifierType": "URL"
+          },
+          {
+            "relationType": "HasPart",
+            "relatedIdentifier": "http://localhost:8000/datasets/b26647fc-9e56-4793-9cc1-f5fa78393d48",
+            "relatedIdentifierType": "URL"
+          }
+        ],
+        "sizes": [],
+        "formats": [],
+        "version": "1.0.0",
+        "rightsList": [
+          { "rights": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" }
+        ],
+        "descriptions": [
+          {
+            "description": "The Inter-Sectoral Impact Model Intercomparison Project (ISIMIP) provides a framework for the collation of a consistent set of climate impact data across sectors and scales. It also provides a unique opportunity for considering interactions between climate change impacts across sectors through consistent scenarios.<br>The ISIMIP3a part of the third simulation round is dedicated to i) impact model evaluation and improvement and ii) detection and attribution of observed impacts according to the framework of IPCC AR5 Working Group II Chapter 18. To this end all simulations are driven by observed socio-economic information combined with either observed (factual) climate data or a detrended (counterfactual) version of the observed climate allowing for the generation of a \"no climate change\" baseline.<br>This dataset contains factual and counterfactual versions of climate input data for two datasets, GSWP3 and GSWP3-W5E5.",
+            "descriptionType": "Abstract"
+          },
+          {
+            "description": "See Mengel et al. (2020) for a description of the factual versions as well as for the methods used to generate the counterfactual versions of these datasets.",
+            "descriptionType": "Methods"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "http://localhost:8000/10.80605/ISIMIP.982724",
+        "contentUrl": null,
+        "metadataVersion": 3,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2021-01-16T11:28:54Z",
+        "registered": "2021-01-16T11:28:55Z",
+        "published": null,
+        "updated": "2022-07-04T08:03:12Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "ckvc.isbuek", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.80503/test_ird_2",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.80503/test_ird_2",
+        "identifiers": [
+          { "identifier": "2513-7972", "identifierType": "ISSN" }
+        ],
+        "creators": [
+          {
+            "name": "Besancenot, Jean-Pierre",
+            "nameType": "Personal",
+            "givenName": "Jean-Pierre",
+            "familyName": "Besancenot",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "lang": "fr",
+            "title": "CHANGEMENT CLIMATIQUE ET SANTÉ : AVANCEÉES NOUVELLES ET REMISE EN CAUSE DE QUELQUES IDÉES REÇUES"
+          },
+          {
+            "lang": "en-US",
+            "title": "Climate change and health : new developments and a challenge to some conventional wisdom",
+            "titleType": "TranslatedTitle"
+          }
+        ],
+        "publisher": "Société française de médecine thermale",
+        "container": {},
+        "publicationYear": 2021,
+        "subjects": [
+          { "lang": "fr", "subject": "changement climatique" },
+          { "lang": "fr", "subject": "covid 19" }
+        ],
+        "contributors": [
+          {
+            "name": "Jeambrun, Pascale",
+            "givenName": "Pascale",
+            "familyName": "Jeambrun",
+            "contributorType": "Editor",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "dates": [{ "date": "2021", "dateType": "Issued" }],
+        "language": "fr",
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "Periodical",
+          "resourceType": "Text",
+          "resourceTypeGeneral": "Journal"
+        },
+        "relatedIdentifiers": [],
+        "sizes": ["14 pages"],
+        "formats": ["pdf"],
+        "version": null,
+        "rightsList": [],
+        "descriptions": [
+          {
+            "lang": "fr",
+            "description": "Le changement climatique d'origine anthropique est une réalité qui s'impose aujourd’hui à tous et dont les conséquences sur la santé humaine ne sont pratiquement plus contestées, qu’elles soient déjà avérées ou attendues dans un avenir plus ou moins proche. Il existe sur le sujet une littérature très abondante, le plus souvent de qualité, qu’il aurait été inutile de répéter ici. L’accent a donc été mis sur quatre points qui ont récemment suscité des recherches nouvelles, conduisant à un approfondissement ou à une remise en cause au moins partielle des connaissances ou des hypothèses antérieures. Cela concerne (1) les avancées sur les bases physiques du changement climatique, apportées par le sixième Rapport d’évaluation du GIEC ; (2) les conséquences du radoucissement des hivers ; (3) le lien équivoque entre changement climatique, pollen et pollinoses ; enfin, (4) le rôle éventuel du réchauffement planétaire dans l’émergence ou l’évolution de la pandémie de Covid-19. La conclusion insiste sur le fait que les répercussions sanitaires du changement climatique sont sûrement plus complexes qu’on ne le supposait il y a quelques années, et que l’on commettrait sans doute une grave erreur en cherchant dès à présent à énoncer à leur sujet des lois de portée universelle",
+            "descriptionType": "Abstract"
+          },
+          {
+            "lang": "en",
+            "description": "Anthropogenic climate change is a reality that is now obvious to everyone and whose conse- quences for human health are virtually undisputed, whether they are already proven or ex- pected in the more or less near future. There is an abundance of literature on the subject, most of it of high quality, which it would have been pointless to repeat here. The emphasis has there- fore been placed on four points which have recently given rise to new research leading to a deepening or at least partial questioning of previous knowledge or hypotheses. These are (1) the advances in the physical basis of climate change brought about by the IPCC Sixth Assessment Report; (2) the consequences of milder winters; (3) the ambiguous link between climate change, pollen and pollinosis; and (4) the possible role of global warming in the emergence or evolution of the Covid-19 pandemic. The conclusion emphasises that the health impacts of climate change are likely to be more complex than assumed a few years ago, and that it would probably be a serious mistake to try to state universal laws about them now.",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://www.inist.fr/",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "fabrica",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-04-20T10:45:41Z",
+        "registered": "2022-04-20T10:45:41Z",
+        "published": null,
+        "updated": "2022-07-04T06:01:47Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "inist.cnrs", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.80491/477",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.80491/477",
+        "identifiers": [
+          {
+            "identifier": "http://hdl.handle.net/10092/9209",
+            "identifierType": "uri"
+          }
+        ],
+        "creators": [
+          {
+            "name": "Su, Melissa",
+            "nameType": "Personal",
+            "givenName": "Melissa",
+            "familyName": "Su",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "The Taiwanese Hotel Sector’s Response to Climate Change: Environmental Behaviours and Practices"
+          }
+        ],
+        "publisher": "University of Canterbury. Department of Management, Marketing and Entrepreneurship",
+        "container": {},
+        "publicationYear": 2014,
+        "subjects": [
+          { "subject": "environmental change" },
+          { "subject": "environmental practices" },
+          { "subject": "accommodation sector" }
+        ],
+        "contributors": [
+          {
+            "name": "University Of Canterbury",
+            "affiliation": [],
+            "contributorType": "DataManager",
+            "nameIdentifiers": []
+          },
+          {
+            "name": "University Of Canterbury",
+            "affiliation": [],
+            "contributorType": "HostingInstitution",
+            "nameIdentifiers": []
+          }
+        ],
+        "dates": [
+          { "date": "2014-05-13", "dateType": "Accepted" },
+          { "date": "2014-05-13", "dateType": "Available" },
+          { "date": "2014", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork"
+        },
+        "relatedIdentifiers": [],
+        "sizes": [],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          { "rights": "Copyright Melissa Su" },
+          { "rightsUri": "https://canterbury.libguides.com/rights/theses" }
+        ],
+        "descriptions": [
+          {
+            "description": "This thesis examines the response of Taiwanese hotels to climate change. Climate change is increasingly recognised by industry, governments and researchers as one of the most substantial challenges to the sustainability of tourism at both a destination and business level in both the short and long-term. Hall (2008) observed that tourism was explicitly recognised by the IPCC as one of the most important industries in Asia, yet the lack of research on tourism and climate change in an Asian context was identified, with especially little explicit research on the climate change response of the hospitality and accommodation sector. This is also despite the accommodation sector being the most significant tourism sector contributor to emissions after aviation (United Nations World Tourism Organisation [UNWTO] and United Nations Environment Programme [UNEP] 2008; World Economic Forum [WEF] 2009; Scott et al. 2012). Therefore this research seeks to explicitly respond to this knowledge gap by examining the response of the Taiwanese hotel sector to climate change. It is also the first known study that explores the extent to which the hotel sector meets the specific recommendations of the UNWTO-UNEP (2008) with respect to accommodation sector measures in relation to climate change. In order to provide a firm basis of methodological comparison with the previous international literature on environmental studies of the accommodation sector, this thesis conducted a baseline survey to investigate the response of Taiwanese hotels towards environment and climate change with respect to four main dimensions, including perception, attitudes, actions, and influencing factors for environmental and climate change practices. Overall, 270 hotel participants answered the email-based questionnaire survey of the total population of Taiwanese hotels, reflecting a response rate of approximately 10%. Taiwanese hotel respondents acknowledged the existence of climate change, but rarely related this phenomenon to their daily business operations. Their attitude towards their own hotel’s contribution to climate change was especially reserved. In addition to waste management, energy-saving practice, and the offer of local-produced cuisine, the level of implementation of environmental practices in Taiwanese hotels was relatively limited. There were also low compliance rates with existing environmental policy, although they were aware of environmental schemes. The factors of size and extreme weather event experience were identified as the more significant variables to differentiate Taiwanese hotel response to environment and climate change. The significance of hotel size, standard, and experience of weather extreme variables were also examined. Finally, this research discussed the prospective contributions and issues of the results of this study, and argues for their application in the fields of climate change research, benchmarking development, education and and training, government regulation and policy, and hotel management.",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "http://irdev.canterbury.ac.nz/handle/10092/9209",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-3",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2020-09-01T23:06:43Z",
+        "registered": "2020-09-01T23:31:06Z",
+        "published": null,
+        "updated": "2022-07-04T04:31:18Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "nzcu.dev1", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0311/fk2/f798256209047359940c35bec7f7d2cf",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0311/fk2/f798256209047359940c35bec7f7d2cf",
+        "identifiers": [
+          {
+            "identifier": "https://pasta-s.lternet.edu/package/eml/knb-lter-hbr/233/1",
+            "identifierType": "URL"
+          }
+        ],
+        "creators": [
+          {
+            "name": "Templer, Pamela H",
+            "nameType": "Personal",
+            "givenName": "Pamela H",
+            "familyName": "Templer",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Sorensen, Patrick O",
+            "nameType": "Personal",
+            "givenName": "Patrick O",
+            "familyName": "Sorensen",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Reinmann, Andrew B",
+            "nameType": "Personal",
+            "givenName": "Andrew B",
+            "familyName": "Reinmann",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change Across Seasons Experiment (CCASE) at the Hubbard Brook Experimental Fine Root Damage"
+          }
+        ],
+        "publisher": "Environmental Data Initiative",
+        "container": {},
+        "publicationYear": 2021,
+        "subjects": [],
+        "contributors": [],
+        "dates": [{ "date": "2021", "dateType": "Issued" }],
+        "language": "en",
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "dataPackage",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [],
+        "sizes": [],
+        "formats": [],
+        "version": null,
+        "rightsList": [],
+        "descriptions": [
+          {
+            "lang": "en-US",
+            "description": "Root damage, as relative electrolyte leakage, was assessed following winter freeze-thaw cycle experimental treatments in 2014 and 2015 on all Climate Change Across Seasons Experiment (CCASE) plots. Reference (or control) plots are shared with the collaborating Northern Forest DroughtNet experiment. There are six plots total (each 11 x 14m). Two are warmed 5 degrees C throughout the growing season (Plots 3 and 4). Two others are warmed 5 degrees C in the growing season and have snow removed during winter to induce soil freeze/thaw cycles (Plots 5 and 6). Four kilometers (2.5 mi) of heating cable are buried in the soil to warm these four plots. Two additional plots serve as controls for our experiment (Plots 1 and 2). Analysis and results from these data are presented in Sanders-DeMott 2018. These data were gathered as part of the Hubbard Brook Ecosystem Study (HBES). The HBES is a collaborative effort at the Hubbard Brook Experimental Forest, which is operated and maintained by the USDA Forest Service, Northern Research Station. Sanders-DeMott, R., Sorensen, P.O., Reinmann, A.B. et al. Growing season warming and winter freeze–thaw cycles reduce root nitrogen uptake capacity and increase soil solution nitrogen in a northern forest ecosystem. Biogeochemistry 137, 337–349 (2018). https://doi.org/10.1007/s10533-018-0422-5",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://portal-s.edirepository.org/nis/mapbrowse?packageid=knb-lter-hbr.233.1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2021-10-24T19:23:52Z",
+        "registered": "2021-10-24T19:23:53Z",
+        "published": null,
+        "updated": "2022-07-04T03:31:14Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "datacite.edi", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819275.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819275.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Nuclear Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsPreviousVersionOf",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819275",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819275/1",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:42Z",
+        "registered": "2022-07-03T18:19:42Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:46Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819275.v2",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819275.v2",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "Terry, Jennifer",
+            "givenName": "Jennifer",
+            "familyName": "Terry",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Smith, Andrew",
+            "givenName": "Andrew",
+            "familyName": "Smith",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Nuclear Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819275",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819275/2",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:44Z",
+        "registered": "2022-07-03T18:19:44Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:45Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819275",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819275",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "Terry, Jennifer",
+            "givenName": "Jennifer",
+            "familyName": "Terry",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Smith, Andrew",
+            "givenName": "Andrew",
+            "familyName": "Smith",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Nuclear Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819275",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:42Z",
+        "registered": "2022-07-03T18:19:42Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:44Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819273.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819273.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsPreviousVersionOf",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819273",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819273/1",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:31Z",
+        "registered": "2022-07-03T18:19:32Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:38Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819273.v2",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819273.v2",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819273",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["952 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819273/2",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:36Z",
+        "registered": "2022-07-03T18:19:36Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:37Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819273",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819273",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["952 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819273",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:31Z",
+        "registered": "2022-07-03T18:19:32Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:36Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819271.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819271.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          {
+            "subject": "90101 Aerodynamics (excl. Hypersonic Aerodynamics)",
+            "schemeUri": "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
+            "subjectScheme": "FOR"
+          },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819271",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819271/1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:26Z",
+        "registered": "2022-07-03T18:19:26Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:27Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819271",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819271",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          {
+            "subject": "90101 Aerodynamics (excl. Hypersonic Aerodynamics)",
+            "schemeUri": "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
+            "subjectScheme": "FOR"
+          },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819271",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:26Z",
+        "registered": "2022-07-03T18:19:26Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:27Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819269.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819269.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819269",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819269/1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:23Z",
+        "registered": "2022-07-03T18:19:24Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:25Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819269",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819269",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819269",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:23Z",
+        "registered": "2022-07-03T18:19:24Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:25Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819267.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819267.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Aerospace Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819267",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819267/1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:21Z",
+        "registered": "2022-07-03T18:19:21Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:22Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819267",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819267",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Aerospace Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819267",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:21Z",
+        "registered": "2022-07-03T18:19:21Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:22Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819265",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819265",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Mechanical Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819265",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:18Z",
+        "registered": "2022-07-03T18:19:19Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:20Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819265.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819265.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Mechanical Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819265",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819265/1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:19Z",
+        "registered": "2022-07-03T18:19:19Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:20Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819263.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819263.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Agricultural Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsPreviousVersionOf",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819263",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819263/1",
+        "contentUrl": null,
+        "metadataVersion": 1,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:11Z",
+        "registered": "2022-07-03T18:19:12Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:15Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819263",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819263",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Agricultural Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819263",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:11Z",
+        "registered": "2022-07-03T18:19:12Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:14Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819263.v2",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819263.v2",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Agricultural Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819263",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819263/2",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:13Z",
+        "registered": "2022-07-03T18:19:14Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:14Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819261.v1",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819261.v1",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Mechanical Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          },
+          {
+            "relationType": "IsIdenticalTo",
+            "relatedIdentifier": "10.0166/fk2.stagefigshare.7819261",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819261/1",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:09Z",
+        "registered": "2022-07-03T18:19:10Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:11Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819261",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819261",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [
+          { "subject": "Mechanical Engineering" },
+          {
+            "subject": "FOS: Mechanical engineering",
+            "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+            "subjectScheme": "Fields of Science and Technology (FOS)"
+          }
+        ],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "DATA",
+          "bibtex": "misc",
+          "citeproc": "dataset",
+          "schemaOrg": "Dataset",
+          "resourceType": "Dataset",
+          "resourceTypeGeneral": "Dataset"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["476 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/dataset/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819261",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:09Z",
+        "registered": "2022-07-03T18:19:10Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:10Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    },
+    {
+      "id": "10.0166/fk2.stagefigshare.7819259",
+      "type": "dois",
+      "attributes": {
+        "doi": "10.0166/fk2.stagefigshare.7819259",
+        "identifiers": [],
+        "creators": [
+          {
+            "name": "1, Daniel Dud Thu",
+            "givenName": "Daniel Dud Thu",
+            "familyName": "1",
+            "nameIdentifiers": [
+              {
+                "schemeUri": "https://orcid.org",
+                "nameIdentifierScheme": "ORCID"
+              }
+            ],
+            "affiliation": []
+          },
+          {
+            "name": "Mangum, John",
+            "givenName": "John",
+            "familyName": "Mangum",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Leea, Terry",
+            "givenName": "Terry",
+            "familyName": "Leea",
+            "affiliation": [],
+            "nameIdentifiers": []
+          },
+          {
+            "name": "Ford, Howard",
+            "givenName": "Howard",
+            "familyName": "Ford",
+            "affiliation": [],
+            "nameIdentifiers": []
+          }
+        ],
+        "titles": [
+          {
+            "title": "Climate Change on the last couple of years - Automation Tests"
+          }
+        ],
+        "publisher": "Sample University",
+        "container": {},
+        "publicationYear": 2022,
+        "subjects": [{ "subject": "Genetic Engineering" }],
+        "contributors": [],
+        "dates": [
+          { "date": "2022-07-03", "dateType": "Created" },
+          { "date": "2022-07-03", "dateType": "Updated" },
+          { "date": "2022", "dateType": "Issued" }
+        ],
+        "language": null,
+        "types": {
+          "ris": "GEN",
+          "bibtex": "misc",
+          "citeproc": "article",
+          "schemaOrg": "CreativeWork",
+          "resourceType": "Online resource",
+          "resourceTypeGeneral": "Other"
+        },
+        "relatedIdentifiers": [
+          {
+            "relationType": "IsSupplementTo",
+            "relatedIdentifier": "10.6084/m9.figshare.1407_api_024",
+            "relatedIdentifierType": "DOI"
+          }
+        ],
+        "sizes": ["0 Bytes"],
+        "formats": [],
+        "version": null,
+        "rightsList": [
+          {
+            "rights": "MIT License",
+            "rightsUri": "https://opensource.org/licenses/MIT",
+            "schemeUri": "https://spdx.org/licenses/",
+            "rightsIdentifier": "mit",
+            "rightsIdentifierScheme": "SPDX"
+          }
+        ],
+        "descriptions": [
+          {
+            "description": "This is a sample description from Automation Tests",
+            "descriptionType": "Abstract"
+          }
+        ],
+        "geoLocations": [],
+        "fundingReferences": [],
+        "url": "https://sample_university.figsh.com/articles/online_resource/Climate_Change_on_the_last_couple_of_years_-_Automation_Tests/7819259",
+        "contentUrl": null,
+        "metadataVersion": 0,
+        "schemaVersion": "http://datacite.org/schema/kernel-4",
+        "source": "mds",
+        "isActive": true,
+        "state": "findable",
+        "reason": null,
+        "viewCount": 0,
+        "downloadCount": 0,
+        "referenceCount": 0,
+        "citationCount": 0,
+        "partCount": 0,
+        "partOfCount": 0,
+        "versionCount": 0,
+        "versionOfCount": 0,
+        "created": "2022-07-03T18:19:02Z",
+        "registered": "2022-07-03T18:19:03Z",
+        "published": null,
+        "updated": "2022-07-03T18:19:04Z"
+      },
+      "relationships": {
+        "client": { "data": { "id": "figshare.dud", "type": "clients" } }
+      }
+    }
+  ],
+  "meta": {
+    "total": 52347,
+    "totalPages": 400,
+    "page": 1,
+    "states": [{ "id": "findable", "title": "Findable", "count": 52347 }],
+    "resourceTypes": [
+      { "id": "dataset", "title": "Dataset", "count": 25684 },
+      { "id": "collection", "title": "Collection", "count": 15869 },
+      { "id": "other", "title": "Other", "count": 9896 },
+      { "id": "text", "title": "Text", "count": 794 },
+      { "id": "dissertation", "title": "Dissertation", "count": 50 },
+      { "id": "conference-paper", "title": "Conference Paper", "count": 12 },
+      { "id": "report", "title": "Report", "count": 5 },
+      { "id": "preprint", "title": "Preprint", "count": 4 },
+      { "id": "journal", "title": "Journal", "count": 2 },
+      { "id": "audiovisual", "title": "Audiovisual", "count": 1 },
+      {
+        "id": "conference-proceeding",
+        "title": "Conference Proceeding",
+        "count": 1
+      },
+      { "id": "journal-article", "title": "Journal Article", "count": 1 }
+    ],
+    "created": [
+      { "id": "2022", "title": "2022", "count": 13712 },
+      { "id": "2021", "title": "2021", "count": 21596 },
+      { "id": "2020", "title": "2020", "count": 12406 },
+      { "id": "2019", "title": "2019", "count": 4631 },
+      { "id": "2018", "title": "2018", "count": 1 },
+      { "id": "2017", "title": "2017", "count": 1 }
+    ],
+    "published": [
+      { "id": "2022", "title": "2022", "count": 13107 },
+      { "id": "2021", "title": "2021", "count": 21961 },
+      { "id": "2020", "title": "2020", "count": 11404 },
+      { "id": "2019", "title": "2019", "count": 4970 },
+      { "id": "2018", "title": "2018", "count": 312 },
+      { "id": "2017", "title": "2017", "count": 64 },
+      { "id": "2016", "title": "2016", "count": 41 },
+      { "id": "2015", "title": "2015", "count": 45 },
+      { "id": "2014", "title": "2014", "count": 44 },
+      { "id": "2013", "title": "2013", "count": 47 },
+      { "id": "2012", "title": "2012", "count": 49 },
+      { "id": "2011", "title": "2011", "count": 194 },
+      { "id": "2010", "title": "2010", "count": 25 }
+    ],
+    "registered": [
+      { "id": "2022", "title": "2022", "count": 13727 },
+      { "id": "2021", "title": "2021", "count": 20358 },
+      { "id": "2020", "title": "2020", "count": 11244 },
+      { "id": "2019", "title": "2019", "count": 4630 },
+      { "id": "2018", "title": "2018", "count": 1 }
+    ],
+    "providers": [
+      { "id": "figshare", "title": "figshare", "count": 51093 },
+      { "id": "omug", "title": "ETH Zurich", "count": 505 },
+      {
+        "id": "nrf",
+        "title": "National Research Foundation of South Africa",
+        "count": 188
+      },
+      {
+        "id": "ardcx",
+        "title": "Australian Research Data Commons",
+        "count": 83
+      },
+      { "id": "unsw", "title": "University of New South Wales", "count": 63 },
+      { "id": "griffith", "title": "Griffith University", "count": 46 },
+      {
+        "id": "tib",
+        "title": "German National Library of Science and Technology",
+        "count": 45
+      },
+      { "id": "datacite", "title": "DataCite", "count": 44 },
+      { "id": "ouko", "title": "TIB-DOI-Gemeinschaftskonto", "count": 38 },
+      {
+        "id": "gesis",
+        "title": "GESIS - Leibniz Institute for the Social Sciences",
+        "count": 30
+      }
+    ],
+    "clients": [
+      {
+        "id": "figshare.dud",
+        "title": "figshare DUD datacenter",
+        "count": 51093
+      },
+      { "id": "omug.semwpq", "title": "Research Collection", "count": 505 },
+      { "id": "nrf.saeon", "title": "SAEON Data Centre", "count": 188 },
+      { "id": "ardcx.mqu", "title": "Macquarie University", "count": 82 },
+      {
+        "id": "unsw.repo",
+        "title": "University of New South Wales",
+        "count": 63
+      },
+      { "id": "ardcx.griffith", "title": "Griffith University", "count": 46 },
+      {
+        "id": "ouko.rwlvsj",
+        "title": "TEST Bayerische Akademie der Wissenschaften",
+        "count": 38
+      },
+      {
+        "id": "datacite.edi",
+        "title": "Environmental Data Initiative",
+        "count": 35
+      },
+      { "id": "tib.haw", "title": "HAW Hamburg", "count": 35 },
+      { "id": "gesis.test", "title": "GESIS.TEST", "count": 30 }
+    ],
+    "affiliations": [
+      { "id": "ror.org/03r8z3t63", "title": "UNSW Sydney", "count": 63 },
+      {
+        "id": "ror.org/ror.org03e8s1d88/",
+        "title": "Potsdam Institute for Climate Impact Research",
+        "count": 2
+      },
+      { "id": "ror.org/013m0ej23", "title": "Perimeter Institute", "count": 1 },
+      {
+        "id": "ror.org/019wvm592",
+        "title": "Australian National University",
+        "count": 1
+      },
+      {
+        "id": "ror.org/04s1nv328",
+        "title": "University of Canberra",
+        "count": 1
+      },
+      {
+        "id": "ror.org/ror.org04cvxnb49/",
+        "title": "Goethe University Frankfurt",
+        "count": 1
+      }
+    ],
+    "prefixes": [
+      { "id": "10.0166", "title": "10.0166", "count": 51093 },
+      { "id": "10.3929", "title": "10.3929", "count": 505 },
+      { "id": "10.15493", "title": "10.15493", "count": 188 },
+      { "id": "10.80310", "title": "10.80310", "count": 82 },
+      { "id": "10.80402", "title": "10.80402", "count": 63 },
+      { "id": "10.80317", "title": "10.80317", "count": 46 },
+      { "id": "10.21979", "title": "10.21979", "count": 38 },
+      { "id": "10.0311", "title": "10.0311", "count": 35 },
+      { "id": "10.7951", "title": "10.7951", "count": 35 },
+      { "id": "10.17889", "title": "10.17889", "count": 30 }
+    ],
+    "certificates": [{ "id": "DINI", "title": "Dini", "count": 1 }],
+    "licenses": [
+      { "id": "mit", "title": "MIT", "count": 42781 },
+      { "id": "cc by-nc-nd 3.0", "title": "cc by-nc-nd 3.0", "count": 63 },
+      { "id": "cc-by-4.0", "title": "CC-BY-4.0", "count": 26 },
+      { "id": "cc0-1.0", "title": "CC0-1.0", "count": 20 },
+      { "id": "cc-by-nc-4.0", "title": "CC-BY-NC-4.0", "count": 8 },
+      { "id": "cc-by-nc-nd-4.0", "title": "CC-BY-NC-ND-4.0", "count": 7 },
+      { "id": "cc-by-nc-sa-4.0", "title": "CC-BY-NC-SA-4.0", "count": 3 },
+      { "id": "cc-by-nc-nd-3.0", "title": "CC-BY-NC-ND-3.0", "count": 1 }
+    ],
+    "schemaVersions": [
+      { "id": "4", "title": "Schema 4", "count": 52108 },
+      { "id": "3", "title": "Schema 3", "count": 34 }
+    ],
+    "linkChecksStatus": [
+      { "id": "200", "title": "200", "count": 51 },
+      { "id": "403", "title": "403", "count": 42 },
+      { "id": "404", "title": "404", "count": 5 },
+      { "id": "502", "title": "502", "count": 3 },
+      { "id": "500", "title": "500", "count": 2 }
+    ],
+    "subjects": [
+      {
+        "id": "FOS: Mechanical engineering",
+        "title": "Fos: Mechanical Engineering",
+        "count": 12165
+      },
+      {
+        "id": "90101 Aerodynamics (excl. Hypersonic Aerodynamics)",
+        "title": "90101 Aerodynamics (Excl. Hypersonic Aerodynamics)",
+        "count": 4005
+      },
+      {
+        "id": "Genetic Engineering",
+        "title": "Genetic Engineering",
+        "count": 3993
+      },
+      {
+        "id": "Agricultural Engineering",
+        "title": "Agricultural Engineering",
+        "count": 3954
+      },
+      {
+        "id": "Aerospace Engineering",
+        "title": "Aerospace Engineering",
+        "count": 3951
+      },
+      {
+        "id": "Computer Engineering",
+        "title": "Computer Engineering",
+        "count": 3846
+      },
+      {
+        "id": "Nuclear Engineering",
+        "title": "Nuclear Engineering",
+        "count": 3825
+      },
+      {
+        "id": "Software Engineering",
+        "title": "Software Engineering",
+        "count": 3817
+      },
+      {
+        "id": "Mechanical Engineering",
+        "title": "Mechanical Engineering",
+        "count": 3805
+      },
+      {
+        "id": "90102 Aerospace Materials",
+        "title": "90102 Aerospace Materials",
+        "count": 3737
+      }
+    ],
+    "fieldsOfScience": [
+      {
+        "id": "mechanical_engineering",
+        "title": "Mechanical engineering",
+        "count": 12165
+      },
+      { "id": "clinical_medicine", "title": "Clinical medicine", "count": 840 },
+      {
+        "id": "earth_and_related_environmental_sciences",
+        "title": "Earth and related environmental sciences",
+        "count": 15
+      },
+      { "id": "natural_sciences", "title": "Natural sciences", "count": 11 },
+      { "id": "law", "title": "Law", "count": 7 },
+      {
+        "id": "biological_sciences",
+        "title": "Biological sciences",
+        "count": 5
+      },
+      {
+        "id": "other_agricultural_sciences",
+        "title": "Other agricultural sciences",
+        "count": 5
+      },
+      { "id": "political_science", "title": "Political science", "count": 5 },
+      { "id": "social_sciences", "title": "Social sciences", "count": 5 },
+      { "id": "civil_engineering", "title": "Civil engineering", "count": 3 }
+    ],
+    "citations": [{ "id": "2015", "title": "2015", "count": 1 }],
+    "views": [],
+    "downloads": []
+  },
+  "links": {
+    "self": "https://api.test.datacite.org/dois?query=titles.title:climate%20+change",
+    "next": "https://api.test.datacite.org/dois?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=titles.title%3Aclimate++change"
+  }
+}
