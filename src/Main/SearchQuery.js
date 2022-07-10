@@ -3,6 +3,7 @@ import jsonData from "../data/SearchAPI";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
+
 function SearchQuery() {
     const refLinks = React.useRef(null);
     let searchInputRef = React.useRef();
@@ -33,31 +34,47 @@ function SearchQuery() {
     }
 
     function searchInput(event) {
-        console.log("test input");
         console.log(event.target.value);
         console.log(searchInputRef.current.value);
         searchInputOut.current.innerHTML = searchInputRef.current.value;
         setTextOutput(searchInputRef.current.value);
     }
 
+    
+
+    // Создадим новый массив для отправки fetch в php
+    const [bookmark,setBookmark] = useState([]);
+
     function AddBookmark(props) {
-    //    fetch('http://localhost/scholar-php/php/func.php', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(props),
-    //     })
-    //     .then(response => response.json())
-    //     .then(response => {
-    //         console.log(response);
-    //     });
-        fetch('../func.php')
-        .then(response => response.text())
-        .then((response) => {
-            console.log(response);
-        });
+
+        var titlesBrk = props.attributes.titles;
+        var creatorsBrk = props.attributes.creators;
+        var publisherBrk = props.attributes.publisher;
+        var fileTypeBrk = props.attributes.types.resourceTypeGeneral;
+        var langBrk = props.attributes.types.resourceTypeGeneral;
+        var abstrBrk = props.attributes.descriptions;
+        var identsBrk = props.attributes.identifiers;
+        var rightsBrk = props.attributes.rightsList;
+        var subjectsBrk = props.attributes.subjects;
+        var arrBookmark = new Array(titlesBrk,creatorsBrk,publisherBrk,fileTypeBrk,langBrk,abstrBrk,identsBrk,rightsBrk,subjectsBrk);
+
+        setBookmark([...bookmark, arrBookmark]);
+
+        fetch('https://kirilab.ru/science/func.php', {
+            method: 'POST',
+            // headers : { 
+            //     'Content-Type': 'application/json',
+            //     'Accept': 'application/json'
+            // },
+            body: JSON.stringify(bookmark)
+            // body: bookmark
+        })
+            .then(response => response.text())
+            .then((response) => {
+                console.log(response);
+            });
     }
+
     return (
         <div className='search__query'>
             <div className='search__request block'>
@@ -171,7 +188,7 @@ function SearchQuery() {
                                 : null}
 
                             {/* ADD TO BOOKMARKS */}
-                            <span className='sm-btn' onClick={() => AddBookmark(item[1].id)} >Add to Bookmarks</span>
+                            <span className='sm-btn' onClick={() => AddBookmark(item[1])} >Add to Bookmarks</span>
 
 
                             {/* CITE */}
