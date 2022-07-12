@@ -312,8 +312,16 @@ code {
     font-size: 18px;
     line-height: 26px;
     margin: 10px 0;
-    p {
+    // max-height: 260px;
+    // overflow: hidden;
+
+    .search-item__desc-container {
       margin: 0;
+    }
+    .search-item__h-desc {
+      font-weight: bold;
+      margin-right: 6px;
+      color: #232323;
     }
   }
 
