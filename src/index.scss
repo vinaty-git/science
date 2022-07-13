@@ -11,7 +11,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -235,6 +234,7 @@ code {
   justify-content: center;
   align-items: center;
   min-width: 150px;
+  max-height: 36px;
   line-height: 32px;
   // padding-top: 3px;
   border: 1px solid transparent;
@@ -245,8 +245,12 @@ code {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.4s;
+  // Вариант со сменяемой иконкой, когда внутри button есть два элемента - текст и иконка обернутые в span
   span {
-    margin-left: 6px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
   }
 }
 .sm-btn:hover {
@@ -312,8 +316,6 @@ code {
     font-size: 18px;
     line-height: 26px;
     margin: 10px 0;
-    // max-height: 260px;
-    // overflow: hidden;
 
     .search-item__desc-container {
       margin: 0;
@@ -323,6 +325,20 @@ code {
       margin-right: 6px;
       color: #232323;
     }
+  }
+
+  @keyframes abstract {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .search-item__btn-abstract {
+    width: 180px;
+    margin: 10px 0;
   }
 
   .search-item__url {
@@ -356,10 +372,11 @@ code {
   }
 
   .search-item__identifiers {
-    display: flex;
+    display: block;
+    margin: 30px 0 20px 0;
 
     p {
-      margin: 10px 0;
+      margin: 14px 0;
     }
     .search-item__id-type {
       border: 1px solid grey;
@@ -413,25 +430,37 @@ code {
       }
     }
   }
-
+  .search-item__btn-bookmark {
+    padding: 6px 12px;
+    width: 280px;
+    max-height: 32px;
+    line-height: 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #c7512d;
+  }
   .search-item__ref-container {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     position: relative;
-    padding-top: 40px;
+    padding-top: 4px;
     margin-top: 12px;
   }
 
-  .search-item__ref-button {
-    position: absolute;
-    top: 0;
-    left: 0;
+  // .search-item__ref-button {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  // }
+  // .search-item__cites-button {
+  //   position: absolute;
+  //   top: 0;
+  //   right: 30px;
+  // }
+  .search-item__ref-button--empty {
+    width: 152px;
   }
-  .search-item__cites-button {
-    position: absolute;
-    top: 0;
-    right: 30px;
-  }
-
   .search-item__references {
     width: 70%;
     height: 0;
