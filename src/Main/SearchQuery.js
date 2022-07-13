@@ -1,20 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Transition } from 'react-transition-group';
+
 import jsonData from "../data/SearchAPI";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
+import { FiArrowUp } from "react-icons/fi";
+import { FiArrowDown } from "react-icons/fi";
 
 function SearchQuery() {
-    const refLinks = React.useRef(null);
+
+    // Refs links 
+
     let searchInputRef = React.useRef();
 
     let searchInputOut = React.createRef();
-    // let uniIdItem = '';
 
-    let abstractSum = 0;
-    let abstractCombine = '';
+    // Переменная для суммирования описаний статьи и дальнейшего подсчета
+    let abstractCombine = [];
 
-    const [temp,setTemp] = useState('');
+    // State для показа полного описания статьи true - показать полное, false - короткое
+    const [fullDesc,setFullDesc] = useState({});
 
     const [textOutput,setTextOutput] = useState("Hello");
 
@@ -28,9 +34,10 @@ function SearchQuery() {
         setSearchResults(entries);
     }
 
-    function showRefLinks(event) {
-        var currentRefClick = event.target.parentNode.querySelector('.search-item__references');
-        currentRefClick.classList.toggle('search-item__references--show');
+    // Кнопка открыть ссылки references
+    const showRefLinks = (index,event) => {
+        let reference = document.getElementById("refs-links-"+index);
+        reference.classList.toggle("search-item__references--show");
         event.target.textContent == 'Hide list of cites' ? event.target.textContent = 'Show list of cites' : event.target.textContent = 'Hide list of cites'; 
     }
 
@@ -38,6 +45,19 @@ function SearchQuery() {
         searchInputOut.current.innerHTML = searchInputRef.current.value;
         setTextOutput(searchInputRef.current.value);
     }
+
+    // function btnFullDesc(item) {
+    //     setFullDesc(open => ({
+    //       ...open,
+    //       [item]: !open[item],
+    //     }));
+    // }
+    const btnFullDesc = (item) => () => {
+        setFullDesc(fullDesc => ({
+          ...fullDesc,
+          [item]: !fullDesc[item],
+        }));
+      };
 
     function AddBookmark(props) {
             fetch('https://kirilab.ru/science/func.php', {
@@ -67,7 +87,6 @@ function SearchQuery() {
                 ? <div>Nothing to declare</div> 
                 : searchResults.map((item,index) => 
                     <div key={index} className='search-item block'>
-                        {/* {uniIdItem = item[1].id.substr(item[1].id.length - 7, item[1].id.length)} */}
                         {/* TITLE */}
                         <h3 className='search-item__title'>
                             {item[1].attributes.titles ? 
@@ -111,23 +130,28 @@ function SearchQuery() {
 
 
                         {/* ABSTRACT */}
-                        <div className='test'>
-                            <div className='search-item__abstract'>
-                                {item[1].attributes.descriptions ? item[1].attributes.descriptions.length > 0 ?
-                                item[1].attributes.descriptions.map((item,subindex) => {
-                                    abstractCombine = (item.descriptionType + item.description)
-                                    return (
-                                        <span key={"abstract-"+index+subindex}>
-                                            {abstractCombine.substring(0, 750)+"..."}
-                                        </span>
-                                    )
-                                })
-                                : <span>No description provided</span> : <span>No description provided</span>}
-                            </div>
-                                <span>
-                                    {abstractCombine.length > 750 ? <span>Button</span> : null}
-                                </span>
+                        <div className={fullDesc[index] ? 'search-item__abstract search-item__abstract--full' : 'search-item__abstract search-item__abstract--short'}>
+                            
+                            {item[1].attributes.descriptions ? item[1].attributes.descriptions.length > 0 ?
+                            item[1].attributes.descriptions.map((item,subindex) => {
+                                abstractCombine = (item.descriptionType + ": " + item.description)
+                                return (
+                                    <span key={"abstract-"+index+"-"+subindex}>
+                                        {fullDesc[index] ? abstractCombine : abstractCombine.substring(0, 750)+"..." }
+                                    </span>
+                                )
+                            })
+                            : <span>No description provided</span> : <span>No description provided</span>}
                         </div>
+
+                        {abstractCombine.length > 750 ? 
+                            <button className='search-item__btn-abstract sm-btn' onClick={btnFullDesc(index)}>
+                                {fullDesc[index] ? 
+                                <span><FiArrowUp />Hide full description</span>
+                                : <span><FiArrowDown />Show full description</span>}
+                            </button>
+                        : null}
+
                         {/* IDENTIFIERS */}
                         <div className='search-item__identifiers'>
                             <p>
@@ -173,10 +197,22 @@ function SearchQuery() {
                         <div className='search-item__ref-container'>
                             {/* REFERENCES */}
                             {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
-                            <span className='search-item__ref-button sm-btn' ref={refLinks}  onClick={showRefLinks} >Show list of cites</span> : null : null}  
-                                    
-                            {item[1].attributes.relatedIdentifiers ?
-                                <div  className='search-item__references'>
+                            <span className='search-item__ref-button sm-btn' onClick={(event) => {showRefLinks(index,event)}} >Show list of cites</span> : <span className='search-item__ref-button--empty'></span> :<span className='search-item__ref-button--empty'></span>}  
+                               
+                            {/* ADD TO BOOKMARKS */}
+                            <span className='search-item__btn-bookmark sm-btn' onClick={() => AddBookmark(item[1])} >Add to Bookmarks</span>
+
+
+                            {/* CITE */}
+                            <span className='search-item__cites-button sm-btn'>
+                                <i><RiDoubleQuotesL /></i>
+                                <span>Cite this work</span>
+                            </span>
+
+                        </div>
+                        
+                        {item[1].attributes.relatedIdentifiers ?
+                                <div  id={"refs-links-"+index} className='search-item__references'>
                                     {item[1].attributes.relatedIdentifiers.map((item,subindex) => {
                                         return (
                                             <div className='search-item__ref-links' key={"ref-type-"+index+"-"+subindex} >
@@ -187,17 +223,7 @@ function SearchQuery() {
                                     })}
                                 </div>
                                 : null}
-
-                            {/* ADD TO BOOKMARKS */}
-                            <span className='sm-btn' onClick={() => AddBookmark(item[1])} >Add to Bookmarks</span>
-
-
-                            {/* CITE */}
-                            <span className='search-item__cites-button sm-btn'>
-                                <i><RiDoubleQuotesL /></i>
-                                <span>Cite this work</span>
-                            </span>
-                        </div>
+                        
                     </div>
                     
                 )}
