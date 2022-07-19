@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Transition } from 'react-transition-group';
+// import { Transition } from 'react-transition-group';
+import { CiteStyles } from '../Cites/DataCitesStyles.js';
 
 import jsonData from "../data/SearchAPI";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -7,6 +8,12 @@ import { FiExternalLink } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { FiArrowUp } from "react-icons/fi";
 import { FiArrowDown } from "react-icons/fi";
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { FiLink2 } from "react-icons/fi";
+import { GrClose } from "react-icons/gr";
+import { ImCopy } from "react-icons/im";
+import { BsQuestionCircle } from "react-icons/bs";
 
 function SearchQuery() {
 
@@ -24,11 +31,41 @@ function SearchQuery() {
 
     const [textOutput,setTextOutput] = useState("Hello");
 
-    // const [buttonRef,setButtonRef] = useState("Show where it is cited");
+    const [btnLinks,setBtnLinks] = useState({});
 
+    // Поисковая выдача записывается в этот state
     const [searchResults,setSearchResults] = useState([]);
     var entries = Object.entries(jsonData.data);
+
     // const API_URL = "https://api.test.datacite.org/dois?query=climate%20change";
+    const [allBookmarks, setAllBookmarks] = useState([]);
+
+    // Стили цицитирования 
+    const [cite,setCite] = useState({});
+    var loadStyle;
+    const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования
+    const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API полный
+    const [styleLoading, setStyleLoading] = useState(false); // Статус загрузки fetch стилей цитирования
+
+    //  Получение данных из БД о наличии bookmarks для User id 1
+    useEffect(() => {
+        function CheckBookmarks() {
+            const queryCheckBookmarks = {
+                "data": "bookmarkQuery",
+                "id": 2
+            };
+            fetch('https://kirilab.ru/science/func.php', {
+                method: 'POST',
+                body: JSON.stringify(queryCheckBookmarks)
+            })
+            .then(response => response.json())
+            .then(response => {
+                setAllBookmarks(response);
+                // console.log(response);
+            });
+        }
+        CheckBookmarks();
+    }, []);
 
     function updateQuery() {
         setSearchResults(entries);
@@ -38,7 +75,10 @@ function SearchQuery() {
     const showRefLinks = (index,event) => {
         let reference = document.getElementById("refs-links-"+index);
         reference.classList.toggle("search-item__references--show");
-        event.target.textContent == 'Hide list of cites' ? event.target.textContent = 'Show list of cites' : event.target.textContent = 'Hide list of cites'; 
+        event.target.classList.toggle('sm-btn-sec--active');
+        setBtnLinks(btnLinks => ({
+            ...btnLinks,[index]:!btnLinks[index]
+        }));
     }
 
     function searchInput(event) {
@@ -46,29 +86,106 @@ function SearchQuery() {
         setTextOutput(searchInputRef.current.value);
     }
 
-    // function btnFullDesc(item) {
-    //     setFullDesc(open => ({
-    //       ...open,
-    //       [item]: !open[item],
-    //     }));
-    // }
-    const btnFullDesc = (item) => () => {
+    const btnFullDesc = (index) => () => {
         setFullDesc(fullDesc => ({
-          ...fullDesc,
-          [item]: !fullDesc[item],
+          ...fullDesc,[index]: !fullDesc[index]
         }));
       };
 
     function AddBookmark(props) {
-            fetch('https://kirilab.ru/science/func.php', {
-                method: 'POST',
-                body: JSON.stringify(props)
-            })
-            .then(response => response.text())
-            .then((response) => {
-                console.log(response);
-            });
+        const queryAddBookmark = {
+            "data": "addBookmark",
+            "id": 2,
+            "bookmark": props
+        };
+        fetch('https://kirilab.ru/science/func.php', {
+            method: 'POST',
+            body: JSON.stringify(queryAddBookmark)
+        })
+        .then(response => response.json())
+        .then((response) => {
+            if (response == false) {
+                console.log("answer alredy exist");
+            } else {
+                setAllBookmarks(response);
+            }
+        });
     }
+
+    function RemoveBookmark(props) {
+        const queryRemoveBookmark = {
+            "data": "removeBookmark",
+            "id": 2,
+            "doi": props
+        }
+        fetch('https://kirilab.ru/science/func.php', {
+            method: 'POST',
+            body: JSON.stringify(queryRemoveBookmark)
+        })
+        .then(response => response.json())
+        .then((response) => {
+            setAllBookmarks(response);
+        });
+    }
+
+    // ГЕНЕРАТОР ЦИТАТ 
+
+    function OpenCites(index,doi) {
+        var citePopup = document.getElementById("cites-"+index);
+        citePopup.classList.toggle('cites--hidden');
+        citePopup.classList.toggle('cites--active');
+        document.body.classList.toggle('ovelaped');
+        document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
+        LoadCite(doi);
+    }
+
+    function HideCites() {
+        var openedPopup = document.querySelector('.cites--active');
+        openedPopup.classList.toggle('cites--hidden');
+        openedPopup.classList.toggle('cites--active');
+        document.body.classList.toggle('ovelaped');
+        document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
+    }
+
+    function LoadCite(doi) {
+        setStyleLoading(true);
+        // var styleaApa = chosenStyle;
+        // fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}/transform/application/rdf+xml`)
+        // fetch(`https://data.crosscite.org/application/rdf+xml/${encodeURIComponent(doi)}?style=${encodeURIComponent(styleMla)}&locale=en-US`)
+
+        fetch(`https://doi.org/${encodeURIComponent(doi)}`, {
+            headers: {
+                // "Accept": "text/html, application/rdf+xml, application/vnd.citationstyles.csl+json; style=apa",
+                // PARSE DOI СРАВНИТЬ C CROSS SITE
+                // "Accept": "text/html;q=0.3, application/rdf+xml;q=1, application/vnd.citationstyles.csl+json;q=0.5; style=apa",
+                "Accept": `text/x-bibliography; style=${chosenStyle}`,
+                // 'Content-Type': 'application/vnd.citationstyles.csl+json, application/rdf+xml;q=0.5',
+            }
+        })
+        .then(response => response.text())
+        .then(response => {
+            // setCite({chosenStyle: response});
+            setCite({...cite, [chosenStyle]: response});
+        });
+    }
+    useEffect(() => {
+        setStyleLoading(false);
+    },[cite]);
+
+    function chooseStyle(event) {
+        document.querySelectorAll('.cites__li-style').forEach(i => {
+            i.classList.remove('cites__li-style--active');
+        });
+        event.target.classList.add('cites__li-style--active');
+        setLoadTag(event.target.getAttribute('data-tag'));
+        loadStyle = CiteStyles.find(el => el.tag === loadTag).style;
+        
+    }
+    
+    useEffect(() => {
+        loadStyle = CiteStyles.find(el => el.tag === loadTag).style;
+        setChosenStyle(loadStyle);
+    },[loadTag]);
 
     return (
         <div className='search__query'>
@@ -83,6 +200,7 @@ function SearchQuery() {
                 <div>Number of results</div>
             </div>
             <div className='search__results'>
+                <div className='modal-bgn modal-bgn--hidden' onClick={() => HideCites()}></div>
                 {searchResults == ''
                 ? <div>Nothing to declare</div> 
                 : searchResults.map((item,index) => 
@@ -119,7 +237,7 @@ function SearchQuery() {
                                 {item[1].attributes.publicationYear ? item[1].attributes.publicationYear : "No publication date provided"}
                             </span>
                             {item[1].attributes.url ?
-                            <span className='search-item__url'><a href={item[1].attributes.url} target="_blank" rel="noopener noreferrer">Publication source<FaExternalLinkAlt /></a></span>
+                            <span className='search-item__url'><a href={item[1].attributes.url} target="_blank" rel="noopener noreferrer" className='link-out'>Publication source<FaExternalLinkAlt /></a></span>
                             : null}
                             {/*  LANG  AND TYPE */}
                             <div className='search-item__flags'>
@@ -137,20 +255,120 @@ function SearchQuery() {
                                 abstractCombine = (item.descriptionType + ": " + item.description)
                                 return (
                                     <span key={"abstract-"+index+"-"+subindex}>
-                                        {fullDesc[index] ? abstractCombine : abstractCombine.substring(0, 750)+"..." }
+                                        {fullDesc[index] ? abstractCombine : abstractCombine.substring(0, 650)+"..." }
                                     </span>
                                 )
                             })
                             : <span>No description provided</span> : <span>No description provided</span>}
                         </div>
+                        
 
-                        {abstractCombine.length > 750 ? 
-                            <button className='search-item__btn-abstract sm-btn' onClick={btnFullDesc(index)}>
-                                {fullDesc[index] ? 
-                                <span><FiArrowUp />Hide full description</span>
-                                : <span><FiArrowDown />Show full description</span>}
+                        <div className='search-item__ref-container'>  
+                            {/* ADD TO BOOKMARKS */}
+
+                            {allBookmarks != null ?
+                                allBookmarks.some(i => item[1].id == i.doi) ?
+                                <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={() => RemoveBookmark(item[1].id)} >
+                                    <span><FaStar />Delete Bookmark</span>
+                                </button>
+                                : 
+                                <button className='search-item__btn-bookmark sm-btn sm-btn-sec' onClick={() => AddBookmark(item[1])} >
+                                    <span><FaRegStar />Add Bookmark</span>
+                                </button>
+                            :  
+                            <button className='search-item__btn-bookmark sm-btn sm-btn-sec' onClick={() => AddBookmark(item[1])} >
+                                <span><FaRegStar />Add Bookmark</span>
+                            </button>}
+
+                            {/* CITE */}
+                            <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={() => OpenCites(index,item[1].id)}>
+                                <span><RiDoubleQuotesL />Cite this work</span>
                             </button>
-                        : null}
+
+                            {/* REFERENCES */}
+                            {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
+                            <button className='search-item__ref-button sm-btn sm-btn-sec' onClick={(event) => {showRefLinks(index,event)}} >
+                                {btnLinks[index] ?
+                                <span><FiLink2 /> Close cite list<span className='search-item__refs-counter'>{item[1].attributes.relatedIdentifiers.length}</span></span>
+                                : <span><FiLink2 /> Open cite list<span className='search-item__refs-counter'>{item[1].attributes.relatedIdentifiers.length}</span></span>
+                                }
+                                
+                            </button> : null : null }  
+
+                            {/* FULL DESC */}
+                            {abstractCombine.length > 650 ? 
+                                <button className='search-item__btn-abstract sm-btn sm-btn-sec' onClick={btnFullDesc(index)}>
+                                    {fullDesc[index] ? 
+                                    <span><FiArrowUp />Hide full description</span>
+                                    : <span><FiArrowDown />Show full description</span>}
+                                </button>
+                            : null}
+                            
+                        </div>
+                        
+                        {/* CITATION POPUP MODAL */}
+                        <div id={"cites-"+index} className='cites cites--hidden'>
+
+                            <div className='cites__heading'>
+                                <h4>Citation Generator</h4>
+                                <span className='cites__close' onClick={() => HideCites()}><GrClose /></span>
+                            </div>
+                            
+                            <div className='cites__choose-style'>    
+
+                                <span className='cites__subheading'>Choose style of citation</span>
+
+                                <div className='cites__box-styles'>
+
+                                    <ul className='cites__list-style'>   
+                                        {CiteStyles.map((st,subindex) => {
+                                            return (
+                                                <li data-tag={`${st.tag}`} className={`cites__li-style ${st.default ? 'cites__li-style--active' : 'cites__li-style--inactive'}`} key={subindex} onClick={(event) => chooseStyle(event)}>
+                                                    {st.title}
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                    <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item[1].id)}>
+                                    {cite[chosenStyle] ? "Loaded" : "Load citation" }
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className='cites__style'> 
+                                {styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
+                                    : cite[chosenStyle] ? 
+                                        <span className='cites__cite'>{cite[chosenStyle]}</span>
+                                        : "Please press Load citation button"}
+
+                                <div className='cites__cont-copy'>
+                                    <span>
+                                        {CiteStyles.find(elem => elem.tag === loadTag).desc}
+                                    </span>
+                                    <a className='cites__about-style link-out-question'><BsQuestionCircle />More details</a>
+                                    <button className='cites__btn-copy sm-btn sm-btn--sm'><ImCopy /> Copy Citation to Clipboard</button>
+                               
+                                </div>
+                            </div>
+
+                            <div>
+                                Need more styles of citation? Paste the article DOI to this link https://citation.crosscite.org/
+                            </div>
+
+                        </div>
+
+                        {item[1].attributes.relatedIdentifiers ?
+                                    <div  id={"refs-links-"+index} className='search-item__references'>
+                                        {item[1].attributes.relatedIdentifiers.map((item,subindex) => {
+                                            return (
+                                                <div className='search-item__ref-links' key={"ref-type-"+index+"-"+subindex} >
+                                                    <span>{item.relatedIdentifierType}</span>
+                                                    <span>{item.relatedIdentifier}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    : null}
 
                         {/* IDENTIFIERS */}
                         <div className='search-item__identifiers'>
@@ -193,36 +411,6 @@ function SearchQuery() {
                             </div>
                             : null
                         : null}
-
-                        <div className='search-item__ref-container'>
-                            {/* REFERENCES */}
-                            {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
-                            <span className='search-item__ref-button sm-btn' onClick={(event) => {showRefLinks(index,event)}} >Show list of cites</span> : <span className='search-item__ref-button--empty'></span> :<span className='search-item__ref-button--empty'></span>}  
-                               
-                            {/* ADD TO BOOKMARKS */}
-                            <span className='search-item__btn-bookmark sm-btn' onClick={() => AddBookmark(item[1])} >Add to Bookmarks</span>
-
-
-                            {/* CITE */}
-                            <span className='search-item__cites-button sm-btn'>
-                                <i><RiDoubleQuotesL /></i>
-                                <span>Cite this work</span>
-                            </span>
-
-                        </div>
-                        
-                        {item[1].attributes.relatedIdentifiers ?
-                                <div  id={"refs-links-"+index} className='search-item__references'>
-                                    {item[1].attributes.relatedIdentifiers.map((item,subindex) => {
-                                        return (
-                                            <div className='search-item__ref-links' key={"ref-type-"+index+"-"+subindex} >
-                                                <span>{item.relatedIdentifierType}</span>
-                                                <span>{item.relatedIdentifier}</span>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                                : null}
                         
                     </div>
                     
