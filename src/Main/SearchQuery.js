@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-// import { Transition } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { CiteStyles } from '../Cites/DataCitesStyles.js';
 
 import jsonData from "../data/SearchAPI";
@@ -14,6 +14,7 @@ import { FiLink2 } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { ImCopy } from "react-icons/im";
 import { BsQuestionCircle } from "react-icons/bs";
+import { BsArrowUp } from "react-icons/bs";
 
 function SearchQuery() {
 
@@ -149,22 +150,15 @@ function SearchQuery() {
 
     function LoadCite(doi) {
         setStyleLoading(true);
-        // var styleaApa = chosenStyle;
-        // fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}/transform/application/rdf+xml`)
-        // fetch(`https://data.crosscite.org/application/rdf+xml/${encodeURIComponent(doi)}?style=${encodeURIComponent(styleMla)}&locale=en-US`)
-
         fetch(`https://doi.org/${encodeURIComponent(doi)}`, {
             headers: {
-                // "Accept": "text/html, application/rdf+xml, application/vnd.citationstyles.csl+json; style=apa",
                 // PARSE DOI СРАВНИТЬ C CROSS SITE
                 // "Accept": "text/html;q=0.3, application/rdf+xml;q=1, application/vnd.citationstyles.csl+json;q=0.5; style=apa",
                 "Accept": `text/x-bibliography; style=${chosenStyle}`,
-                // 'Content-Type': 'application/vnd.citationstyles.csl+json, application/rdf+xml;q=0.5',
             }
         })
         .then(response => response.text())
         .then(response => {
-            // setCite({chosenStyle: response});
             setCite({...cite, [chosenStyle]: response});
         });
     }
@@ -330,16 +324,29 @@ function SearchQuery() {
                                         })}
                                     </ul>
                                     <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item[1].id)}>
-                                    {cite[chosenStyle] ? "Loaded" : "Load citation" }
+                                        {cite[chosenStyle] ? "Loaded" : "Load citation" }
                                     </button>
+                                    {(!cite[chosenStyle] && !styleLoading) ? <div className='cites__arrow'><BsArrowUp /></div> : null}
                                 </div>
                             </div>
 
-                            <div className='cites__style'> 
-                                {styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
-                                    : cite[chosenStyle] ? 
-                                        <span className='cites__cite'>{cite[chosenStyle]}</span>
-                                        : "Please press Load citation button"}
+                            <div className='cites__style'>
+
+                                <div className='cites__output'>
+
+                                        {styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
+                                            : cite[chosenStyle] ? 
+                                                <CSSTransition 
+                                                classNames="ease"
+                                                timeout={1000}
+                                                in={true}
+                                                appear={true}>
+                                                    <div className='cites__cite'>{cite[chosenStyle]}</div>
+                                                </CSSTransition>
+                                                : <div className='cites__action'>Please, press Load citation button to upload this citation style.</div>
+                                        }
+
+                                </div>
 
                                 <div className='cites__cont-copy'>
                                     <span>
@@ -347,8 +354,7 @@ function SearchQuery() {
                                     </span>
                                     <a className='cites__about-style link-out-question'><BsQuestionCircle />More details</a>
                                     <button className='cites__btn-copy sm-btn sm-btn--sm'><ImCopy /> Copy Citation to Clipboard</button>
-                               
-                                </div>
+                                </div>             
                             </div>
 
                             <div>
