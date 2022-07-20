@@ -625,16 +625,38 @@ code {
     gap: 12px;
     margin-bottom: 36px;
   }
+
+  .cites__arrow {
+    font-size: 32px;
+    color: $clr;
+    position: absolute;
+    right: 84px;
+    top: 170px;
+    -moz-animation: topdown-loop 1s ease alternate;
+    -webkit-animation: topdown-loop 1s ease alternate;
+    -o-animation: topdown-loop 1s ease alternate;
+    animation: topdown-loop 1s ease alternate;
+    animation-iteration-count: infinite;
+  }
+
   .cites__cite {
-    width: 90%;
-    min-width: 96%;
-    max-width: 96%;
     min-height: 54px;
     height: auto;
     background-color: #fff;
     font-size: 16px;
-    line-height: 22px;
+    line-height: 25px;
     padding: 6px 12px;
+    opacity: 0.3;
+  }
+
+  .cites__action {
+    display: inline-block;
+    font-size: 16px;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #686868;
+    animation-name: fading;
+    animation-duration: 0.6s;
   }
   .cites__cont-copy {
     display: flex;
@@ -707,10 +729,27 @@ code {
       color: #fff;
     }
   }
+  .cites__output {
+    display: inline-block;
+    min-height: 70px;
+  }
 
   // Effects
+  .ease-appear {
+    opacity: 0.05;
+    transition: opacity 100ms ease-in;
+  }
+  .ease-appear-active {
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+  }
+  .ease-appear-done {
+    opacity: 1;
+  }
+
+
   .loader-container {
-    margin: 10px auto;
+    margin: 16px auto 10px auto;
     position: relative;
     width: 600px;
     height: 12px;
@@ -728,5 +767,13 @@ code {
   @keyframes loading {
     from {width: 0%;}
     to {width: 100%}
+  }
+  @keyframes fading {
+    from {opacity: 0.3;}
+    to {opacity: 1;}
+  }
+  @keyframes topdown-loop {
+    0% {top: 170px;}
+    100% {top: 190px}
   }
 
