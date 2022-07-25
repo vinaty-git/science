@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { CiteStyles } from '../Cites/DataCitesStyles.js';
 
-import jsonData from "../data/SearchAPI";
+import { CiteStyles } from '../Cites/DataCitesStyles.js';
+// import jsonData from "../data/SearchAPI";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
@@ -10,45 +10,46 @@ import { FiArrowUp } from "react-icons/fi";
 import { FiArrowDown } from "react-icons/fi";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import { FiLink2 } from "react-icons/fi";
+// import { FiLink2 } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { ImCopy } from "react-icons/im";
 import { BsQuestionCircle } from "react-icons/bs";
 import { BsArrowUp } from "react-icons/bs";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
 
 function SearchQuery() {
 
     // Refs links 
+    let searchInputRef = React.useRef(); // Реф инпута отправки поискового запроса 
+    let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
 
-    let searchInputRef = React.useRef();
+    // Все States и переменные
+    var searchOuput; // Поисковая выдача переменная для получения ответа по API
+    var pagination = []; // Сюда будем записывать обе ссылки полученные по api
+    var paginationUrl; // URL куда мы позднее подставим ссылку в пагинации
+    let abstractCombine = []; // Переменная для суммирования описаний статьи и дальнейшего подсчета знаков
+    const [fullDesc,setFullDesc] = useState({}); // State для показа полного описания статьи true - показать полное, false - короткое
+    const [textOutput,setTextOutput] = useState(""); // State поискового запроса
+    // const [btnLinks,setBtnLinks] = useState({}); // State раскрытия ссылок на цитируемые статьи
+    const [searchResults,setSearchResults] = useState([]); // Поисковая выдача записывается в этот state (все статьи)
+    // var entries = Object.entries(jsonData.data);
+    const [errorCite,setErrorCite] = useState(null); // Стейт для ошибки при fecth стиля цитирования
+    
+    const [prevLinks, setPrevLinks] = useState([]); // State где будем хранить все пролистанные страницы, чтобы вернуться к ним по пагинации
+    const [nextLinks, setNextLinks] = useState([]); // State для страницы Следующая страница в поисковой выдаче
+    
+    const [allBookmarks, setAllBookmarks] = useState([]); // State закладок добавленных пользователем получаемых из БД
+    const [cite,setCite] = useState({}); // Стили цицитирования загруженные в генераторе цитирования
+    var loadStyle; // Загруженный текущий стиль цитирования в модальном окне
+    var urlApi;// Объявили пустую переменную, в функции добавили в нее url для API
+    const [currentApi,setCurrentApi] = useState(); 
+    const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования (тег)
+    const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API (полный)
+    const [styleLoading, setStyleLoading] = useState(false); // Статус загрузки fetch стилей цитирования для показа загрузки
 
-    let searchInputOut = React.createRef();
-
-    // Переменная для суммирования описаний статьи и дальнейшего подсчета
-    let abstractCombine = [];
-
-    // State для показа полного описания статьи true - показать полное, false - короткое
-    const [fullDesc,setFullDesc] = useState({});
-
-    const [textOutput,setTextOutput] = useState("Hello");
-
-    const [btnLinks,setBtnLinks] = useState({});
-
-    // Поисковая выдача записывается в этот state
-    const [searchResults,setSearchResults] = useState([]);
-    var entries = Object.entries(jsonData.data);
-
-    // const API_URL = "https://api.test.datacite.org/dois?query=climate%20change";
-    const [allBookmarks, setAllBookmarks] = useState([]);
-
-    // Стили цицитирования 
-    const [cite,setCite] = useState({});
-    var loadStyle;
-    const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования
-    const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API полный
-    const [styleLoading, setStyleLoading] = useState(false); // Статус загрузки fetch стилей цитирования
-
-    //  Получение данных из БД о наличии bookmarks для User id 1
+    //  Получение данных из БД о наличии bookmarks для User id 2
     useEffect(() => {
         function CheckBookmarks() {
             const queryCheckBookmarks = {
@@ -62,37 +63,114 @@ function SearchQuery() {
             .then(response => response.json())
             .then(response => {
                 setAllBookmarks(response);
-                // console.log(response);
             });
         }
         CheckBookmarks();
     }, []);
 
+    // Отправляем fetch с поисковым запросом
     function updateQuery() {
-        setSearchResults(entries);
+        var searchRequest = textOutput; // Взяли из state, что ввел пользователь
+        urlApi = `https://api.test.datacite.org/dois?query=${encodeURIComponent(searchRequest)}`; // Подставили в api
+        setCurrentApi(urlApi);
+        
+        fetch(urlApi, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Accept": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+            searchOuput = Object.entries(response.data); // Получили json поисковой выдачи
+            pagination = Object.entries(response.links); // Получили массив ссылок для пагинации
+            
+            setPrevLinks([urlApi]); // Отчистили стейт всех предыдущих страниц (пагинация) и добавили текущую страницу
+            if (pagination.length > 1) {
+                setNextLinks(pagination[1][1]); // Получили ссылку пагинации при первичной загрузке Следующая страницу
+            } else {
+                setNextLinks('no link');
+            }
+            setSearchResults(searchOuput); // Обновили выдачу поиска 
+        });
     }
 
-    // Кнопка открыть ссылки references
-    const showRefLinks = (index,event) => {
-        let reference = document.getElementById("refs-links-"+index);
-        reference.classList.toggle("search-item__references--show");
-        event.target.classList.toggle('sm-btn-sec--active');
-        setBtnLinks(btnLinks => ({
-            ...btnLinks,[index]:!btnLinks[index]
-        }));
+    ////// PAGINATION //////
+
+    // Пагинация поискового запроса на основании ссылок из json по API, где ссылка вперед задана, а обратную берем из стейта
+    function prevPage() {
+        if (prevLinks.length > 1) {
+            var returnUrl = prevLinks[prevLinks.length - 2]; // Из стейта searchPagination берем предпоследний элемент массива
+            fetch(returnUrl, {
+                header: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                searchOuput = Object.entries(response.data);
+                setSearchResults(searchOuput); // Выводим полученный массив в результаты выдачи заменой state
+                pagination = Object.entries(response.links); // Обновили из API ссылки для пагинации
+                var prevLinksWithoutLast = prevLinks.slice(0,-1);
+                console.log("Все кроме последнего" + prevLinksWithoutLast);
+                setPrevLinks(prevLinksWithoutLast); // // Убрали последнюю страница из массива ссылок Предыдущая страница
+                setNextLinks(pagination[1][1]); // Переписали ссылку для пагинации Следующая страница
+                console.log(pagination[1][1]);
+            })
+        } else {
+            console.log(
+                "First page"
+            );
+        }
     }
 
-    function searchInput(event) {
-        searchInputOut.current.innerHTML = searchInputRef.current.value;
+    // Следующая страница в пагинации
+    function nextPage() {
+        if (nextLinks === 'no link') {
+            console.log("Нет ссылки на следующую страницу");
+        } else {
+            fetch(nextLinks, {
+                header: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                searchOuput = Object.entries(response.data);
+                setSearchResults(searchOuput); // Выводим полученный массив в результаты выдачи заменой state
+                pagination = Object.entries(response.links); // Обновили из API ссылки для пагинации
+                setPrevLinks([...prevLinks,pagination[0][1]]); // Добавили текущую страницу в массив страниц Предудущая страница 
+                setNextLinks(pagination[1][1]); // Переписали ссылку для пагинации Следующая страница
+            })
+        }
+    }
+
+    // Кнопка открыть ссылки references Временно убрал, не удалять
+    // const showRefLinks = (index,event) => {
+    //     let reference = document.getElementById("refs-links-"+index);
+    //     reference.classList.toggle("search-item__references--show");
+    //     event.target.classList.toggle('sm-btn-sec--active');
+    //     setBtnLinks(btnLinks => ({
+    //         ...btnLinks,[index]:!btnLinks[index]
+    //     }));
+    // }
+
+    // Отправка поискового запроса
+    function searchInput() {
         setTextOutput(searchInputRef.current.value);
     }
 
+    // Открытие полного описания статьи
     const btnFullDesc = (index) => () => {
         setFullDesc(fullDesc => ({
           ...fullDesc,[index]: !fullDesc[index]
         }));
       };
-
+    
+    // Кнопка добавления статьи в закладки пользователя и отправки в БД
     function AddBookmark(props) {
         const queryAddBookmark = {
             "data": "addBookmark",
@@ -113,6 +191,7 @@ function SearchQuery() {
         });
     }
 
+    // Кнопка удаления закладки из БД 
     function RemoveBookmark(props) {
         const queryRemoveBookmark = {
             "data": "removeBookmark",
@@ -129,17 +208,19 @@ function SearchQuery() {
         });
     }
 
-    // ГЕНЕРАТОР ЦИТАТ 
-
+    // ГЕНЕРАТОР ЦИТАТ МОДАЛЬНОЕ ОКНО
     function OpenCites(index,doi) {
+        setCite({});
         var citePopup = document.getElementById("cites-"+index);
         citePopup.classList.toggle('cites--hidden');
         citePopup.classList.toggle('cites--active');
         document.body.classList.toggle('ovelaped');
         document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
         LoadCite(doi);
+        setErrorCite(null);
     }
 
+    // Закрыть модальное окно с цитатами
     function HideCites() {
         var openedPopup = document.querySelector('.cites--active');
         openedPopup.classList.toggle('cites--hidden');
@@ -148,24 +229,43 @@ function SearchQuery() {
         document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
     }
 
+    //Кнопка fetch выбранный стиль цитирования с doi по api
     function LoadCite(doi) {
-        setStyleLoading(true);
-        fetch(`https://doi.org/${encodeURIComponent(doi)}`, {
-            headers: {
-                // PARSE DOI СРАВНИТЬ C CROSS SITE
-                // "Accept": "text/html;q=0.3, application/rdf+xml;q=1, application/vnd.citationstyles.csl+json;q=0.5; style=apa",
-                "Accept": `text/x-bibliography; style=${chosenStyle}`,
-            }
-        })
-        .then(response => response.text())
-        .then(response => {
-            setCite({...cite, [chosenStyle]: response});
-        });
+        if (!cite[chosenStyle]) {
+            setStyleLoading(true); // Включаем отображение анимации загрузки
+            fetch(`2https://doi.org/${encodeURIComponent(doi)}`, {
+                redirect: 'follow',
+                headers: {
+                    "Accept": `text/x-bibliography; style=${chosenStyle}`,
+                }
+            })
+            .then(response => {
+                if(response.status === 404) {
+                    throw Error('The DOI was not found. It seems that there is no such publication in the DOI database.');
+                } else if (response.status !== 200) {
+                    throw Error(`Error: ${response.status}. There was a problem receiving a data from the DOI server. Please try again later or try to use a link below (https://citation.crosscite.org/).`);
+                } 
+                return response.text();
+            })
+            .then(response => {
+                setCite({...cite, [chosenStyle]: response});
+            })
+            .catch(err => {
+                setErrorCite(err.message);
+                if ((err.message === "Failed to fetch")) {
+                    setErrorCite("The DOI server didn't response. Please try again later.");
+                }
+            });
+        }
     }
+
+    // Убрать анимацию загрузки после того, как получен ответ от doi
     useEffect(() => {
-        setStyleLoading(false);
+        setStyleLoading(false); // Выключаем отображение анимации загрузки
+        setErrorCite(null); // Стейт наличия ошибки при загрузке items null
     },[cite]);
 
+    // Изменение стейтов при нажатии на выбор стиля цитирования, записывается loadTag, из json берется loadSyle
     function chooseStyle(event) {
         document.querySelectorAll('.cites__li-style').forEach(i => {
             i.classList.remove('cites__li-style--active');
@@ -173,27 +273,58 @@ function SearchQuery() {
         event.target.classList.add('cites__li-style--active');
         setLoadTag(event.target.getAttribute('data-tag'));
         loadStyle = CiteStyles.find(el => el.tag === loadTag).style;
-        
+        setErrorCite(null);
+        setStyleLoading(false);
     }
-    
+
+    // При изменении стейта loadTag (выбрали стиль) записывается chosenStyle. То есть полное наименование стиля для отправки в DOI
     useEffect(() => {
         loadStyle = CiteStyles.find(el => el.tag === loadTag).style;
         setChosenStyle(loadStyle);
     },[loadTag]);
 
+    // При нажатии на кнопку Скопировать в буфер (копируем цитату в модальном окне)
+    function copyCite(index) {
+        navigator.clipboard.writeText(citeText.current.textContent);
+        var copiedSpan = document.getElementById('ccs-'+index);
+        copiedSpan.classList.add('copied--active');
+        setTimeout(closeCopySpan, 2000);
+        function closeCopySpan() {
+            copiedSpan.classList.remove('copied--active');
+        }
+    }
+    // Скопировать doi внизу модального окна 
+    function copyDoi(event) {
+        navigator.clipboard.writeText(event.target.parentNode.querySelector('.cites__text-doi').textContent);
+        var copiedDoiSpan = event.target.parentNode.querySelector('.doi-copied-span');
+        copiedDoiSpan.classList.add('doi-copied-span--active');
+        setTimeout(closeCopyDoi, 2000);
+        function closeCopyDoi () {
+            copiedDoiSpan.classList.remove('doi-copied-span--active');
+        }
+    }
+
     return (
         <div className='search__query'>
             <div className='search__request block'>
                 <form>
-                    <input type="text" className='search__input' onInput={searchInput} ref={searchInputRef} defaultValue="Test" />
+                    <input type="text" className='search__input' onInput={searchInput} ref={searchInputRef} defaultValue="Type your search request..." />
                     <button type="button" className='btn-main' onClick={updateQuery}>Search</button>
-                    <p ref={searchInputOut}></p>
+                    {/* <p ref={searchInputOut}></p> */}
                     <h3>{textOutput}</h3>
                 </form>
                 
                 <div>Number of results</div>
             </div>
             <div className='search__results'>
+                
+                {(prevLinks.length > 1 || nextLinks !== 'no link') ?
+                    <div className='search__top-pagination'>
+                        <button className={`search__prev-link pagination ${prevLinks.length < 2 && 'search__prev-link--inactive'}`} onClick={() => prevPage()}><FaChevronLeft />Previous page</button>
+                        <button className='search__next-link pagination' onClick={() => nextPage()}>Next page<FaChevronRight /></button>
+                    </div>
+                    : null
+                }
                 <div className='modal-bgn modal-bgn--hidden' onClick={() => HideCites()}></div>
                 {searchResults == ''
                 ? <div>Nothing to declare</div> 
@@ -280,14 +411,14 @@ function SearchQuery() {
                             </button>
 
                             {/* REFERENCES */}
-                            {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
+                            {/* {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
                             <button className='search-item__ref-button sm-btn sm-btn-sec' onClick={(event) => {showRefLinks(index,event)}} >
                                 {btnLinks[index] ?
                                 <span><FiLink2 /> Close cite list<span className='search-item__refs-counter'>{item[1].attributes.relatedIdentifiers.length}</span></span>
                                 : <span><FiLink2 /> Open cite list<span className='search-item__refs-counter'>{item[1].attributes.relatedIdentifiers.length}</span></span>
                                 }
                                 
-                            </button> : null : null }  
+                            </button> : null : null }   */}
 
                             {/* FULL DESC */}
                             {abstractCombine.length > 650 ? 
@@ -307,24 +438,35 @@ function SearchQuery() {
                                 <h4>Citation Generator</h4>
                                 <span className='cites__close' onClick={() => HideCites()}><GrClose /></span>
                             </div>
+
+                            <div className='cites__attr'>
+                                <div className='cites__title'>
+                                    <span className='cites__span-title'>
+                                        {item[1].attributes.titles ? 
+                                        item[1].attributes.titles.length > 0 ? 
+                                            item[1].attributes.titles[0].title 
+                                            : <span>No title provided</span> 
+                                        : <span>No title provided</span>
+                                        }
+                                    </span>
+                                </div>
+                            </div>
                             
                             <div className='cites__choose-style'>    
-
-                                <span className='cites__subheading'>Choose style of citation</span>
 
                                 <div className='cites__box-styles'>
 
                                     <ul className='cites__list-style'>   
                                         {CiteStyles.map((st,subindex) => {
                                             return (
-                                                <li data-tag={`${st.tag}`} className={`cites__li-style ${st.default ? 'cites__li-style--active' : 'cites__li-style--inactive'}`} key={subindex} onClick={(event) => chooseStyle(event)}>
+                                                <li data-tag={`${st.tag}`} className={`cites__li-style ${st.tag == loadTag ? 'cites__li-style--active' : 'cites__li-style--inactive'}`} key={subindex} onClick={(event) => chooseStyle(event)}>
                                                     {st.title}
                                                 </li>
                                             )
                                         })}
                                     </ul>
                                     <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item[1].id)}>
-                                        {cite[chosenStyle] ? "Loaded" : "Load citation" }
+                                        {cite[chosenStyle] ? "Loaded" : !errorCite ? "Load citation" : "Reload"}
                                     </button>
                                     {(!cite[chosenStyle] && !styleLoading) ? <div className='cites__arrow'><BsArrowUp /></div> : null}
                                 </div>
@@ -333,37 +475,49 @@ function SearchQuery() {
                             <div className='cites__style'>
 
                                 <div className='cites__output'>
-
-                                        {styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
-                                            : cite[chosenStyle] ? 
-                                                <CSSTransition 
-                                                classNames="ease"
-                                                timeout={1000}
-                                                in={true}
-                                                appear={true}>
-                                                    <div className='cites__cite'>{cite[chosenStyle]}</div>
-                                                </CSSTransition>
-                                                : <div className='cites__action'>Please, press Load citation button to upload this citation style.</div>
+                                        {errorCite ? errorCite :
+                                            styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
+                                                : cite[chosenStyle] ? 
+                                                    <CSSTransition 
+                                                    classNames="ease"
+                                                    timeout={1000}
+                                                    in={true}
+                                                    appear={true}>
+                                                        <div className='cites__cite' ref={citeText}>{cite[chosenStyle]}</div>
+                                                    </CSSTransition>
+                                                    : <div className='cites__action'>Please, press Load citation button to upload this citation style.</div>
                                         }
 
                                 </div>
 
                                 <div className='cites__cont-copy'>
-                                    <span>
+                                    <span className='cites__desc-style'>
                                         {CiteStyles.find(elem => elem.tag === loadTag).desc}
                                     </span>
-                                    <a className='cites__about-style link-out-question'><BsQuestionCircle />More details</a>
-                                    <button className='cites__btn-copy sm-btn sm-btn--sm'><ImCopy /> Copy Citation to Clipboard</button>
-                                </div>             
+                                    <a className='cites__about-style link-out-question' href={CiteStyles.find(elem => elem.tag == loadTag).link} target='_blank' rel='noopener noreferrer'><BsQuestionCircle />More details</a>
+                                    {(errorCite || styleLoading || !cite[chosenStyle]) ? null :
+                                        <button className='cites__btn-copy sm-btn sm-btn--sm' onClick={() => copyCite(index)}><span><ImCopy />Copy to Clipboard</span></button>
+                                    }   
+                                        <span id={`ccs-${index}`} className='copied'>This citation was copied</span>
+                                    </div>             
                             </div>
 
-                            <div>
-                                Need more styles of citation? Paste the article DOI to this link https://citation.crosscite.org/
+                            <div className='cites__ad-cont'>
+                                <span className='cites__ad-text'>Need more styles of citation? Paste the article DOI to this link <a className='link-out-question' href='https://citation.crosscite.org/' target='_blank' rel='noopener noreferrer'>crosscite.org<FaExternalLinkAlt /></a></span>
+                            </div>
+                            <div className='cites__cont-doi'>
+                                <div className='cites__cont-doi-inner'>
+                                    <span className='cites__h-doi'>DOI</span>
+                                    <span className='cites__text-doi'>{item[1].id}</span>
+                                    <span className='cites__copy-doi' onClick={(event) => copyDoi(event,index)}><ImCopy />Copy</span>
+                                    <span className='doi-copied-span'>Doi in your clipboard</span>
+                                </div>
                             </div>
 
                         </div>
-
-                        {item[1].attributes.relatedIdentifiers ?
+                        
+                        {/* Список цитируемых работ или работ где цитируется, их тысячи для каждого item, грузит сервер и не все в формте doi */}
+                        {/* {item[1].attributes.relatedIdentifiers ?
                                     <div  id={"refs-links-"+index} className='search-item__references'>
                                         {item[1].attributes.relatedIdentifiers.map((item,subindex) => {
                                             return (
@@ -374,7 +528,7 @@ function SearchQuery() {
                                             );
                                         })}
                                     </div>
-                                    : null}
+                                    : null} */}
 
                         {/* IDENTIFIERS */}
                         <div className='search-item__identifiers'>
@@ -421,6 +575,15 @@ function SearchQuery() {
                     </div>
                     
                 )}
+
+                {(prevLinks.length > 1 || nextLinks !== 'no link') ?
+                    <div className='search__bottom-pagination'>
+                        <button className={`search__prev-link pagination ${prevLinks.length < 2 && 'search__prev-link--inactive'}`} onClick={() => prevPage()}><FaChevronLeft />Previous page</button>
+                        <button className='search__next-link pagination' onClick={() => nextPage()}>Next page<FaChevronRight /></button>
+                    </div>
+                    : null
+                }
+
             </div>
         </div>
     );
