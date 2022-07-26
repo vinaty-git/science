@@ -2,7 +2,7 @@ import {Routes, Route, Link} from 'react-router-dom';
 import './App.css';
 import Sidebar from './Sidebar/Sidebar';
 import Main from './Main/Main';
-import Search from './Main/Search';
+import Search from './Search/Search';
 import Library from './Main/Library';
 import Editor from './Main/Editor';
 import Storage from './Main/Storage';
