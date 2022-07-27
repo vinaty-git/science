@@ -1,5 +1,5 @@
-import Profile from '../Sidebar/Profile';
-import Menu from '../Sidebar/Menu';
+import Profile from '../components/Profile';
+import Menu from '../components/Menu';
 import { ReactComponent as Logo } from '../icons/logo.svg'
 
 function Sidebar() {

@@ -1,13 +1,13 @@
 import {Routes, Route, Link} from 'react-router-dom';
-import './App.css';
-import Sidebar from './Sidebar/Sidebar';
-import Main from './Main/Main';
-import Search from './Search/Search';
-import Library from './Main/Library';
-import Editor from './Main/Editor';
-import Storage from './Main/Storage';
-import Notfound from './Main/Notfound';
-import Footer from './Footer/Footer';
+import './styles/App.css';
+import Sidebar from './components/Sidebar';
+import Main from './views/Main';
+import Search from './views/Search';
+import Library from './views/Library';
+import Editor from './views/Editor';
+import Storage from './views/Storage';
+import Notfound from './views/Notfound';
+import Footer from './components/Footer';
 
 function App() {
   return (
