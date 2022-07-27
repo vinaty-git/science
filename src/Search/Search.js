@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import SearchFilters from './SearchFilters';
+import CrossRef from './CrossRef';
 import { ReactComponent as WaitingSvg } from '../icons/waiting.svg';
 import { CiteStyles } from '../Cites/DataCitesStyles.js';
 // import jsonData from "../data/SearchAPI";
@@ -19,6 +20,7 @@ import { BsArrowUp } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { AiOutlineTag } from "react-icons/ai";
 
 function Search() {
 
@@ -27,7 +29,8 @@ function Search() {
 
     // Все States и переменные
     var searchOuput; // Поисковая выдача переменная для получения ответа по API
-    const [typeSearch,setTypeSearch] = useState('sets'); // State для определения базы по которой ищем
+    const [typeSearch,setTypeSearch] = useState('sets'); // State для определения базы по которой ищем ДО запуска
+    const [typeOutcome, setTypeOutcome] = useState(''); // State для определения базы по которой ищем ПОСЛЕ запуска
 
     var pagination = []; // Сюда будем записывать обе ссылки полученные по api
     // var paginationUrl; // URL куда мы позднее подставим ссылку в пагинации
@@ -75,8 +78,9 @@ function Search() {
     function updateQuery() {
         setQueryStarted(true);
         var searchRequest = textOutput; // Взяли из state, что ввел пользователь
-        if (typeSearch === 'works') {
-            urlApi = 'http://api.crossref.org/works?query.bibliographic="Toward a Unified Theory of High-Energy Metaphysics, Josiah Carberry 2008-08-13"&rows=2';
+        setTypeOutcome(typeSearch);
+        if (typeSearch === 'works') { // Если выбран поиск по статьям (works)
+            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}`;
             fetch(urlApi, {
                 method: 'GET',
                 cache: "force-cache",
@@ -89,8 +93,10 @@ function Search() {
             .then(response => response.json())
             .then(response => {
                 console.log(response);
+                searchOuput = Object.entries(response);
+                setSearchResults(searchOuput); // Обновили выдачу поиска
             });
-        } else if (typeSearch === 'sets') {
+        } else if (typeSearch === 'sets') { // Если выбран поиск по datasets (common api))
             urlApi = `https://api.datacite.org/dois?query=${encodeURIComponent(searchRequest)}`; // Подставили в api
 
             fetch(urlApi, {
@@ -343,6 +349,20 @@ function Search() {
         btnIdents.querySelector('svg').style.transform = 'rotate(180deg)';
     }
 
+    // Открыть список subjects 
+    function OpenSubjects(index,event) {
+        event.stopPropagation();
+        var subjectList = document.getElementById('subjects-'+index);
+        var btnSubjects = event.target;
+        if (btnSubjects.classList.contains('sm-btn-sec--active')) {
+            btnSubjects.querySelector('span > span').textContent = "Show subjects";
+        } else {
+            btnSubjects.querySelector('span > span').textContent = "Hide subjects";
+        }
+        btnSubjects.classList.toggle('sm-btn-sec--active');
+        subjectList.classList.toggle('search-item__tags--hidden');
+    }
+
     return (
         <div className='main'>
             <div className='search'>
@@ -354,8 +374,14 @@ function Search() {
                         passSetTypeSearch={setTypeSearch}
                         />
                     {!queryStarted ? 
+                    // Развилка по компонентам, в зависимости по какой базе мы ищем. Смотри state typeSearch и typeOutcome
+                    typeOutcome == 'works' ? 
+                    <CrossRef
+                        FaChevronLeft={<FaChevronLeft />}
+                        FaChevronRight={<FaChevronRight />}
+                        passSearchResults={searchResults}
+                    /> :
                     <div className='search__results'>
-                        
                         {(prevLinks.length > 1 || nextLinks !== 'no link') ?
                             <div className='search__top-pagination'>
                                 <button className={`search__prev-link pagination ${prevLinks.length < 2 && 'search__prev-link--inactive'}`} onClick={() => prevPage()}><FaChevronLeft />Previous page</button>
@@ -427,7 +453,15 @@ function Search() {
                                         abstractCombine = (item.descriptionType + ": " + item.description)
                                         return (
                                             <span key={"abstract-"+index+"-"+subindex}>
-                                                {fullDesc[index] ? abstractCombine : abstractCombine.substring(0, 650)+"..." }
+                                                {fullDesc[index] ? 
+                                                <CSSTransition 
+                                                classNames="slide"
+                                                timeout={1100}
+                                                in={true}
+                                                appear={true}>
+                                                    <span>{abstractCombine}</span>
+                                                </CSSTransition>
+                                                : abstractCombine.substring(0, 650)+"..." }
                                             </span>
                                         )
                                     })
@@ -456,6 +490,12 @@ function Search() {
                                     <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={() => OpenCites(index,item[1].id)}>
                                         <span><RiDoubleQuotesL />Cite this work</span>
                                     </button>
+
+                                    
+                                    {(item[1].attributes.subjects && item[1].attributes.subjects.length > 0) ? 
+                                        <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={(event) => OpenSubjects(index,event)}><span><AiOutlineTag /><span>Show subjects</span></span></button> :
+                                        null
+                                    }
 
                                     {/* REFERENCES */}
                                     {/* {item[1].attributes.relatedIdentifiers ? item[1].attributes.relatedIdentifiers.length > 0 ? 
@@ -612,13 +652,13 @@ function Search() {
                                 {/* TAGS */}
                                 {item[1].attributes.subjects ?
                                     item[1].attributes.subjects.length > 0 ?
-                                    <div className='search-item__tags'>
-                                        {item[1].attributes.subjects.map((item,subindex) => {
-                                            return (
-                                                <span className='sm-tag' key={"subject-"+index+"-"+subindex}>{item.subject}</span>
-                                            );
-                                        })}
-                                    </div>
+                                        <div id={'subjects-'+index} className='search-item__tags search-item__tags--hidden'>
+                                            {item[1].attributes.subjects.map((item,subindex) => {
+                                                return (
+                                                    <span className='sm-tag' key={"subject-"+index+"-"+subindex}>{item.subject}</span>
+                                                );
+                                            })}
+                                        </div>
                                     : null
                                 : null}
                                 
