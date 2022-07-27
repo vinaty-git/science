@@ -1,4 +1,4 @@
-import { MenuData } from './MenuData.js';
+import { MenuData } from '../data/MenuData.js';
 import { NavLink } from 'react-router-dom';
 
 function Menu() {
