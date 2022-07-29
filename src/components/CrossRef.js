@@ -1,30 +1,61 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import CiteModal from '../components/CiteModal';
 
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaStar, FaRegStar } from "react-icons/fa";
+import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+import { AiOutlineTag } from "react-icons/ai";
+import { RiArrowDownSLine, RiDoubleQuotesL } from "react-icons/ri";
 
-function CrossRef(passSearchResults,passFullDesc) {
-    const allItems = passSearchResults.passSearchResults[3][1]['items']; // Массив всех статей
-    const perPage = passSearchResults.passSearchResults[3][1]['items-per-page']; // Статей на одной странице
-    const totalResults = passSearchResults.passSearchResults[3][1]['total-results']; // Сколько статей найдено
+function CrossRef(props) {
+    const {offsetCrossRef,goToPage,itemsNum,passSearchResults,passAllBookmarks,passAddBookmark,passRemoveBookmark,passOpenListIds,passOpenCites,paginateCrossRef} = props;
 
-    console.log(allItems);
+    const allItems = props.passSearchResults[3][1]['items']; // Массив всех статей
+    const perPage = props.passSearchResults[3][1]['items-per-page']; // Статей на одной странице
+    const totalResults = props.passSearchResults[3][1]['total-results']; // Сколько статей найдено
+
+    const [fullDesc,setFullDesc] = useState({}); // В каких item открыто full desc. Index: true/false
+    const [openedCites,setOpenedCites] = useState({}); // State текущего открытого модального окна с Citation formatter
+
     /**
      * Pagination of search results CrossRef 
      * @returns {JSX.Element}
      */
     function pagination() {
-        console.log("Pagintaion initialized");
+        var totalPages = Math.floor((totalResults / itemsNum));
+        var currentPage = (offsetCrossRef / itemsNum);
         return (
             <div className='search__top-pagination'>
                 <div className='search__total'>
-                    <span className='pagination'>Total results found: {totalResults}</span>
-                    <span className='pagination'>Articles per page: {perPage}</span>
+                    <span className='pagination'>Total found: {totalResults}</span>
                 </div>
-                <button className='search__prev-link pagination'><FaChevronLeft />Previous page</button>
-                <button className='search__next-link pagination'>Next page<FaChevronRight /></button>
+
+                <div className='search__current-total'>
+                    
+                    {offsetCrossRef === 0 ? 
+                    <button 
+                        className='search__prev-link search__prev-link--inactive pagination'>
+                        <FaChevronLeft />Previous
+                    </button>
+                    : 
+                    <button
+                        className='search__prev-link pagination pagination-active' onClick={(event) => paginateCrossRef(event)}>
+                        <FaChevronLeft />Previous
+                    </button>}
+
+                    <div className='search__choose-page pagination pagination-active'>
+                        <span className='search__current-page'>Page: {currentPage}</span>
+                        <span className='search__total-pages'>of {totalPages}</span>
+                        <div className='search__input-pagination'>Go to page:
+                             <input id='paginate-input'/>
+                            <span className='search__send-numpage' onClick={(event) => goToPage(event,totalPages)}>Go <FaChevronRight /></span>
+                        </div>
+                    </div>
+
+                    <button className='search__next-link pagination pagination-active' onClick={(event) => paginateCrossRef(event)}>Next<FaChevronRight /></button>
+                
+                </div>
+                <span className='pagination'>Articles per page: {perPage}</span>    
             </div>
         );
     }
@@ -101,19 +132,147 @@ function CrossRef(passSearchResults,passFullDesc) {
             var cleanAbstract = item.abstract.replace(/<(.|\n)*?>/g, '');
             abstract = cleanAbstract.replace('[...]','');
             if (abstract.length > 700) {
-                abstract = abstract.substring(0, 700)+"...";
                 abstractFull = abstract;
+                abstract = abstract.substring(0, 700)+"...";
             }
         } else {
             abstract = "No description provided";
         }
         return (
-            <div className={passFullDesc[index] ? 'search-item__abstract search-item__abstract--full' : 'search-item__abstract search-item__abstract--short'}>                     
-                {passFullDesc[index] ? abstractFull : abstract}
+            <div className={fullDesc[index] ? 'search-item__abstract search-item__abstract--full' : 'search-item__abstract search-item__abstract--short'}>                     
+                {fullDesc[index] ? 
+                    <CSSTransition 
+                    classNames="slide"
+                    timeout={1100}
+                    in={true}
+                    appear={true}>
+                        <span>{abstractFull}</span>
+                    </CSSTransition>
+                : abstract}
             </div>
         );
     }
 
+    /**
+     * Active buttons of each item: full desc, citation modal open, bookmark add/delete
+     * @param {*} item - A data of one article
+     * @param {*} index - Index of the item from array allItems
+     * @returns {JSX.Element}
+     */
+    function buttonsItem(item,index) {
+        return (
+            <div className='search-item__ref-container'>  
+                {(passAllBookmarks != null && passAllBookmarks.some(i => item.DOI == i.doi)) ?
+                    <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={() => passRemoveBookmark(item.DOI)} >
+                        <span><FaStar />Delete Bookmark</span>
+                    </button>
+                    : 
+                    <button className='search-item__btn-bookmark sm-btn sm-btn-sec' onClick={() => passAddBookmark(item)} >
+                        <span><FaRegStar />Add Bookmark</span>
+                    </button>
+                }
+                
+                {openedCites[index] ? 
+                <CiteModal 
+                item={item}
+                index={index}
+                InitCitation={InitCitation}
+                    />
+                : null
+                }
+
+
+                <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={() => InitCitation(index)}>
+                    <span><RiDoubleQuotesL />Cite this work</span>
+                </button>
+
+                {item.abstract?.length  > 700 ? 
+                    <button className='search-item__btn-abstract sm-btn sm-btn-sec' onClick={() => btnFullDesc(index)}>
+                        {fullDesc[index] ? 
+                        <span><FiArrowUp />Hide full description</span>
+                        : <span><FiArrowDown />Show full description</span>}
+                    </button>
+                : null}
+            
+            </div> 
+        );
+    }
+
+    /**
+     * Identifiers at the buttom of the item (DOI,ISBN,ISSN) with opener via parent component
+     * @param {*} item - A data of one article
+     * @param {*} index - Index of the item from array allItems
+     * @returns {JSX.Element}
+     */
+    function footerItem(item,index) {
+        return(
+            <div className='search-item__identifiers'>
+                <span className='search-item__id-type'>DOI</span>
+                <span className='search-item__id-number'>{item.DOI ? item.DOI : "No DOI provided"}</span>
+                {(item.ISBN || item.ISSN) ? 
+                    <button 
+                        className='search-item__open-id-list light-open' 
+                        onClick={(event) => passOpenListIds(index,event)}>
+                            <span>Open full list</span><RiArrowDownSLine />
+                    </button>
+                : null}
+                {(item.ISBN || item.ISSN) ?
+                    <div id={'idents-' + index} className='search-item__list-idents'>
+                        {item.ISBN ?
+                            <p><span className='search-item__id-type'>ISBN</span>
+                                <span className='search-item__id-number'>{item.ISBN}</span></p>
+                        :null}
+                        {item.ISSN ?
+                            <p><span className='search-item__id-type'>ISSN</span>
+                                <span className='search-item__id-number'>{item.ISSN}</span></p>
+                        :null}
+                    </div>
+                : null}
+            </div>
+        );
+    }
+
+    /**
+     * Subjects and tags at the bottom of the item
+     * @param {*} item - A data of one article
+     * @param {*} index - Index of the item from array allItems
+     * @returns {JSX.Element}
+     */
+    function tagsItem(item,index) {
+        return (
+            item.subject ? item.subject.length > 0 ?
+                <div id={'subjects-'+index} className='search-item__tags'>
+                    {item.subject.map((item,subindex) => {
+                        return (
+                            <span className='sm-tag' key={"subject-"+index+"-"+subindex}>{item}</span>
+                        );
+                    })}
+                </div>
+            : null : null
+        );
+    }
+
+    /**
+     * При нажатии запоминает какой item имеет открытое полное описание
+     * @param {*} index - Index of the item from array allItems
+     * @returns 
+     */
+     function btnFullDesc(index) {
+        setFullDesc(fullDesc => ({
+          ...fullDesc,[index]: !fullDesc[index]
+        }));
+      }
+
+    /**
+     * При нажатии инициализирует модальное окно Citation formatter
+     * @param {*} index - Index of the item from array allItems
+     */
+    function InitCitation(index) {
+        openedCites[index] ?
+        setOpenedCites({})
+        :
+        setOpenedCites({[index]: true})
+    }
 
     return (
         <div className='search__results'>
@@ -125,7 +284,10 @@ function CrossRef(passSearchResults,passFullDesc) {
 
                     {headerItem(item,index)}
                     {bodyItem(item,index)}
-                    {item.DOI ? item.DOI : "DOI is not defined"}
+                    {buttonsItem(item,index)}
+                    {footerItem(item,index)}
+                    {tagsItem(item,index)}
+
                 </div>
             )}
 

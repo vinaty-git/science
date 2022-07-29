@@ -27,7 +27,9 @@ function Search() {
     let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
 
     var searchOuput,loadStyle,urlApi;
+    var itemsNum = 25; // Элементов на странице поиск по CrossRef
 
+    const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации
     const [typeSearch,setTypeSearch] = useState('sets'); // State для определения базы по которой ищем ДО запуска
     const [typeOutcome, setTypeOutcome] = useState(''); // State для определения базы по которой ищем ПОСЛЕ запуска
 
@@ -77,6 +79,40 @@ function Search() {
         }
         CheckBookmarks();
     }, []);
+    
+    /**
+     * Инициализируется из компоненты Crossref, отправляет повторный запрос fetch к CrossRef updateQuery, если offset больше нуля
+     * @param {*} event 
+     */
+    function paginateCrossRef(event) {
+        event.stopPropagation();
+        {event.target.classList.contains('search__prev-link') ? 
+        setOffsetCrossRef(offsetCrossRef - itemsNum)
+        : setOffsetCrossRef(offsetCrossRef + itemsNum)}
+        if (offsetCrossRef < 0) {
+            setOffsetCrossRef(0);
+        } else {
+            updateQuery();
+        }
+    }
+
+    function goToPage(event) {
+        var inputPagination = document.getElementById('paginate-input').value;
+        var totalItems = Math.floor(searchResults[3][1]['total-results']);
+        console.log(inputPagination);
+        if (inputPagination !== '') {
+            if (inputPagination > (totalItems / itemsNum)) { 
+                setOffsetCrossRef(totalItems - itemsNum)
+            } else {
+                setOffsetCrossRef((inputPagination)*itemsNum)
+            }
+        } else {
+            setOffsetCrossRef(0);
+        }
+
+
+        updateQuery();
+    }
 
     /** 
      * Fetch с поисковым запросом к БД
@@ -88,7 +124,7 @@ function Search() {
 
         /* Если выбран поиск по статьям (works) */
         if (typeSearch === 'works') { // 
-            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}`;
+            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=25&offset=${offsetCrossRef}`;
             try {
                 let response = await fetch(urlApi, {method: 'GET', cache: "force-cache", headers: headerCrossRef});
                 if (response.status === 200) {
@@ -224,10 +260,12 @@ function Search() {
      * @param {*} props - идентификатор добавляемой статьи
      */
     function AddBookmark(props) {
+        var typeDb = typeSearch;
         const queryAddBookmark = {
             "data": "addBookmark",
             "id": 2,
-            "bookmark": props
+            "bookmark": props,
+            "database": typeDb
         };
         fetch('https://kirilab.ru/science/func.php', {
             method: 'POST',
@@ -236,7 +274,7 @@ function Search() {
         .then(response => response.json())
         .then((response) => {
             if (response == false) {
-                console.log("answer alredy exist");
+                console.log("answer already exist");
             } else {
                 setAllBookmarks(response);
             }
@@ -264,7 +302,7 @@ function Search() {
     }
 
     /**
-     * Генаратор цитат статьи
+     * Генератор цитат статьи
      * @param {*} index - порядковый индекс статьи для определения item
      * @param {*} doi - doi идентификатор статьи
      */
@@ -433,7 +471,15 @@ function Search() {
                     typeOutcome == 'works' ? 
                     <CrossRef
                         passSearchResults={searchResults}
-                        passFullDesc={fullDesc}
+                        passAllBookmarks={allBookmarks}
+                        passRemoveBookmark={RemoveBookmark}
+                        passAddBookmark={AddBookmark}
+                        passOpenListIds={openListIds}
+                        passOpenCites={OpenCites}
+                        paginateCrossRef={paginateCrossRef}
+                        offsetCrossRef={offsetCrossRef}
+                        itemsNum={itemsNum}
+                        goToPage={goToPage}
                     /> :
                     <div className='search__results'>
                         {(prevLinks.length > 1 || nextLinks !== 'no link') ?

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineFileSearch } from "react-icons/ai";
 
-function SearchFilters({passSetTextOutput,passQueryStarted,passUpdateQuery,passSetTypeSearch}) {
+function SearchFilters({passSetTextOutput,passQueryStarted,passUpdateQuery,passSetTypeSearch,passSetFullDesc}) {
     
     let searchInputRef = React.useRef(); // Реф инпута отправки поискового запроса 
 
