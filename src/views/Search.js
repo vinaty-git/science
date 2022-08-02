@@ -24,12 +24,14 @@ import { AiOutlineTag } from "react-icons/ai";
 function Search() {
 
     // Refs links 
+    let firstInit = React.useRef(true);
     let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
 
-    var searchOuput,loadStyle,urlApi;
-    var itemsNum = 25; // Элементов на странице поиск по CrossRef
+    var searchOuput,loadStyle,urlApi,tempOffset;
+    var timerOff = false;
 
-    const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации
+    const [itemsNum,setItemsNum] = '25'; // Элементов на странице поиск по CrossRef
+    const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации, текущий оффсет в виде количества items пропуска
     const [typeSearch,setTypeSearch] = useState('sets'); // State для определения базы по которой ищем ДО запуска
     const [typeOutcome, setTypeOutcome] = useState(''); // State для определения базы по которой ищем ПОСЛЕ запуска
 
@@ -38,7 +40,6 @@ function Search() {
     const [queryStarted,setQueryStarted] = useState(false); // Поисоковй запрос инициализирован
     const [fullDesc,setFullDesc] = useState({}); // State для показа полного описания статьи true - показать полное, false - короткое
     const [textOutput,setTextOutput] = useState(""); // State поискового запроса
-    // const [btnLinks,setBtnLinks] = useState({}); // State раскрытия ссылок на цитируемые статьи
     const [searchResults,setSearchResults] = useState([]); // Поисковая выдача записывается в этот state (все статьи)
 
     const [errorCite,setErrorCite] = useState(null); // Стейт для ошибки при fecth стиля цитирования
@@ -51,6 +52,8 @@ function Search() {
     const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования (тег)
     const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API (полный)
     const [styleLoading, setStyleLoading] = useState(false); // Статус загрузки fetch стилей цитирования для показа загрузки
+
+    const [numberItems,setNumberItems] = useState('25'); // сколько items на странице
 
     /* Headers для fetch CrossRef */
     const headerCrossRef = {
@@ -86,51 +89,74 @@ function Search() {
      */
     function paginateCrossRef(event) {
         event.stopPropagation();
-        {event.target.classList.contains('search__prev-link') ? 
-        setOffsetCrossRef(offsetCrossRef - itemsNum)
-        : setOffsetCrossRef(offsetCrossRef + itemsNum)}
-        if (offsetCrossRef < 0) {
+        if (event.target.getAttribute('data-pagination') === 'previous') {
+            tempOffset = offsetCrossRef - itemsNum; // offset - количество items пропуска, itemsNum - количество на одной странице
+        } else {
+            tempOffset = offsetCrossRef + itemsNum; 
+        }
+        if (tempOffset < 0) {
             setOffsetCrossRef(0);
+        } else if (tempOffset > (10000 - itemsNum)) {
+            tempOffset = 10000 - itemsNum;
+            setOffsetCrossRef(tempOffset);
+        } else if(tempOffset > (searchResults[3][1]['total-results'] - itemsNum)) {
+            setOffsetCrossRef((searchResults[3][1]['total-results'] - itemsNum));
+        } else {
+            setOffsetCrossRef(tempOffset);
+        }
+    }
+
+    /**
+     * Инициализируется из компоненты Crossref, выбор страницы в пагинации с лимитами по api и запуск через useEffect offsetCrossRef
+     */
+    function goToPage() {
+        var inputPagination = document.getElementById('paginate-input').value;
+        var onlyDigits = parseInt(inputPagination.replace(/\D/g, ''));
+        var totalItems = Math.floor(searchResults[3][1]['total-results']);
+        if (totalItems > 10000) {
+            totalItems = 10000;
+        }
+        if (onlyDigits !== '' && onlyDigits > 1 && onlyDigits <= 400) {
+            if (onlyDigits > (totalItems / itemsNum)) { 
+                setOffsetCrossRef(totalItems-itemsNum);
+            } else {
+                setOffsetCrossRef(onlyDigits*itemsNum-itemsNum);
+            }
+        } else if (onlyDigits > 400) {
+            setOffsetCrossRef(399*itemsNum);
+        } else {
+            setOffsetCrossRef(0);
+        }
+    }
+    useEffect(() => {
+        if (firstInit.current === true) {
+            firstInit.current = false;
         } else {
             updateQuery();
         }
-    }
-
-    function goToPage(event) {
-        var inputPagination = document.getElementById('paginate-input').value;
-        var totalItems = Math.floor(searchResults[3][1]['total-results']);
-        console.log(inputPagination);
-        if (inputPagination !== '') {
-            if (inputPagination > (totalItems / itemsNum)) { 
-                setOffsetCrossRef(totalItems - itemsNum)
-            } else {
-                setOffsetCrossRef((inputPagination)*itemsNum)
-            }
-        } else {
-            setOffsetCrossRef(0);
-        }
-
-
-        updateQuery();
-    }
+    },[offsetCrossRef,numberItems]);
 
     /** 
      * Fetch с поисковым запросом к БД
     */
     async function updateQuery() {
         setQueryStarted(true); /* Запустили Loader */
+        setTimeout(() => {
+            timerOff = true;
+        },2000); // Если загрузка была уже в течение 2 секунд, то искуственную задержку loader'a выключаем в useEffect
         var searchRequest = textOutput; /* Взяли из state, что ввел пользователь */
         setTypeOutcome(typeSearch); /* Обновили state показывающий, какая БД сейчас используется в fetch */
 
         /* Если выбран поиск по статьям (works) */
         if (typeSearch === 'works') { // 
-            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=25&offset=${offsetCrossRef}`;
+            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=${numberItems}&offset=${offsetCrossRef}`;
             try {
                 let response = await fetch(urlApi, {method: 'GET', cache: "force-cache", headers: headerCrossRef});
                 if (response.status === 200) {
                     searchOuput = Object.entries(await response.json());
                     setSearchResults(searchOuput); // Обновили выдачу поиска
                 } else {
+                    setSearchResults([]);
                     throw "An error occured while searching"
                 }
             } catch (error) {
@@ -168,7 +194,15 @@ function Search() {
     }
     useEffect(() => {
         if (searchResults.length > 0) {
-            setQueryStarted(false);
+            if (timerOff) {
+                setQueryStarted(false);
+                timerOff = false;
+            } else {
+                setTimeout(() => {
+                    setQueryStarted(false);
+                },1200);
+                timerOff = false;
+            }
         }
     },[searchResults]); // Если state searchResults изменился, то статус загрузки false и далее отключается анимация загрузки
 
@@ -233,16 +267,6 @@ function Search() {
             })
         }
     }
-
-    // Кнопка открыть ссылки references Временно убрал, не удалять
-    // const showRefLinks = (index,event) => {
-    //     let reference = document.getElementById("refs-links-"+index);
-    //     reference.classList.toggle("search-item__references--show");
-    //     event.target.classList.toggle('sm-btn-sec--active');
-    //     setBtnLinks(btnLinks => ({
-    //         ...btnLinks,[index]:!btnLinks[index]
-    //     }));
-    // }
 
     /**
      * Открытие полного описания статьи при нажатии на кнопку Показать полное описание
@@ -479,6 +503,7 @@ function Search() {
                         paginateCrossRef={paginateCrossRef}
                         offsetCrossRef={offsetCrossRef}
                         itemsNum={itemsNum}
+                        setItemsNum={setItemsNum}
                         goToPage={goToPage}
                     /> :
                     <div className='search__results'>

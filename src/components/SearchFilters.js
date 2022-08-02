@@ -34,12 +34,14 @@ function SearchFilters({passSetTextOutput,passQueryStarted,passUpdateQuery,passS
                 <form className='search__form'>
                     <input type="text" className='search__input' onInput={searchInput} ref={searchInputRef}  placeholder="Type your search request..." />
                     {!passQueryStarted ? 
-                        <button type="button" onClick={passUpdateQuery} className='btn-main' >
-                            <span className='btn-main__title'><BsSearch />Search</span>
+                        <button type="button" onClick={passUpdateQuery} className='search__btn-search btn-main' >
+                            <span className='btn-main__title'><BsSearch />
+                            <span>Search</span></span>
                         </button> 
                         :
-                        <button type="button" className='btn-main btn-main--inactive' >
-                            <span className='btn-loader-container'><span className='btn-loader'></span></span>Searching
+                        <button type="button" className='search__btn-search btn-main btn-main--inactive' >
+                            <span className='btn-loader-container'><span className='btn-loader'></span></span>
+                            <span>Searching</span>
                         </button>
                     }
                     <button type="button" onClick={openFilters} className='btn-main btn-main--reverse' >

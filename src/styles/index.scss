@@ -247,6 +247,13 @@ code {
     align-items: center;
     pointer-events: none;
     white-space: nowrap;
+    svg {
+      margin-right: auto;
+      font-size: 22px;
+    }
+    span {
+      width: 80%;
+    }
   }
   &:hover {
     background-color: $clr-mid-orange;
@@ -268,6 +275,7 @@ code {
   display: flex;
   gap: 6px;
   align-items: center;
+  transition: all 0.4s ease;
 }
 
 .sm-btn {
@@ -415,69 +423,6 @@ code {
   transition: all 0.3s;
 }
 
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  height: auto;
-  max-height: 36px;
-  font-size: 14px;
-  position: relative;
-  background-color: $clr-bg-block;
-  border: none;
-  border-radius: 6px;
-  padding: 0 20px;
-  color: $clr-mid-orange;
-  font-weight: bold;
-  cursor: default;
-  transition: all 0.3s ease;
-  -webkit-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
-  -moz-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
-  box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
-}
-.pagination-active {
-  background-color: $clr-light-orange;
-  cursor: pointer;
-  border: 1px solid #efdfda;
-  &:hover {
-    background-color: $clr-mid-orange;
-    color: #fff;
-  }
-}
-
-.search__choose-page {
-  display: flex;
-  align-items: center;
-  cursor: default;
-  &:hover {
-    background-color: $clr-light-orange;
-    color: $clr-mid-orange;
-  }
-}
-
-.search__input-pagination {
-  border-left: 1px solid $clr-mid-orange;
-  padding-left: 10px;
-  height: auto;
-  input {
-    width: 48px;
-    height: 18px;
-    margin: 0 6px;
-    border: 1px solid $clr-mid-orange;
-    border-radius: 4px;
-    padding: 0 4px;
-    outline: none;
-    &:focus {
-      border: 1px solid $clr;
-    }
-  }
-  svg {
-    font-size: 8px;
-  }
-}
-
-
 /* SEARCH */
 
 // ФОРМА ОТПРАВКИ ПОИСКА
@@ -542,6 +487,11 @@ code {
   gap: 30px;
 }
 
+.search__btn-search {
+  min-width: 160px;
+  max-width: 160px;
+}
+
 //  ПОИСКОВАЯ ВЫДАЧА
 
 .search {
@@ -588,6 +538,68 @@ code {
 }
 
 // TOP PAGINATION
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  max-height: 36px;
+  font-size: 14px;
+  position: relative;
+  background-color: $clr-bg-block;
+  border: none;
+  border-radius: 6px;
+  padding: 0 20px;
+  color: $clr-mid-orange;
+  font-weight: bold;
+  cursor: default;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
+  -moz-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
+  box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
+}
+.pagination-active {
+  background-color: $clr-light-orange;
+  cursor: pointer;
+  border: 1px solid #efdfda;
+  &:hover {
+    background-color: $clr-mid-orange;
+    color: #fff;
+  }
+}
+
+.search__choose-page {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  &:hover {
+    background-color: $clr-light-orange;
+    color: $clr-mid-orange;
+  }
+}
+
+.search__input-pagination {
+  border-left: 1px solid $clr-mid-orange;
+  padding-left: 10px;
+  height: auto;
+  input {
+    width: 48px;
+    height: 18px;
+    margin: 0 6px;
+    border: 1px solid $clr-mid-orange;
+    border-radius: 4px;
+    padding: 0 4px;
+    outline: none;
+    &:focus {
+      border: 1px solid $clr;
+    }
+  }
+  svg {
+    font-size: 8px;
+  }
+}
 
 .search__total {
   display: flex;
@@ -638,6 +650,27 @@ code {
     background-color: $clr-mid-orange;
     color: #fff;
     transition: all 0.3s ease;
+  }
+}
+
+.search__per-page {
+  cursor: default;
+  &:hover {
+    background-color: $clr-light-orange;
+    color: $clr-mid-orange;
+  }
+  select {
+    cursor: pointer;
+    width: 48px;
+    height: 20px;
+    margin: 0 6px;
+    border: 1px solid $clr-mid-orange;
+    border-radius: 4px;
+    padding: 0 4px;
+    outline: none;
+    &:focus {
+      border: 1px solid $clr;
+    }
   }
 }
 
@@ -1273,8 +1306,8 @@ code {
     width: 30px;
     .btn-loader {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       border: 2px solid #f8c8b9;
       border-top: 2px solid #fff;
       border-radius: 50%;
