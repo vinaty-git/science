@@ -1,23 +1,30 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import CiteModal from '../components/CiteModal';
 
 import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaStar, FaRegStar } from "react-icons/fa";
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
-import { AiOutlineTag } from "react-icons/ai";
 import { RiArrowDownSLine, RiDoubleQuotesL } from "react-icons/ri";
 
 function CrossRef(props) {
-    const {setItemsNum,offsetCrossRef,goToPage,itemsNum,passSearchResults,passAllBookmarks,passAddBookmark,passRemoveBookmark,passOpenListIds,passOpenCites,paginateCrossRef} = props;
+    const {
+        setItemsNum,
+        offsetCrossRef,
+        goToPage,
+        itemsNum,
+        passSearchResults,
+        passAllBookmarks,
+        passAddBookmark,
+        passRemoveBookmark,
+        paginateCrossRef
+    } = props;
 
     var tempTotalPages;
     const allItems = props.passSearchResults[3][1]['items']; // Массив всех статей
-    const perPage = props.passSearchResults[3][1]['items-per-page']; // Статей на одной странице ???
     const totalResults = props.passSearchResults[3][1]['total-results']; // Сколько статей найдено
 
     const [fullDesc,setFullDesc] = useState({}); // В каких item открыто full desc. Index: true/false
     const [openedCites,setOpenedCites] = useState({}); // State текущего открытого модального окна с Citation formatter
-    // const [totalPages,setTotalPages] = useState(); // Количество страниц в пагинации для ререндера
 
     /**
      * Pagination of search results CrossRef 
@@ -48,11 +55,11 @@ function CrossRef(props) {
                     : 
                     <button
                         data-pagination='previous'
-                        className='search__prev-link pagination pagination-active' onClick={(event) => paginateCrossRef(event)}>
+                        className='search__prev-link pagination' onClick={(event) => paginateCrossRef(event)}>
                         <FaChevronLeft />Previous
                     </button>}
 
-                    <div className='search__choose-page pagination pagination-active'>
+                    <div className='search__choose-page pagination'>
                         <span className='search__current-page'>Page: {currentPage+1} of {totalPages}</span>
                         <div className='search__input-pagination'>Go to page:
                             <input id='paginate-input' placeholder='#' type='number'/>
@@ -69,14 +76,14 @@ function CrossRef(props) {
                     :                    
                     <button
                         data-pagination='next'
-                        className='search__next-link pagination pagination-active' 
+                        className='search__next-link pagination' 
                         onClick={(event) => paginateCrossRef(event)}>
                         Next<FaChevronRight />
                     </button>}
                 
                 </div>
                 {/* <span className='pagination'>Articles per page: {perPage}</span> */}
-                <span className='search__per-page pagination pagination-active'>
+                <span className='search__per-page pagination'>
                     <label htmlFor='per-page'>Articles per page:</label>
                     <select name='per-page' id='per-page' defaultValue={itemsNum} onChange={(event) => selectPerPage(event)}>
                         <option value='10'>10</option>
@@ -89,10 +96,13 @@ function CrossRef(props) {
         );
     }
 
+    /**
+     * При выборе в пагинации кол-во страниц к показу меняем state itemsNum
+     * @param {*} event 
+     */
     function selectPerPage(event) {
         var chosenPerPage = event.target.value;
-        console.log(chosenPerPage);
-        // setItemsNum(chosenPerPage);
+        setItemsNum(chosenPerPage);
     }
 
     /**
@@ -112,10 +122,33 @@ function CrossRef(props) {
                     {item.author?.length > 0 ? item.author.map((item,subindex) => {
                         return (
                             <span key={'names-'+subindex} className='search-item__names-author'>
-                                {item.name ? <span key={"name-"+index+"-"+subindex}>{item.name}</span> : null}
-                                {item.given ? <span key={"given-"+index+"-"+subindex}>{item.given}</span> : null}
-                                {item.family ? <span key={"family-"+index+"-"+subindex}>{item.family}</span> : null}
-                                {item.ORCID ? <span key={"orcid-"+index+"-"+subindex}>ORCID: {item.ORCID}</span> : null}
+                                {item.given && item.family ? (
+                                <>
+                                    <span key={"name-" + index + "-" + subindex} className='search-item__name'>
+                                        {subindex != 0 ? ', ' : null}
+                                        {item.given}
+                                    </span>
+                                    <span key={"given-" + index + "-" + subindex} className='search-item__surname'>
+                                        {item.family}
+                                    </span>
+                                    {item.ORCID ? 
+                                        <span key={"orcid-"+index+"-"+subindex}>ORCID: {item.ORCID}</span> 
+                                    : null}
+                                </>
+                                ) : (
+                                <>
+                                    {item.name ? 
+                                        <span key={"name-"+index+"-"+subindex} className='search-item__name'>{item.name}</span> 
+                                    : null}
+                                    {item.family ? 
+                                    <span key={"family-"+index+"-"+subindex}>{item.family}</span> 
+                                    : null}
+                                    {item.ORCID ? 
+                                        <span key={"orcid-"+index+"-"+subindex}>ORCID: {item.ORCID}</span> 
+                                    : null}
+                                </>
+                                )}
+
                             </span>
                         );
                         }) : "No information about the authors provided" 
@@ -136,7 +169,7 @@ function CrossRef(props) {
                             </a>
                         </span>
                     : null}
-                    {item.link ?
+                    {/* {item.link ?
                         <span className='search-item__url'>
                             {item.link.map((subitem,subindex) => 
                                 <a key={'links-'+subindex} href={subitem.URL} target="_blank" rel="noopener noreferrer" className='link-out'>
@@ -144,7 +177,7 @@ function CrossRef(props) {
                                 </a>
                             )}
                         </span>
-                    : null}
+                    : null} */}
 
                     <div className='search-item__flags'>
                         {item.type ? <span className='tag'>{item.type}</span> : null}
@@ -163,7 +196,7 @@ function CrossRef(props) {
      */
     function bodyItem(item,index) {
         var abstract,abstractFull;
-        if (item.abstract && item.abstract !== '') {
+        if (item.abstract && (item.abstract !== '')) {
             var cleanAbstract = item.abstract.replace(/<(.|\n)*?>/g, '');
             abstract = cleanAbstract.replace('[...]','');
             if (abstract.length > 700) {
@@ -212,10 +245,9 @@ function CrossRef(props) {
                 item={item}
                 index={index}
                 InitCitation={InitCitation}
-                    />
+                />
                 : null
                 }
-
 
                 <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={() => InitCitation(index)}>
                     <span><RiDoubleQuotesL />Cite this work</span>
@@ -247,7 +279,7 @@ function CrossRef(props) {
                 {(item.ISBN || item.ISSN) ? 
                     <button 
                         className='search-item__open-id-list light-open' 
-                        onClick={(event) => passOpenListIds(index,event)}>
+                        onClick={(event) => openListIds(index,event)}>
                             <span>Open full list</span><RiArrowDownSLine />
                     </button>
                 : null}
@@ -309,6 +341,25 @@ function CrossRef(props) {
         setOpenedCites({[index]: true})
     }
 
+    /**
+     * Открыть список IDentifiers
+     * @param {*} index - порядковый номер item в массиве
+     * @param {*} event - элемент по которому произошел клик
+     */ 
+     function openListIds(index,event) {
+        event.stopPropagation();
+        var btnIdents = event.target;
+        var identList = document.getElementById('idents-' + index);
+        if (btnIdents.classList.contains('light-open--active')) {
+            btnIdents.querySelector('span').textContent = "Open full list";
+        } else {
+            btnIdents.querySelector('span').textContent = "Close list";
+        }
+        identList.classList.toggle('search-item__list-idents--active');
+        btnIdents.classList.toggle('light-open--active');
+        btnIdents.querySelector('svg').style.transform = 'rotate(180deg)';
+    }
+    
     return (
         <div className='search__results'>
 
