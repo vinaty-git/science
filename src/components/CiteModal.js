@@ -8,9 +8,9 @@ import { ImCopy } from "react-icons/im";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 function CiteModal(props) {
-    const {item,index,InitCitation} = props;
+    const {item,index,InitCitation,typeSearch} = props;
     let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
-    var loadStyle;
+    var loadStyle,doi,title;
 
     const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования (тег)
     const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API (полный)
@@ -22,7 +22,7 @@ function CiteModal(props) {
      * При инициализации сбрасываем ошибки и передаем текущий style doi для загрузки
      */
     useEffect(() => {
-        LoadCite(item.DOI);
+        LoadCite(item);
         setErrorCite(null);
         document.body.classList.toggle('ovelaped');
         document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
@@ -91,7 +91,12 @@ function CiteModal(props) {
      * Кнопка fetch выбранный стиль цитирования с doi по api
      * @param {*} doi - doi идентификатор выбранной статьи для fetch в doi.org
      */
-     function LoadCite(doi) {
+     function LoadCite(item) {
+        if (item.id) {
+            doi = item.id;
+        } else if (item.DOI) {
+            doi = item.DOI;
+        }
         if (!cite[chosenStyle]) {
             setStyleLoading(true); // Включаем отображение анимации загрузки
             fetch(`https://doi.org/${encodeURIComponent(doi)}`, {
@@ -110,7 +115,8 @@ function CiteModal(props) {
             })
             .then(response => {
                 setCite({...cite, [chosenStyle]: response});
-                console.log(response);
+                setStyleLoading(false); // Выключаем отображение анимации загрузки
+                setErrorCite(null); // Стейт наличия ошибки при загрузке items null
             })
             .catch(err => {
                 setErrorCite(err.message);
@@ -120,14 +126,33 @@ function CiteModal(props) {
             });
         }
     }
+
     /**
-    * Убрать анимацию загрузки после того, как получен ответ от doi
-    */
-    useEffect(() => {
-        setStyleLoading(false); // Выключаем отображение анимации загрузки
-        setErrorCite(null); // Стейт наличия ошибки при загрузке items null
-    },[cite]);
-    
+     * Check and return title of the item
+     * @returns {JSX.Element}
+     */
+    function citeTitle() {
+        if (item.attributes) {
+            item.attributes.titles?.length > 0 ? (
+                title = item.attributes.titles[0].title
+            ) : (
+                title = 'No title provided'
+            )
+        } else if (item.title) {
+            item.title?.length > 0 ? (
+                title = item.title[0]
+            ) : ( title = 'No title provided'
+            )
+        }
+        return (
+            <div className='cites__title'>
+                <span className='cites__span-title'>
+                    <span>{title}</span>
+                </span>
+            </div>
+        );
+    }
+
     return (
         <>
             <div className='modal-bgn modal-bgn--hidden' onClick={() => HideCites()}></div>
@@ -139,14 +164,7 @@ function CiteModal(props) {
                     <span className='cites__close' onClick={() => HideCites()}><GrClose /></span>
                 </div>
 
-                <div className='cites__title'>
-                    <span className='cites__span-title'>
-                        {item.title?.length > 0 ? 
-                            item.title[0]
-                            : <span>No title provided</span>
-                        }
-                    </span>
-                </div>
+                {citeTitle()}
             
                 <div className='cites__box-styles'>
 
@@ -159,7 +177,7 @@ function CiteModal(props) {
                             )
                         })}
                     </ul>
-                    <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item.DOI)}>
+                    <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item)}>
                         {cite[chosenStyle] ? "Loaded" : !errorCite ? "Load citation" : "Reload"}
                     </button>
                     {(!cite[chosenStyle] && !styleLoading) ? <div className='cites__arrow'><BsArrowUp /></div> : null}
@@ -168,6 +186,8 @@ function CiteModal(props) {
                 <div className='cites__style'>
 
                     <div className='cites__output'>
+                        
+                            <div>{styleLoading}</div>
                             {errorCite ? errorCite :
                                 styleLoading ?  <div className='loader-container'><span className='loader'></span></div> 
                                     : cite[chosenStyle] ? 
@@ -209,9 +229,11 @@ function CiteModal(props) {
                 <div className='cites__cont-doi'>
                     <div className='cites__cont-doi-inner'>
                         <span className='cites__h-doi'>DOI</span>
-                        <span className='cites__text-doi'>{item.DOI}</span>
+                        <span className='cites__text-doi'>
+                            {item.DOI ? item.DOI : item.id}
+                        </span>
                         <span className='cites__copy-doi' onClick={(event) => copyDoi(event,index)}><ImCopy />Copy</span>
-                        <span className='doi-copied-span'>Doi in your clipboard</span>
+                        <span className='doi-copied-span'>DOI in your clipboard</span>
                     </div>
                 </div>
 
