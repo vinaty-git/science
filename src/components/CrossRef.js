@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import CiteModal from '../components/CiteModal';
 
-import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaStar, FaRegStar } from "react-icons/fa";
-import { FiArrowUp, FiArrowDown } from "react-icons/fi";
-import { RiArrowDownSLine, RiDoubleQuotesL } from "react-icons/ri";
+import CrossRefHeader from './search/CrossRefHeader';
+import CrossRefBody from '../components/search/CrossRefBody';
+import CrossRefButtons from '../components/search/CrossRefButtons';
+import CrossRefFooter from '../components/search/CrossRefFooter';
+
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 function CrossRef(props) {
     const {
@@ -12,16 +13,17 @@ function CrossRef(props) {
         offsetCrossRef,
         goToPage,
         itemsNum,
-        passSearchResults,
-        passAllBookmarks,
-        passAddBookmark,
-        passRemoveBookmark,
+        searchResults,
+        allBookmarks,
+        AddBookmark,
+        RemoveBookmark,
         paginateCrossRef
     } = props;
 
+    console.log(allBookmarks);
     var tempTotalPages;
-    const allItems = props.passSearchResults[3][1]['items']; // Массив всех статей
-    const totalResults = props.passSearchResults[3][1]['total-results']; // Сколько статей найдено
+    const allItems = props.searchResults[3][1]['items']; // Массив всех статей
+    const totalResults = props.searchResults[3][1]['total-results']; // Сколько статей найдено
 
     const [fullDesc,setFullDesc] = useState({}); // В каких item открыто full desc. Index: true/false
     const [openedCites,setOpenedCites] = useState({}); // State текущего открытого модального окна с Citation formatter
@@ -82,7 +84,7 @@ function CrossRef(props) {
                     </button>}
                 
                 </div>
-                {/* <span className='pagination'>Articles per page: {perPage}</span> */}
+
                 <span className='search__per-page pagination'>
                     <label htmlFor='per-page'>Articles per page:</label>
                     <select name='per-page' id='per-page' defaultValue={itemsNum} onChange={(event) => selectPerPage(event)}>
@@ -106,220 +108,6 @@ function CrossRef(props) {
     }
 
     /**
-     * Title, publisher, date, format, type etc of the item
-     * @param {*} item - A data of one article
-     * @param {*} index - Index of the item from array allItems
-     * @returns {JSX.Element}
-     */
-    function headerItem(item,index) {
-        return (
-            <React.Fragment>
-                <h3 className='search-item__title'>
-                    {item.title?.length > 0 ? item.title[0] : <span>No title provided</span>}
-                </h3>
-
-                <div className='search-item__author'>
-                    {item.author?.length > 0 ? item.author.map((item,subindex) => {
-                        return (
-                            <span key={'names-'+subindex} className='search-item__names-author'>
-                                {item.given && item.family ? (
-                                <>
-                                    <span key={"name-" + index + "-" + subindex} className='search-item__name'>
-                                        {subindex != 0 ? ', ' : null}
-                                        {item.given}
-                                    </span>
-                                    <span key={"given-" + index + "-" + subindex} className='search-item__surname'>
-                                        {item.family}
-                                    </span>
-                                    {item.ORCID ? 
-                                        <span key={"orcid-"+index+"-"+subindex}>ORCID: {item.ORCID}</span> 
-                                    : null}
-                                </>
-                                ) : (
-                                <>
-                                    {item.name ? 
-                                        <span key={"name-"+index+"-"+subindex} className='search-item__name'>{item.name}</span> 
-                                    : null}
-                                    {item.family ? 
-                                    <span key={"family-"+index+"-"+subindex}>{item.family}</span> 
-                                    : null}
-                                    {item.ORCID ? 
-                                        <span key={"orcid-"+index+"-"+subindex}>ORCID: {item.ORCID}</span> 
-                                    : null}
-                                </>
-                                )}
-
-                            </span>
-                        );
-                        }) : "No information about the authors provided" 
-                    }
-                </div>
-
-                <div className='search-item__publisher'>
-                    <span>{item.publisher ? item.publisher : "No information about the publisher provided"}</span>
-
-                    <span className='search-item__year'>
-                        {item.published ? item.published['date-parts'][0][0] ? item.published['date-parts'][0][0] 
-                        : "No publication date provided" : "No publication date provided"}
-                    </span>
-                    {item.resource.primary.URL ?
-                        <span className='search-item__url'>
-                            <a href={item.resource.primary.URL} target="_blank" rel="noopener noreferrer" className='link-out'>
-                                Publication source<FaExternalLinkAlt />
-                            </a>
-                        </span>
-                    : null}
-                    {/* {item.link ?
-                        <span className='search-item__url'>
-                            {item.link.map((subitem,subindex) => 
-                                <a key={'links-'+subindex} href={subitem.URL} target="_blank" rel="noopener noreferrer" className='link-out'>
-                                Link<FaExternalLinkAlt /> {subitem['content-type']}
-                                </a>
-                            )}
-                        </span>
-                    : null} */}
-
-                    <div className='search-item__flags'>
-                        {item.type ? <span className='tag'>{item.type}</span> : null}
-                        {item.language ? <span className='tag'>{item.language}</span> : null}
-                    </div>
-                </div>
-            </React.Fragment>
-        );
-    }
-
-    /**
-     * Short description of the item
-     * @param {*} item - A data of one article
-     * @param {*} index - Index of the item from array allItems
-     * @returns {JSX.Element}
-     */
-    function bodyItem(item,index) {
-        var abstract,abstractFull;
-        if (item.abstract && (item.abstract !== '')) {
-            var cleanAbstract = item.abstract.replace(/<(.|\n)*?>/g, '');
-            abstract = cleanAbstract.replace('[...]','');
-            if (abstract.length > 700) {
-                abstractFull = abstract;
-                abstract = abstract.substring(0, 700)+"...";
-            }
-        } else {
-            abstract = "No description provided";
-        }
-        return (
-            <div className={fullDesc[index] ? 'search-item__abstract search-item__abstract--full' : 'search-item__abstract search-item__abstract--short'}>                     
-                {fullDesc[index] ? 
-                    <CSSTransition 
-                    classNames="slide"
-                    timeout={1100}
-                    in={true}
-                    appear={true}>
-                        <span>{abstractFull}</span>
-                    </CSSTransition>
-                : abstract}
-            </div>
-        );
-    }
-
-    /**
-     * Active buttons of each item: full desc, citation modal open, bookmark add/delete
-     * @param {*} item - A data of one article
-     * @param {*} index - Index of the item from array allItems
-     * @returns {JSX.Element}
-     */
-    function buttonsItem(item,index) {
-        return (
-            <div className='search-item__ref-container'>  
-                {(passAllBookmarks != null && passAllBookmarks.some(i => item.DOI == i.doi)) ?
-                    <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={() => passRemoveBookmark(item.DOI)} >
-                        <span><FaStar />Delete Bookmark</span>
-                    </button>
-                    : 
-                    <button className='search-item__btn-bookmark sm-btn sm-btn-sec' onClick={() => passAddBookmark(item)} >
-                        <span><FaRegStar />Add Bookmark</span>
-                    </button>
-                }
-                
-                {openedCites[index] ? 
-                <CiteModal 
-                item={item}
-                index={index}
-                InitCitation={InitCitation}
-                />
-                : null
-                }
-
-                <button className='search-item__cites-button sm-btn sm-btn-sec' onClick={() => InitCitation(index)}>
-                    <span><RiDoubleQuotesL />Cite this work</span>
-                </button>
-
-                {item.abstract?.length  > 700 ? 
-                    <button className='search-item__btn-abstract sm-btn sm-btn-sec' onClick={() => btnFullDesc(index)}>
-                        {fullDesc[index] ? 
-                        <span><FiArrowUp />Hide full description</span>
-                        : <span><FiArrowDown />Show full description</span>}
-                    </button>
-                : null}
-            
-            </div> 
-        );
-    }
-
-    /**
-     * Identifiers at the buttom of the item (DOI,ISBN,ISSN) with opener via parent component
-     * @param {*} item - A data of one article
-     * @param {*} index - Index of the item from array allItems
-     * @returns {JSX.Element}
-     */
-    function footerItem(item,index) {
-        return(
-            <div className='search-item__identifiers'>
-                <span className='search-item__id-type'>DOI</span>
-                <span className='search-item__id-number'>{item.DOI ? item.DOI : "No DOI provided"}</span>
-                {(item.ISBN || item.ISSN) ? 
-                    <button 
-                        className='search-item__open-id-list light-open' 
-                        onClick={(event) => openListIds(index,event)}>
-                            <span>Open full list</span><RiArrowDownSLine />
-                    </button>
-                : null}
-                {(item.ISBN || item.ISSN) ?
-                    <div id={'idents-' + index} className='search-item__list-idents'>
-                        {item.ISBN ?
-                            <p><span className='search-item__id-type'>ISBN</span>
-                                <span className='search-item__id-number'>{item.ISBN}</span></p>
-                        :null}
-                        {item.ISSN ?
-                            <p><span className='search-item__id-type'>ISSN</span>
-                                <span className='search-item__id-number'>{item.ISSN}</span></p>
-                        :null}
-                    </div>
-                : null}
-            </div>
-        );
-    }
-
-    /**
-     * Subjects and tags at the bottom of the item
-     * @param {*} item - A data of one article
-     * @param {*} index - Index of the item from array allItems
-     * @returns {JSX.Element}
-     */
-    function tagsItem(item,index) {
-        return (
-            item.subject ? item.subject.length > 0 ?
-                <div id={'subjects-'+index} className='search-item__tags'>
-                    {item.subject.map((item,subindex) => {
-                        return (
-                            <span className='sm-tag' key={"subject-"+index+"-"+subindex}>{item}</span>
-                        );
-                    })}
-                </div>
-            : null : null
-        );
-    }
-
-    /**
      * При нажатии запоминает какой item имеет открытое полное описание
      * @param {*} index - Index of the item from array allItems
      * @returns 
@@ -340,25 +128,6 @@ function CrossRef(props) {
         :
         setOpenedCites({[index]: true})
     }
-
-    /**
-     * Открыть список IDentifiers
-     * @param {*} index - порядковый номер item в массиве
-     * @param {*} event - элемент по которому произошел клик
-     */ 
-     function openListIds(index,event) {
-        event.stopPropagation();
-        var btnIdents = event.target;
-        var identList = document.getElementById('idents-' + index);
-        if (btnIdents.classList.contains('light-open--active')) {
-            btnIdents.querySelector('span').textContent = "Open full list";
-        } else {
-            btnIdents.querySelector('span').textContent = "Close list";
-        }
-        identList.classList.toggle('search-item__list-idents--active');
-        btnIdents.classList.toggle('light-open--active');
-        btnIdents.querySelector('svg').style.transform = 'rotate(180deg)';
-    }
     
     return (
         <div className='search__results'>
@@ -368,11 +137,33 @@ function CrossRef(props) {
             {allItems.map((item,index) => 
                 <div key={index} className='search-item block'>
 
-                    {headerItem(item,index)}
-                    {bodyItem(item,index)}
-                    {buttonsItem(item,index)}
-                    {footerItem(item,index)}
-                    {tagsItem(item,index)}
+                    <CrossRefHeader 
+                        item={item}
+                        index={index}
+                    />
+
+                    <CrossRefBody
+                        item={item}
+                        index={index}
+                        fullDesc={fullDesc}
+                    />
+
+                    <CrossRefButtons 
+                        item={item}
+                        index={index}
+                        fullDesc={fullDesc}
+                        allBookmarks={allBookmarks}
+                        RemoveBookmark={RemoveBookmark}
+                        InitCitation={InitCitation}
+                        AddBookmark={AddBookmark}
+                        openedCites={openedCites}
+                        btnFullDesc={btnFullDesc}
+                    />
+
+                    <CrossRefFooter
+                        item={item}
+                        index={index}
+                    />
 
                 </div>
             )}

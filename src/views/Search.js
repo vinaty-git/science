@@ -255,7 +255,7 @@ function Search() {
      * @param {*} props - идентификатор добавляемой статьи
      */
     function AddBookmark(props) {
-        var typeDb = typeSearch;
+        var typeDb = typeOutcome;
         const queryAddBookmark = {
             "data": "addBookmark",
             "id": 2,
@@ -330,17 +330,19 @@ function Search() {
                         </div>
                         
                     : typeOutcome == 'works' && typeSearch == 'works' ? // Есть поисковой ответ, проверяем источник works/sets
+                    
                     <CrossRef
-                    passSearchResults={searchResults}
-                    passAllBookmarks={allBookmarks}
-                    passRemoveBookmark={RemoveBookmark}
-                    passAddBookmark={AddBookmark}
-                    paginateCrossRef={paginateCrossRef}
-                    offsetCrossRef={offsetCrossRef}
-                    itemsNum={itemsNum}
-                    setItemsNum={setItemsNum}
-                    goToPage={goToPage}
+                        searchResults={searchResults}
+                        allBookmarks={allBookmarks}
+                        RemoveBookmark={RemoveBookmark}
+                        AddBookmark={AddBookmark}
+                        paginateCrossRef={paginateCrossRef}
+                        offsetCrossRef={offsetCrossRef}
+                        itemsNum={itemsNum}
+                        setItemsNum={setItemsNum}
+                        goToPage={goToPage}
                     />
+
                     // typeOutcome != 'works', значит вкладка 'sets'
                     : typeOutcome == 'sets' && typeSearch == 'sets' ?
                     <CommonData
