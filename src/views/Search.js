@@ -15,7 +15,7 @@ function Search() {
 
     const [itemsNum,setItemsNum] = useState('25'); // Элементов на странице поиск по CrossRef
     const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации, текущий оффсет в виде количества items пропуска
-    const [typeSearch,setTypeSearch] = useState('sets'); // State для определения базы по которой ищем ДО запуска
+    const [typeSearch,setTypeSearch] = useState('works'); // State для определения базы по которой ищем ДО запуска
     const [typeOutcome, setTypeOutcome] = useState(''); // State для определения базы по которой ищем ПОСЛЕ запуска
     const [queryStarted,setQueryStarted] = useState(false); // Поисоковй запрос инициализирован
     const [textOutput,setTextOutput] = useState(""); // State поискового запроса

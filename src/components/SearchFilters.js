@@ -106,8 +106,8 @@ function SearchFilters(props) {
             </div>
             <div className='search__filters'>
                 <div className='search__btn-types'>
-                    <button data-type='works' className='search__btn-type sm-btn-sec' onClick={(event) => changeTypeSearch(event)}>Works</button>
-                    <button data-type='sets' className='search__btn-type sm-btn-sec sm-btn-sec--active' onClick={(event) => changeTypeSearch(event)}>Data Sets</button>
+                    <button data-type='works' className='search__btn-type sm-btn-sec sm-btn-sec--active' onClick={(event) => changeTypeSearch(event)}>Works</button>
+                    <button data-type='sets' className='search__btn-type sm-btn-sec' onClick={(event) => changeTypeSearch(event)}>Data Sets</button>
                 </div>
                 <div className='search__all-filters'>
                     <div className='search__inner-all-filters'>
