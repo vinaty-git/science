@@ -346,9 +346,9 @@ function Search() {
                     // typeOutcome != 'works', значит вкладка 'sets'
                     : typeOutcome == 'sets' && typeSearch == 'sets' ?
                     <CommonData
-                    passAllBookmarks={allBookmarks}
-                    passRemoveBookmark={RemoveBookmark}
-                    passAddBookmark={AddBookmark}
+                    allBookmarks={allBookmarks}
+                    RemoveBookmark={RemoveBookmark}
+                    AddBookmark={AddBookmark}
                     searchOuput={searchOuput}
                     paginateCommon={paginateCommon}
                     prevLinks={prevLinks}
