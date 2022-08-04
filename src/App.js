@@ -6,6 +6,7 @@ import Search from './views/Search';
 import Library from './views/Library';
 import Editor from './views/Editor';
 import Storage from './views/Storage';
+import Settings from './views/Settings';
 import Notfound from './views/Notfound';
 import Footer from './components/Footer';
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/library" element={<Library />} />
         <Route path="/editor" element={<Editor />} />
         <Route path="/storage" element={<Storage />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </div>

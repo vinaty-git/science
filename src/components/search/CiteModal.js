@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { CiteStyles } from '../data/DataCitesStyles.js';
+import { CiteStyles } from '../../data/DataCitesStyles.js';
 
 import { GrClose } from "react-icons/gr";
 import { BsQuestionCircle, BsArrowUp } from "react-icons/bs";

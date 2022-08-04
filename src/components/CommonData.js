@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CSSTransition } from 'react-transition-group';
-import CiteModal from '../components/CiteModal';
+import CiteModal from '../components/search/CiteModal';
 
 import { FaChevronLeft,FaChevronRight,FaExternalLinkAlt,FaStar,FaRegStar } from "react-icons/fa";
 import { FiArrowUp, FiArrowDown,FiExternalLink } from "react-icons/fi";
