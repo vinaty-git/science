@@ -1,11 +1,6 @@
-import React, { useState } from "react";
-import { CSSTransition } from 'react-transition-group';
-import CiteModal from './CiteModal';
+import React from "react";
 
-import { FaChevronLeft,FaChevronRight,FaExternalLinkAlt,FaStar,FaRegStar } from "react-icons/fa";
-import { FiArrowUp, FiArrowDown,FiExternalLink } from "react-icons/fi";
-import { RiDoubleQuotesL,RiArrowDownSLine } from "react-icons/ri";
-import { AiOutlineTag } from "react-icons/ai";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 /**
  * Title, publisher, date, format, type etc of the item
@@ -13,18 +8,17 @@ import { AiOutlineTag } from "react-icons/ai";
  * @param {*} index 
  * @returns {JSX.Element}
  */
- function CommonHeader(item, index) {
+ function CommonHeader(props) {
+    const {item,index} = props;
+    
     return (
     <React.Fragment>
         <h3 className="search-item__title">
-            {item.attributes.titles ? 
-                item.attributes.titles.length > 0 ?
-                    item.attributes.titles[0].title ?
-                        item.attributes.titles[0].title
-                    : <span>No title provided</span>
-                : <span>No title provided</span>
-            : <span>No title provided</span>
-            }
+            {item.attributes.titles?.length > 0 ? (
+                item.attributes.titles[0].title
+            ) : (
+                <span>No title provided</span>
+            )}
         </h3>
 
         <div className="search-item__author">

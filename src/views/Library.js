@@ -7,6 +7,9 @@ import CrossRefButtons from '../components/search/CrossRefButtons';
 import CrossRefFooter from '../components/search/CrossRefFooter';
 
 import CommonHeader from '../components/search/CommonHeader';
+import CommonBody from '../components/search/CommonBody';
+import CommonButtons from '../components/search/CommonButtons';
+import CommonFooter from '../components/search/CommonFooter';
 
 function Library() {
     const [listBookmarks,setListBookmarks] = useState();
@@ -18,8 +21,6 @@ function Library() {
     const [currentLibrary,setCurrentLibrary] = useState('works');
 
     let firstInit = React.useRef(true);
-
-    var abstractCombine;
     var userId = 2; // Temporary user id 
 
     /**
@@ -91,25 +92,6 @@ function Library() {
     }
 
     /**
-     * Открыть список IDentifiers
-     * @param {*} index - порядковый номер item в массиве
-     * @param {*} event - элемент по которому произошел клик
-     */ 
-    //  function openListIds(index,event) {
-    //     event.stopPropagation();
-    //     var btnIdents = event.target;
-    //     var identList = document.getElementById('idents-' + index);
-    //     if (btnIdents.classList.contains('light-open--active')) {
-    //         btnIdents.querySelector('span').textContent = "Open full list";
-    //     } else {
-    //         btnIdents.querySelector('span').textContent = "Close list";
-    //     }
-    //     identList.classList.toggle('search-item__list-idents--active');
-    //     btnIdents.classList.toggle('light-open--active');
-    //     btnIdents.querySelector('svg').style.transform = 'rotate(180deg)';
-    // }
-
-    /**
      * Запрос в БД, получаем массив объектов из json items, type. 0 = works, 1 = sets
      */
     useEffect(() => {
@@ -167,7 +149,9 @@ function Library() {
             <div className="library__items">
                 {listBookmarks.map((preitem,index) => {
                     if (preitem.type == 0) {
-                        var item = JSON.parse(preitem.json);
+                        var tempItem = preitem.json.replace(/'/g,'\'');
+                        var item = JSON.parse(tempItem);
+                        // var item = JSON.parse(preitem.json);
                         return(
                             <div key={index} className='search-item block'>
 
@@ -222,6 +206,25 @@ function Library() {
                                 <CommonHeader 
                                     index={index}
                                     item={item}    
+                                />
+                                <CommonBody 
+                                    index={index}
+                                    item={item}
+                                    fullDesc={fullDesc}
+                                />
+                                <CommonButtons
+                                    index={index}
+                                    item={item}
+                                    fullDesc={fullDesc}
+                                    RemoveBookmark={RemoveBookmark}
+                                    AddBookmark={AddBookmark}
+                                    openedCites={openedCites}
+                                    InitCitation={InitCitation}
+                                    btnFullDesc={btnFullDesc}
+                                />
+                                <CommonFooter
+                                    item={item}
+                                    index={index}
                                 />
                             </div>
                         );
