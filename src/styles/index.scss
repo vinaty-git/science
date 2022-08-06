@@ -345,6 +345,10 @@ code {
   color: #fff;
   background-color: $clr;
   transition: all 0.4s;
+  &:hover {
+    background-color: $clr-mid-orange;
+    color: #fff;
+  }
 }
 
 .sm-btn-alt {

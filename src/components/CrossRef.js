@@ -20,7 +20,6 @@ function CrossRef(props) {
         paginateCrossRef
     } = props;
 
-    console.log(allBookmarks);
     var tempTotalPages;
     const allItems = props.searchResults[3][1]['items']; // Массив всех статей
     const totalResults = props.searchResults[3][1]['total-results']; // Сколько статей найдено
