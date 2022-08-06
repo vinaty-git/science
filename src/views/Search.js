@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import SearchFilters from '../components/SearchFilters';
 import CrossRef from '../components/CrossRef';
 import CommonData from '../components/CommonData';
+import Spinner from '../components/Spinner';
 
 import { ReactComponent as WaitingSvg } from '../icons/waiting.svg';
 
@@ -295,12 +296,12 @@ function Search() {
             setAllBookmarks(response);
         });
     }
-
+    console.log(searchResults);
     return (
         <div className='main'>
             <div className='search'>
                 <div className='search__query'>
-
+                    
                     <SearchFilters
                         textOutput={textOutput}
                         typeSearch={typeSearch}
@@ -317,16 +318,20 @@ function Search() {
                                     <div className='search__image-waiting'><WaitingSvg /></div>
                             </div>
                         : 
-                            <div className='search__container-loader'>
-                                <div className='search__loader'></div>
+                            // <div className='search__container-loader'>
+                            //     <div className='search__loader'></div>
+                            // </div>
+                            <div className='search__results'>
+                                <Spinner />
                             </div>
 
                     : queryStarted ? // Проверка не идет ли загрузка
                     
                         <div className='search__results'>
-                            <div className='search__container-loader'>
+                            {/* <div className='search__container-loader'>
                                 <div className='search__loader'></div>
-                            </div>
+                            </div> */}
+                            <Spinner />
                         </div>
                         
                     : typeOutcome == 'works' && typeSearch == 'works' ? // Есть поисковой ответ, проверяем источник works/sets

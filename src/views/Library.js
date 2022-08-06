@@ -107,7 +107,10 @@ function Library() {
             })
             .then(response => response.json())
             .then(response => {
-                setListBookmarks(response);
+                var temp = JSON.stringify(response);
+                var temp2 = temp.replace(/u2019/g, '\u2019');
+                var temp3 = JSON.parse(temp2);
+                setListBookmarks(temp3);
                 var tempArray = [];
                 response.forEach(item => {
                     tempArray.push({'doi':item.doi});
@@ -147,7 +150,7 @@ function Library() {
             <>
             {!loading ? (
             <div className="library__items">
-                {listBookmarks.map((preitem,index) => {
+                {listBookmarks != null ? listBookmarks.map((preitem,index) => {
                     if (preitem.type == 0) {
                         var tempItem = preitem.json.replace(/'/g,'\'');
                         var item = JSON.parse(tempItem);
@@ -183,7 +186,7 @@ function Library() {
                             </div>
                         );
                     }
-                })}
+                }): null}
             </div>
             ) : (
             <Spinner />
@@ -197,7 +200,7 @@ function Library() {
             <>
             {!loading ? (
             <div className="library__items">
-                {listBookmarks.map((preitem,index) => {
+                {listBookmarks != null ? listBookmarks.map((preitem,index) => {
                     if (preitem.type == 1) {
                         var tempItem = preitem.json.replace(/'/g,'\'');
                         var item = JSON.parse(tempItem);
@@ -216,6 +219,7 @@ function Library() {
                                     index={index}
                                     item={item}
                                     fullDesc={fullDesc}
+                                    allBookmarks={allBookmarks}
                                     RemoveBookmark={RemoveBookmark}
                                     AddBookmark={AddBookmark}
                                     openedCites={openedCites}
@@ -229,7 +233,7 @@ function Library() {
                             </div>
                         );
                     }
-                })}
+                }) : null }
             </div>
             ) : (
             <Spinner />

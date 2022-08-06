@@ -92,6 +92,7 @@ function CommonData(props) {
                 index={index}
                 item={item}
                 fullDesc={fullDesc}
+                allBookmarks={allBookmarks}
                 RemoveBookmark={RemoveBookmark}
                 AddBookmark={AddBookmark}
                 openedCites={openedCites}
