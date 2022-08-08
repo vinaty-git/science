@@ -81,19 +81,21 @@ import { FiExternalLink } from "react-icons/fi";
             : null : null}
         </div>
 
-        {item.attributes.subjects ? item.attributes.subjects.length > 0 ?
+        {item.attributes.subjects?.length > 0 ?
             <div id={'subjects-'+index} className='search-item__tags search-item__tags--hidden'>
                 {item.attributes.subjects.map((item,subindex) => {
                     return (
-                        <span 
-                            className='sm-tag' 
-                            key={"subject-"+index+"-"+subindex}>
-                            {item.subject}
-                        </span>
+                            item.subject ? 
+                            <span 
+                                className='sm-tag' 
+                                key={"subject-"+index+"-"+subindex}>
+                                {item.subject}
+                            </span>
+                            : null
                     );
                 })}
             </div>
-        : null : null}
+        : null }
 
         </>
     );

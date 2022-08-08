@@ -53,7 +53,7 @@ import { AiOutlineTag } from "react-icons/ai";
     return (
         <div className='search-item__ref-container'>
             {(allBookmarks != null && allBookmarks.some(i => item.id == i.doi)) ?
-                <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={() => RemoveBookmark(item.id)} >
+                <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={(event) => RemoveBookmark(item.id,event)} >
                     <span><FaStar />Delete Bookmark</span>
                 </button>
                 : 

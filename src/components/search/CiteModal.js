@@ -11,7 +11,8 @@ function CiteModal(props) {
     const {item,index,InitCitation,typeSearch} = props;
     let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
     var loadStyle,doi,title;
-
+    var regex = /(<([^>]+)>)/ig; // Удаляем html теги
+    
     const [loadTag,setLoadTag] = useState('apa'); // State того, что нажато из списка стилей цитирования (тег)
     const [chosenStyle,setChosenStyle] = useState('apa'); // Стиль цитирования для API (полный)
     const [cite,setCite] = useState({}); // Стили цицитирования загруженные в генераторе цитирования 
@@ -114,7 +115,8 @@ function CiteModal(props) {
                 return response.text();
             })
             .then(response => {
-                setCite({...cite, [chosenStyle]: response});
+                var cleanResponse = response.replace(regex, "");
+                setCite({...cite, [chosenStyle]: cleanResponse});
                 setStyleLoading(false); // Выключаем отображение анимации загрузки
                 setErrorCite(null); // Стейт наличия ошибки при загрузке items null
             })
@@ -147,7 +149,7 @@ function CiteModal(props) {
         return (
             <div className='cites__title'>
                 <span className='cites__span-title'>
-                    <span>{title}</span>
+                    <span>{title.replace(regex, "")}</span>
                 </span>
             </div>
         );
@@ -171,7 +173,12 @@ function CiteModal(props) {
                     <ul className='cites__list-style'>   
                         {CiteStyles.map((st,subindex) => {
                             return (
-                                <li data-tag={`${st.tag}`} className={`cites__li-style ${st.tag == loadTag ? 'cites__li-style--active' : 'cites__li-style--inactive'}`} key={subindex} onClick={(event) => chooseStyle(event)}>
+                                <li 
+                                    data-tag={`${st.tag}`} 
+                                    className={`cites__li-style ${st.tag == loadTag ? 'cites__li-style--active' : 'cites__li-style--inactive'}`}
+                                    key={subindex} 
+                                    onClick={(event) => chooseStyle(event)}
+                                >
                                     {st.title}
                                 </li>
                             )
@@ -180,7 +187,9 @@ function CiteModal(props) {
                     <button className={`cites__btn-reload sm-btn ${cite[chosenStyle] ? "cites__btn-reload--loaded" : ''}`} onClick={() => LoadCite(item)}>
                         {cite[chosenStyle] ? "Loaded" : !errorCite ? "Load citation" : "Reload"}
                     </button>
-                    {(!cite[chosenStyle] && !styleLoading) ? <div className='cites__arrow'><BsArrowUp /></div> : null}
+                    {(!cite[chosenStyle] && !styleLoading) ? 
+                        <div className='cites__arrow'><BsArrowUp /></div> 
+                    : null}
                 </div>
 
                 <div className='cites__style'>
@@ -196,7 +205,9 @@ function CiteModal(props) {
                                         timeout={1000}
                                         in={true}
                                         appear={true}>
-                                            <div className='cites__cite' ref={citeText}>{cite[chosenStyle]}</div>
+                                            <div className='cites__cite' ref={citeText}>
+                                                {cite[chosenStyle]}
+                                            </div>
                                         </CSSTransition>
                                         : <div className='cites__action'>Please, press Load citation button to upload this citation style.</div>
                             }

@@ -53,7 +53,15 @@ function Library() {
      * Кнопка удаления закладки из БД 
      * @param {*} props - идентификатор удаляемой статьи
      */
-    function RemoveBookmark(props) {
+    function RemoveBookmark(props,event) {
+        var thisItem = event.target.parentNode.parentNode;
+        thisItem.classList.add('search__item-container--hidden');
+
+        thisItem.addEventListener("transitionend",() => {
+            setTimeout(() => {
+                thisItem.classList.add('search__item-container--removed');
+            },500);
+        })
         const queryRemoveBookmark = {
             "data": "removeBookmark",
             "id": 2,
@@ -67,6 +75,7 @@ function Library() {
         .then((response) => {
             setAllBookmarks(response);
         });
+
     }
 
     /**
@@ -115,6 +124,7 @@ function Library() {
                 response.forEach(item => {
                     tempArray.push({'doi':item.doi});
                 });
+                console.log(tempArray);
                 setAllBookmarks(tempArray);
             })
         }
@@ -142,6 +152,25 @@ function Library() {
     }
 
     /**
+     * Catch errors and store in DB while loop bookmarks
+     * @param {*} tempItem 
+     */
+    function errorLog(tempItem,error_doi,error_text) {
+        const errorHandler = {
+            "data": "errorHandler",
+            "id": userId,
+            "location": "Library",
+            "error_doi": error_doi,
+            "error": tempItem,
+            "error_text": error_text,
+        };
+        fetch('https://kirilab.ru/science/func.php', {
+            method: 'POST',
+            body: JSON.stringify(errorHandler)
+        })
+    }
+
+    /**
      * Выводим массив закладок пользователя Works (CrossRef)
      * @returns {JSX.Element}
      */
@@ -153,9 +182,17 @@ function Library() {
                 {listBookmarks != null ? listBookmarks.map((preitem,index) => {
                     if (preitem.type == 0) {
                         var tempItem = preitem.json.replace(/'/g,'\'');
-                        var item = JSON.parse(tempItem);
-                        // var item = JSON.parse(preitem.json);
+                        try {
+                            var item = JSON.parse(tempItem);
+                        }
+                        catch (e) {
+                            var error_text = e.message;
+                            var error_doi = preitem.doi;
+                            errorLog(tempItem,error_doi,error_text);
+                            return false;
+                        }
                         return(
+                        <div key={index} className='search__item-container'>
                             <div key={index} className='search-item block'>
 
                                 <CrossRefHeader 
@@ -184,6 +221,7 @@ function Library() {
                                 />
 
                             </div>
+                        </div>
                         );
                     }
                 }): null}
@@ -203,9 +241,19 @@ function Library() {
                 {listBookmarks != null ? listBookmarks.map((preitem,index) => {
                     if (preitem.type == 1) {
                         var tempItem = preitem.json.replace(/'/g,'\'');
-                        var item = JSON.parse(tempItem);
+                        try {
+                            var item = JSON.parse(tempItem);
+                        }
+                        catch (e) {
+                            var error_text = e.message;
+                            var error_doi = preitem.json.id;
+                            errorLog(tempItem,error_doi,error_text);
+                            console.log("ERROR IN PARSE" + e);
+                            return false;
+                        }
                         return(
-                            <div key={index} className='search-item block'>
+                        <div key={index} className='search__item-container'>
+                            <div className='search-item block'>
                                 <CommonHeader 
                                     index={index}
                                     item={item}    
@@ -231,6 +279,7 @@ function Library() {
                                     index={index}
                                 />
                             </div>
+                        </div>
                         );
                     }
                 }) : null }

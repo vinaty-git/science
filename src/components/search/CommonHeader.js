@@ -69,21 +69,17 @@ import { FaExternalLinkAlt } from "react-icons/fa";
             : null}
 
             <div className='search-item__flags'>
-                {item.attributes.types ? 
-                    item.attributes.types.resourceTypeGeneral ? 
-                        <span className='tag'>
-                            {item.attributes.types.resourceTypeGeneral}
-                        </span> 
-                    : null 
+                {item.attributes.types?.resourceTypeGeneral ? 
+                    <span className='tag'>
+                        {item.attributes.types.resourceTypeGeneral}
+                    </span> 
                 : null}
 
-                {item.attributes.language == null ? 
-                    null 
-                    : 
+                {item.attributes.language ? item.attributes.language != null ?
                     <span className='tag'>
                         {item.attributes.language}
                     </span>
-                }
+                : null : null }
             </div>
         </div>
     </React.Fragment>

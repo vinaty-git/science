@@ -11,9 +11,19 @@ import Notfound from './views/Notfound';
 import Footer from './components/Footer';
 
 function App() {
+
+  /**
+   * Toggle main container width
+   */
+  function SizeMain() {
+      document.querySelector('.main').classList.toggle('main--expanded');
+  }
+  
   return (
     <div className="container">
-      <Sidebar />
+      <Sidebar 
+        SizeMain={SizeMain}  
+      />
       <Footer />
 
       <Routes>

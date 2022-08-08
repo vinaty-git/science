@@ -107,6 +107,8 @@ function CommonData(props) {
 
         </div>
         ))}
+        
+        {pagination()}
     </div>
     );
 }
