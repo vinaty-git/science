@@ -17,7 +17,7 @@ function CrossRefButtons(props) {
     return (
         <div className='search-item__ref-container'>
             {(allBookmarks != null && allBookmarks.some(i => item.DOI == i.doi)) ?
-                <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={() => RemoveBookmark(item.DOI)} >
+                <button className='search-item__btn-bookmark sm-btn sm-btn-sec--active' onClick={(event) => RemoveBookmark(item.DOI,event)} >
                     <span><FaStar />Delete Bookmark</span>
                 </button>
                 : 

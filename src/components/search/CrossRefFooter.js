@@ -56,15 +56,17 @@ function CrossRefFooter(props) {
             : null}
         </div>
         
-        {item.subject ? item.subject.length > 0 ?
+        {item.subject?.length > 0 ?
             <div id={'subjects-'+index} className='search-item__tags'>
                 {item.subject.map((item,subindex) => {
                     return (
+                        item ?
                         <span className='sm-tag' key={"subject-"+index+"-"+subindex}>{item}</span>
+                        : null
                     );
                 })}
             </div>
-        : null : null}
+        : null }
         
         </>
     );
