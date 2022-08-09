@@ -96,23 +96,40 @@ code {
 }
 .sidebar--loading {
   opacity: 0;
+  // transition: opacity 0.2s linear;
 }
 
 .sidebar__opener {
-  width: 100%;
   display: flex;
+  position: absolute;
   justify-content: center;
-  margin-top: 20px;
   cursor: pointer;
   font-size: 24px;
   color:rgb(60, 60, 60);
   transition: all 0.2s ease;
+  width: 100%;
+  bottom: 60px;
+  left: auto;
+  right: auto;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 18px;
+  gap: 30px;
+  padding-top: 14px;
+
   svg {
     transform: rotate(45deg);
     pointer-events: none;
   }
   &:hover {
     color: $clr;
+  }
+}
+.sidebar--expanded {
+  .sidebar__opener {
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }
 
@@ -289,8 +306,9 @@ a.active {
   width: 84%;
   height: auto;
   min-height: 100vh;
-
   background-color: rgb(240, 246, 246);
+  // transition-delay: 200ms;
+  transition: all 0.5s ease;
 
   h2 {
     margin: 10px 0;
@@ -302,15 +320,15 @@ a.active {
 .main--expanded {
   left: 4%;
   width: 96%;
+  // transition-delay: 200ms;
+  transition: all 0.5s ease;
 }
 
 
 .block {
   padding: 10px 20px;
-
   border-radius: 12px;
   background-color: $clr-bg-block;
-
   -webkit-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
   -moz-box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
   box-shadow: 4px 4px 8px 2px rgba(88, 153, 167, 0.1);
@@ -659,17 +677,27 @@ a.active {
 //  ПОИСКОВАЯ ВЫДАЧА
 
 .search {
-  width: 76%;
-  margin: 50px auto;
+  // width: 76%;
+  // margin: 50px auto;
 }
 .search__query {
-  width: 96%;
-  margin-top: 30px; 
+  // width: 96%;
+  // margin-top: 30px;
+
+  // width: 74%;
+  // margin: 50px auto;
+  // padding: 24px 3%;
+  // position: relative;
 }
 .search__heading {
-  padding: 24px 44px;
-  height: auto;
-  // width: 80%;
+  // padding: 24px 44px;
+  // height: auto;
+  // // width: 80%;
+
+  width: 74%;
+  margin: 50px auto;
+  padding: 24px 3%;
+  position: relative;
 }
 .search__waiting {
   display: flex;
@@ -836,14 +864,24 @@ a.active {
 // ПОИСКОВАЯ ВЫДАЧА ВЛОЖЕННЫЕ СТИЛИ
 
 .search__results {
+  width: 80%;
   margin-top: 30px;
+  margin: 10px auto;
+  padding: 10px 4% 24px 4%;
+  position: relative;
 }
 .search-item {
-  width: auto;
-  position: relative;
-  margin: 20px 0;
-  padding: 36px 48px;
+  // width: auto;
+  // position: relative;
+  // margin: 20px 0;
+  // padding: 36px 48px;
   opacity: 1;
+
+  // width: 74%;
+  margin: 30px auto;
+  padding: 44px 4% 24px 4%;
+  position: relative;
+
 
   h3 {
     font-size: 24px;
@@ -1442,6 +1480,20 @@ a.active {
   .slide-appear-done {
     max-height: 2000px;
     transition: all 600ms ease-in;
+  }
+
+
+  .slide-main-appear {
+    opacity: 0;
+    transition: all 50ms linear;
+  }
+  .slide-main-appear-active {
+    opacity: 0;
+    transition: all 10ms linear;
+  }
+  .slide-main-appear-done {
+    opacity: 1;
+    transition: all 300ms linear;
   }
 
 

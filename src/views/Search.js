@@ -298,8 +298,8 @@ function Search() {
     }
     console.log(searchResults);
     return (
-        <div className='main'>
-            <div className='search'>
+        <div className='main search'>
+            {/* <div className=''> */}
                 <div className='search__query'>
                     
                     <SearchFilters
@@ -318,9 +318,6 @@ function Search() {
                                     <div className='search__image-waiting'><WaitingSvg /></div>
                             </div>
                         : 
-                            // <div className='search__container-loader'>
-                            //     <div className='search__loader'></div>
-                            // </div>
                             <div className='search__results'>
                                 <Spinner />
                             </div>
@@ -328,9 +325,6 @@ function Search() {
                     : queryStarted ? // Проверка не идет ли загрузка
                     
                         <div className='search__results'>
-                            {/* <div className='search__container-loader'>
-                                <div className='search__loader'></div>
-                            </div> */}
                             <Spinner />
                         </div>
                         
@@ -369,7 +363,7 @@ function Search() {
                     </div>
                     }
                 </div>
-            </div>        
+            {/* </div>         */}
         </div>
     );
 }
