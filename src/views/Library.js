@@ -129,6 +129,7 @@ function Library() {
             })
         }
         GetBookmarks();
+        console.log(listBookmarks);
     },[])
     
     /**

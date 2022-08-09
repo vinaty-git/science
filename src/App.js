@@ -1,4 +1,5 @@
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, useLocation} from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './styles/App.css';
 import Sidebar from './components/Sidebar';
 import Main from './views/Main';
@@ -11,14 +12,16 @@ import Notfound from './views/Notfound';
 import Footer from './components/Footer';
 
 function App() {
-
+  const location = useLocation();
   /**
    * Toggle main container width
    */
   function SizeMain() {
+    // setTimeout(() => {
       document.querySelector('.main').classList.toggle('main--expanded');
+    // },200);
   }
-  
+
   return (
     <div className="container">
       <Sidebar 
@@ -26,7 +29,15 @@ function App() {
       />
       <Footer />
 
-      <Routes>
+      {/* <TransitionGroup> */}
+      <CSSTransition 
+      key={location.key} 
+      classNames="slide-main"
+      timeout={200}
+      in={true}
+      appear={true}>
+
+      <Routes location={location}>
         <Route path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />
         <Route path="/library" element={<Library />} />
@@ -35,6 +46,10 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
+
+      </CSSTransition>
+      {/* </TransitionGroup> */}
+
     </div>
   );
 }
