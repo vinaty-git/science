@@ -1,15 +1,19 @@
-// import { useLocation } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Profile from '../components/Profile';
 import Menu from '../components/Menu';
-
+import AuthContext from '../App';
 import { ReactComponent as Logo } from '../icons/logo.svg';
 import { ReactComponent as SmLogo } from '../icons/sm-logo.svg';
 import { BsArrowsAngleExpand, BsArrowsCollapse } from "react-icons/bs";
 
 function Sidebar(props) {
     const {SizeMain} = props;
+    const isLoggedIn = useContext(AuthContext);
     const [stateSidebar,setStateSidebar] = useState('');
+    
+                    
+    // console.log(isLoggedIn);
+
     useEffect(() => {
         if (window.location.pathname === '/') {
             setStateSidebar('collapsed');
@@ -44,7 +48,6 @@ function Sidebar(props) {
                             <h1>Scholar</h1>
                         </div>
                     </div>
-
                     <Menu 
                         stateSidebar={stateSidebar}
                         expandSidebar={expandSidebar}

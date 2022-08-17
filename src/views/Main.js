@@ -1,38 +1,38 @@
-import articles from '../data/content.json'
-import '../styles/landing.scss';
+import '../styles/index.scss';
+import Header from '../components/main/Header';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../AuthContext';
+import mainBg from '../icons/bg-main.png';
 
-function Main() {
+function Main(props) {
+
+const {setModalOpen,setOpenLogin} = props;
+const {isUser} = useContext(AuthContext);
+
  return(
-    <div className="main main--expanded">
-        <div className='main__heading block'>
-            Header
+    <div className="main landing main--expanded">
+        <img className='landing__bg' src={mainBg} />
+        <Header 
+            setModalOpen={setModalOpen}
+            setOpenLogin={setOpenLogin}
+        />
 
-        </div>
-
-        <div className='main__search block'>
+        <div className='main__search'>
             Search
+            {isUser}
 
         </div>
 
-        <div className='main__search block'>
+        <div className='main__search'>
             Hero block
 
         </div>
 
-        <div className='main__search block'>
+        <div className='main__search'>
             Pluses
 
         </div>
 
-
-        {/* {articles.map((item, i) => 
-            <section key={i}>
-                <h2>{item.title}</h2>
-                <p>{item.body}</p>
-                <a href="/#">{item.url}</a>
-            </section>
-        )
-        } */}
     </div>
  );   
 }
