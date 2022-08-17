@@ -1,35 +1,54 @@
-import {Routes, Route, Link, useLocation} from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group'
 import './styles/App.css';
+
 import Sidebar from './components/Sidebar';
+import SignUp from './components/signup/SignUp';
 import Main from './views/Main';
 import Search from './views/Search';
 import Library from './views/Library';
-import Editor from './views/Editor';
-import Storage from './views/Storage';
 import Settings from './views/Settings';
 import Notfound from './views/Notfound';
 import Footer from './components/Footer';
 
 function App() {
+
+  const [modalOpen,setModalOpen] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const location = useLocation();
-  /**
-   * Toggle main container width
-   */
+
   function SizeMain() {
-    // setTimeout(() => {
       document.querySelector('.main').classList.toggle('main--expanded');
-    // },200);
   }
 
   return (
     <div className="container">
-      <Sidebar 
-        SizeMain={SizeMain}  
-      />
-      <Footer />
 
-      {/* <TransitionGroup> */}
+      {modalOpen === true ?
+        
+      <CSSTransition 
+      key={location.key.modal} 
+      classNames="modal_sign"
+      timeout={0}
+      in={true}
+      appear={true}
+      >
+
+        <SignUp 
+          setModalOpen={setModalOpen}
+          openLogin={openLogin}
+          setOpenLogin={setOpenLogin}
+        />
+          
+      </CSSTransition>
+
+      : null}
+
+      <Sidebar 
+        SizeMain={SizeMain}
+      />
+
       <CSSTransition 
       key={location.key} 
       classNames="slide-main"
@@ -37,18 +56,25 @@ function App() {
       in={true}
       appear={true}>
 
+      {/* <BrowserRouter> */}
       <Routes location={location}>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={
+          <Main 
+          setModalOpen={setModalOpen}
+          setOpenLogin={setOpenLogin}
+          />
+          } 
+        />
         <Route path="/search" element={<Search />} />
         <Route path="/library" element={<Library />} />
-        <Route path="/editor" element={<Editor />} />
-        <Route path="/storage" element={<Storage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
+      {/* </BrowserRouter> */}
 
       </CSSTransition>
-      {/* </TransitionGroup> */}
+
+      <Footer />
 
     </div>
   );

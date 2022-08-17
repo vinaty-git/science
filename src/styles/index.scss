@@ -7,7 +7,9 @@
   --clr-grey: #525252;
   --clr-light-grey: #757575;
   --clr-bg-block: #fff;
+  --clr-mid-green: #53C58B;
 }
+
 $clr: var(--clr);
 $clr-sec: var(--clr-sec);
 $clr-grey: var(--clr-grey);
@@ -15,9 +17,18 @@ $clr-light-grey: var(--clr-light-grey);
 $clr-bg-block: var(--clr-bg-block);
 $clr-mid-orange: var(--clr-mid-orange);
 $clr-light-orange: var(--clr-light-orange);
+$clr-mid-green: var(--clr-mid-green);
 
 html {
   overflow-x: hidden;
+}
+.test {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  z-index: 10;
+  width: 200px;
+  display: block;
 }
 
 body {
@@ -28,12 +39,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 body.ovelaped {
   overflow: hidden;
   margin: 0;
   padding: 0;
   margin-right: 18px;
 }
+
 .modal-bgn {
   display: block;
   background-color: #ffffff7f;
@@ -44,23 +57,25 @@ body.ovelaped {
   left: 0;
   z-index: 10;
 }
+
 .modal-bgn--hidden {
   display: none;
   visibility: hidden;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .container {
   position: relative;
-
   width: 100vw;
-  max-width: calc(100% - 40px);
+  // max-width: calc(100% - 40px);
+  max-width: 100%;
   height: auto;
   min-height: 100vh;
-
-  padding: 20px;
+  // padding: 20px;
 }
 
 /* SIDEBAR */
@@ -72,6 +87,9 @@ code {
   top: 0;
   z-index: 5;
   background-color: #fff;
+  -webkit-box-shadow: 2px 2px 6px 0px rgba(61, 87, 107, 0.14);
+  -moz-box-shadow: 2px 2px 6px 0px rgba(61, 87, 107, 0.14);
+  box-shadow: 2px 2px 6px 0px rgba(61, 87, 107, 0.14);
 }
 
 .ovelaped .sidebar {
@@ -197,7 +215,6 @@ code {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  
   z-index: 5;
 }
 
@@ -296,8 +313,7 @@ a.active {
 } 
 
 
-/* MAIN */
-
+/* MAIN GLOBAL */
 
 .main {
   position: absolute;
@@ -307,7 +323,6 @@ a.active {
   height: auto;
   min-height: 100vh;
   background-color: rgb(240, 246, 246);
-  // transition-delay: 200ms;
   transition: all 0.5s ease;
 
   h2 {
@@ -320,7 +335,6 @@ a.active {
 .main--expanded {
   left: 4%;
   width: 96%;
-  // transition-delay: 200ms;
   transition: all 0.5s ease;
 }
 
@@ -398,6 +412,13 @@ a.active {
     border: 1px solid $clr-mid-orange;
   }
 }
+
+.btn-main--wide {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
 .btn-main--reverse {
   color: $clr;
   background-color: $clr-light-orange;
@@ -565,6 +586,334 @@ a.active {
   transition: all 0.3s;
 }
 
+/* MAIN LANDING */
+
+.main.landing {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 96%;
+  min-width: 96%;
+  height: 100%;
+  padding: 50px 5%;
+  background-color: #fff;
+}
+
+.landing__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  width: 80%;
+}
+// Header 
+
+.header {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  z-index: 1;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 20%;
+  height: 100px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.header__signin {
+  display: flex;
+  height: 46px;
+  max-height: 46px;
+  justify-content: space-between;
+  gap: 60px;
+  margin-right: 60px;
+}
+
+/* MODAL SIGN IN */
+
+
+.modal-signin {
+  display: flex;
+  visibility: visible;
+  justify-content: center;
+  position: absolute;
+  width: 800px;
+  height: auto;
+  max-height: 1000px;
+  top: 50%;
+  margin-top: -260px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  box-sizing: border-box;
+  padding: 40px 1% 40px 1%;
+  background-color: $clr-light-orange;
+  border-radius: 8px;
+  z-index: 15;
+  opacity: 1;
+
+  -webkit-box-shadow: 8px 8px 18px 0px rgba(70, 93, 111, 0.18);
+  -moz-box-shadow: 8px 8px 18px 0px rgba(70, 93, 111, 0.18);
+  box-shadow: 8px 8px 18px 0px rgba(70, 93, 111, 0.18);
+  
+  transition: top 0.2s linear;
+}
+
+// .modal-signin--hidden {
+//   visibility: hidden;
+//   top: -500px;
+//   opacity: 0;
+//   z-index: -1;
+//   transition: all 0.2s linear;
+// }
+
+.modal-signin__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 26px;
+  svg path { 
+    stroke: $clr;
+  }
+}
+.modal-signin__close:hover {
+  svg {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: all 0.6s;
+  }
+  svg path {
+    stroke: $clr;
+  }
+}
+
+.modal-signin__image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  img {
+    width: 100%;
+  }
+}
+.modal-signin__content {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.modal-signin__heading {
+  h3 {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    color: $clr;
+    margin: 4px 0 4px 0;
+  }
+  p {
+    display: inline-block;
+    margin: 4px 0;
+    color: $clr;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.modal-signin__form {
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: $clr;
+    margin-top: 16px;
+  }
+
+  .modal-signin__input-div {
+    display: flex;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    margin-top: 4px;
+  }
+
+  input {
+    // display: block;
+    width: 82%;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid $clr-mid-orange;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 2%;
+    color: $clr-grey;
+    padding-top: 2px;
+    &:active {
+      border-color: $clr;
+    }
+    &:focus-visible {
+      border: 1px solid $clr;
+      outline: none;
+      -webkit-box-shadow: 0px 0px 3px 3px rgba(199, 81, 45, 0.1);
+      -moz-box-shadow: 0px 0px 3px 3px rgba(199, 81, 45, 0.1);
+      box-shadow: 0px 0px 3px 3px rgba(199, 81, 45, 0.1);
+      color: $clr-grey;
+    }
+    transition: all 0.4s;
+  }
+
+  .modal-signin__icon-help {
+    width: 8%;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: rgb(183, 49, 25);
+    margin-left: 3%;
+    svg {
+      margin-top:4px;
+    }
+    transition: all 0.4s;
+  }
+  .modal-signin__icon-help--green {
+    color: $clr-mid-green;
+  }
+  .modal-signin__help-group {
+    opacity: 0;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s linear;
+    p {
+      margin: 2px 0;
+      padding: 0;
+    }
+  }
+
+  .modal-signin__help-group--displayed {
+    margin-top: 6px;
+    height: auto;
+    max-height: 120px;
+    opacity: 1;
+    
+  }
+
+  .modal-signin__help-psw {
+    display: block;
+    font-size: 14px;
+    color: $clr-mid-orange;
+    opacity: 0;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s linear;
+  }
+
+  .modal-signin__help-psw--displayed {
+    margin-top: 6px;
+    height: 19px;
+    max-height: 19px;
+    opacity: 1;
+    transition: all 0.2s linear;
+  }
+
+  .modal-signin__help {
+    display: block;
+    font-size: 14px;
+    color: $clr-mid-orange;
+    max-height: 19px;
+    overflow: hidden;
+    transition: all 0.2s linear;
+  }
+  .modal-signin__help--hidden {
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.2s linear;
+  }
+  .modal-signin__help--green {
+    color: $clr-mid-green;
+  }
+
+  .modal-signin__icon-help--green {
+    color: $clr-mid-green;
+  }
+
+  .btn-sign-in {
+    box-shadow: none;
+    width: 87%;
+    margin-top: 28px;
+    border: 2px solid $clr;
+    &:hover {
+      border: 2px solid transparent;
+    }
+  }
+  .modal-signin__view-psw {
+    position: absolute;
+    right: 16%;
+    top: 50%;
+    margin-top: -10px;
+    cursor: pointer;
+    svg {
+      height: 20px;
+      width: 20px;
+      color: $clr-mid-orange;
+      pointer-events: none;
+    }
+  }
+
+  .btn-sign-in--inactive {
+    background-color: $clr-light-orange;
+    border: 2px solid $clr;
+    pointer-events: none;
+    cursor: default;
+    color: $clr;
+  }
+  .modal-signin__forget {
+    width: 90%;
+    display: flex;
+    margin-top: 12px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    a {
+      font-size: 14px;
+      color: $clr;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+
+.modal-signin__completed {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  color: $clr;
+  margin-top: 16px;
+  border-radius: 4px;
+}
 /* SEARCH */
 
 // ФОРМА ОТПРАВКИ ПОИСКА
@@ -782,6 +1131,7 @@ a.active {
     &:focus {
       border: 1px solid $clr;
     }
+    
   }
   svg {
     font-size: 8px;
@@ -1455,6 +1805,32 @@ a.active {
 
   // Effects
 
+  .modal_sign-appear {
+    opacity: 0.01;
+    transition: opacity 50ms ease;
+  }
+  .modal_sign-appear-active {
+    opacity: 0.01;
+  }
+  .modal_sign-appear-done {
+    opacity: 1;
+    transition: opacity 340ms ease;
+  }
+  .modal_sign-exit {
+    opacity: 1;
+  }
+  
+  .modal_sign-exit-active {
+    opacity: 1;
+    transition: opacity 5000ms ease;
+  }
+  .modal_sign-exit-done {
+    opacity: 1;
+    transition: opacity 3400ms ease;
+  }
+  
+
+
   .ease-appear {
     opacity: 0.05;
     transition: opacity 100ms ease-in;
@@ -1466,6 +1842,7 @@ a.active {
   .ease-appear-done {
     opacity: 1;
   }
+
 
   .slide-appear {
     display: block;
@@ -1515,7 +1892,6 @@ a.active {
   }
 
   .btn-loader-container {
-    // display: inline-block;
     position: relative;
     height: 30px;
     width: 30px;
