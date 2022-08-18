@@ -4,7 +4,7 @@ import { AiFillEyeInvisible,AiFillEye } from "react-icons/ai";
 import { BiMessageSquareError } from "react-icons/bi";
 
 function LoginForm(props) {
-    const {setOpenLogin,loginCompleted} = props;
+    const {loginCompleted,changeModalStatus} = props;
     const [passwordShown,setPasswordShown] = useState(false);
     const [emailLogged,setEmailLogged] = useState(false);
     const [emailValid,setEmailValid] = useState(false);
@@ -12,18 +12,12 @@ function LoginForm(props) {
     const [noUserFound, setNoUserFound] = useState(false);
     const [wrongPsw,setWrongPsw] = useState(false);
     var sessionEmail,sessionPsw;
+
     /**
      * Show or Hide Password in sign up form
      */
     function changePswView() {
         setPasswordShown(passwordShown => !passwordShown);
-    }
-
-    /**
-     * Move to Registration Modal
-     */
-    function MoveToSignUp() {
-        setOpenLogin(false);
     }
 
     /**
@@ -218,10 +212,10 @@ function LoginForm(props) {
                 }
 
                 <div className="modal-signin__forget">
-                    <a>
-                        Forgot your password or email?
+                    <a data-modal='forgot' onClick={changeModalStatus}>
+                        Forgot your password?
                     </a>
-                    <a onClick={MoveToSignUp}>
+                    <a data-modal='sign-up' onClick={changeModalStatus}>
                         Do not have an account yet?
                     </a>
                 </div>

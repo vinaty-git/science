@@ -3,23 +3,45 @@ import Cookies from 'universal-cookie';
 import RegCompleted from './RegCompleted';
 import Reg from './Reg';
 import LoginForm from './LoginForm';
+import ForgotPsw from './ForgotPsw';
+import Restored from './Restored';
 import AuthContext from '../../AuthContext';
 
 import signinImage from '../../icons/library-signin.png';
 import { GrClose } from "react-icons/gr";
 
 function SignUp(props) {
-    const {setModalOpen,openLogin,setOpenLogin} = props;
-    const [regCompleted,setRegCompleted] = useState(false);
+    const {setModalOpen,modalStatus,changeModalStatus} = props;
     const [email,setEmail] = useState();
+    const [noUser,setNoUser] = useState(false); // If no user found during password restore
     const cookies = new Cookies();
     const {isUser,setIsUser,emailConfirmed,setEmailConfirmed} = useContext(AuthContext);
+    var mailApi;
 
     /**
-     * Email changer when sign up. Pass value to RegCompleted
+     * Email changer when sign up. Pass value to RegCompleted. Send email verification.
      */
     function changeEmail(email) {
         setEmail(email); // Email to the page of verification of the email RegCompleted.js
+        mailApi = 'https://kirilab.ru/science/mailer.php';
+        const queryMail = {
+            "data": "email-confirm",
+            "email": email
+        }
+        fetch(mailApi, {
+            method: 'POST',
+            cache: 'no-store',
+            body: JSON.stringify(queryMail)
+        })
+        .then(response => {
+            if (!response.ok || response.status > 399 ) {
+                throw new Error("There was a problem with the server connection");
+            }
+            return response.text();
+        })
+        .then(response => {
+            console.log(response);
+        });
     }
 
     /**
@@ -47,7 +69,7 @@ function SignUp(props) {
      */
     function HideSignUp() {
         setModalOpen(false);
-        setOpenLogin(false);
+        setEmail();
     }
 
     return (
@@ -63,22 +85,35 @@ function SignUp(props) {
                     <GrClose />
                 </span>
 
-                {(!emailConfirmed && isUser && !openLogin) ? 
+                {(isUser && 'confirm') ? 
                     <RegCompleted 
                     email={email}
                     />
-                : openLogin ?
+                : modalStatus === 'login' ?
                     <LoginForm 
-                    setOpenLogin={setOpenLogin}
                     loginCompleted={loginCompleted}
+                    changeModalStatus={changeModalStatus}
                     />
-                :
+                : modalStatus === 'forgot' ?
+                    <ForgotPsw 
+                    changeModalStatus={changeModalStatus}
+                    setEmail={setEmail}
+                    setNoUser={setNoUser}
+                    />
+                : modalStatus === 'sign-up' ?
                     <Reg
                     changeEmail={changeEmail}
                     changeRegCompleted={changeRegCompleted}
-                    setOpenLogin={setOpenLogin}
+                    changeModalStatus={changeModalStatus}
                     />
-                }
+                : modalStatus === 'restored' ?
+                    <Restored 
+                    email={email}
+                    noUser={noUser}
+                    setNoUser={setNoUser}
+                    changeModalStatus={changeModalStatus}
+                    />
+                : null}
 
             </div>
         </div>
