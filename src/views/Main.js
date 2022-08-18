@@ -11,7 +11,7 @@ const {setModalOpen,changeModalStatus} = props;
 const {isUser} = useContext(AuthContext);
 
  return(
-    <div className="main landing main--expanded">
+    <div className="main landing">
         <img className='landing__bg' src={mainBg} />
         <Header 
             changeModalStatus={changeModalStatus}

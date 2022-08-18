@@ -1,44 +1,56 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import Profile from '../components/Profile';
 import Menu from '../components/Menu';
 import AuthContext from '../App';
+import { CSSTransition } from 'react-transition-group'
+
 import { ReactComponent as Logo } from '../icons/logo.svg';
 import { ReactComponent as SmLogo } from '../icons/sm-logo.svg';
 import { BsArrowsAngleExpand, BsArrowsCollapse } from "react-icons/bs";
 
 function Sidebar(props) {
-    const {SizeMain} = props;
+    const {stateSidebar,setStateSidebar} = props;
     const isLoggedIn = useContext(AuthContext);
-    const [stateSidebar,setStateSidebar] = useState('');
-    
-                    
-    // console.log(isLoggedIn);
 
-    useEffect(() => {
-        if (window.location.pathname === '/') {
-            setStateSidebar('collapsed');
-        } else {
-            setStateSidebar('expanded');
-        }
-    },[]);
+    const location = useLocation();
+    var currentLocation = location.pathname;
 
-    /**
-     * Toggle width of Sidebar and Main container depeding on page type
-     * @param {*} event 
-     */
-    function expandSidebar(event) {
+    function SizeMain(event) {
+
         event.stopPropagation();
-        // event.target.parentNode.classList.add('sidebar--loading');
         document.querySelector('.sidebar__container').classList.add('sidebar--loading');
-        setTimeout(() => {
-            // event.target.parentNode.classList.remove('sidebar--loading');
-            document.querySelector('.sidebar__container').classList.remove('sidebar--loading');
+
+        if (event.target.getAttribute('data') === 'toggle-sidebar') {
+            // setTimeout(() => {
             setStateSidebar(stateSidebar === 'expanded' ? 'collapsed' : 'expanded');
-        },200);
-        SizeMain();
-    }
+            // },50);
+        } else {
+
+            // Switch from main to main is blocked
+            if (currentLocation === '/' && event.target.getAttribute('href') === '/') {
+                event.preventDefault();
+                
+            // Switch from main to any other will expand sidebar
+            } else if (currentLocation === '/' && event.target.getAttribute('href') !== '/') {
+                // setTimeout(() => {
+                    setStateSidebar('expanded');
+                // },50);
+
+            // Switch from any other to main will collapse sidebar
+            } else if (currentLocation !== '/' && event.target.getAttribute('href') === '/') {
+                // setTimeout(() => {
+                    setStateSidebar('collapsed');
+                // },50);
+            }
+        }
+        setTimeout(() => {
+            document.querySelector('.sidebar__container').classList.remove('sidebar--loading');
+        },150);
+    } 
 
     return (
+        
         stateSidebar === 'collapsed' ? (
             <div id='sidebar' className='sidebar sidebar--collapsed'>
                 <div className='sidebar__container'>
@@ -50,11 +62,11 @@ function Sidebar(props) {
                     </div>
                     <Menu 
                         stateSidebar={stateSidebar}
-                        expandSidebar={expandSidebar}
+                        SizeMain={SizeMain}
                     />
 
                     
-                    <span className='sidebar__opener' onClick={(event) => expandSidebar(event)}>
+                    <span data='toggle-sidebar' className='sidebar__opener' onClick={SizeMain}>
                         <BsArrowsAngleExpand />
                     </span>
                     
@@ -76,10 +88,10 @@ function Sidebar(props) {
 
                 <Menu 
                     stateSidebar={stateSidebar}
-                    expandSidebar={expandSidebar}
+                    SizeMain={SizeMain}
                 />
                 
-                <span className='sidebar__opener' onClick={(event) => expandSidebar(event)}>
+                <span data='toggle-sidebar' className='sidebar__opener' onClick={SizeMain}>
                         Collapse Sidebar<BsArrowsCollapse />
                 </span>
             </div>

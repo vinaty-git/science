@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group'
 import './styles/App.css';
@@ -16,12 +16,18 @@ function App() {
 
   const [modalOpen,setModalOpen] = useState(false);
   const [modalStatus,setModalStatus] = useState();
+  const [stateSidebar,setStateSidebar] = useState('');
+
 
   const location = useLocation();
 
-  function SizeMain() {
-      document.querySelector('.main').classList.toggle('main--expanded');
-  }
+  useEffect(() => {
+      if (window.location.pathname === '/') {
+          setStateSidebar('collapsed');
+      } else {
+          setStateSidebar('expanded');
+      }
+  },[]);
 
   /**
    * Change modal status
@@ -35,8 +41,8 @@ function App() {
   }
 
   return (
-    <div className="container">
-
+    // <div className="container">
+    <>
       {modalOpen === true ?
         
       <CSSTransition 
@@ -58,8 +64,12 @@ function App() {
       : null}
 
       <Sidebar 
-        SizeMain={SizeMain}
+        // SizeMain={SizeMain}
+        stateSidebar={stateSidebar}
+        setStateSidebar={setStateSidebar}
       />
+
+      <div className={`container ${stateSidebar === 'collapsed' ? 'container--expanded' : ''}`}>
 
       <CSSTransition 
       key={location.key} 
@@ -83,10 +93,12 @@ function App() {
       </Routes>
 
       </CSSTransition>
-
+      
       <Footer />
 
-    </div>
+      </div>
+    </>
+    // </div>
   );
 }
 

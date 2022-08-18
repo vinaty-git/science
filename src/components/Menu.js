@@ -3,20 +3,8 @@ import { NavLink } from 'react-router-dom';
 // import { useEffect } from 'react';
 
 function Menu(props) {
-    const {stateSidebar,expandSidebar} = props;
+    const {stateSidebar,SizeMain} = props;
 
-    /**
-     * Toggle Sidebar and main container width
-     * @param {*} event 
-     */
-    function checkSidebar(event) {
-        if (window.location.pathname === '/' && event.target.getAttribute('href') === '/') {
-            expandSidebar(event);
-        }
-        if (window.location.pathname === '/' && event.target.getAttribute('href') !== '/') {
-            expandSidebar(event);
-        }
-    }
     return (
         stateSidebar === 'collapsed' ? (
             <nav className="sm-menu">
@@ -24,7 +12,7 @@ function Menu(props) {
                     { MenuData.map((val,key) => {
                         return (
                             <li key={key} className={`${val.class} sm-menu__item`}>
-                                <NavLink to={val.link} onClick={(event) => checkSidebar(event)}>
+                                <NavLink to={val.link} onClick={SizeMain}>
                                     {val.icon}<span className="sm-menu__title">{val.title}</span>
                                 </NavLink>
                             </li>
@@ -38,7 +26,7 @@ function Menu(props) {
                 <ul className="menu__list">
                     { MenuData.map((val,key) => {
                         return (
-                            <li key={key} className={val.class} onClick={(event) => checkSidebar(event)}>
+                            <li key={key} className={val.class} onClick={SizeMain}>
                                 <NavLink to={val.link}>{val.icon} <span className="menu__title">{val.title}</span></NavLink>
                             </li>
                         )
