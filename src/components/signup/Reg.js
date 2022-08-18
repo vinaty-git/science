@@ -5,7 +5,7 @@ import { BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import { AiFillEyeInvisible,AiFillEye } from "react-icons/ai";
 
 function Reg(props) {
-    const {changeRegCompleted,changeEmail,setOpenLogin} = props;
+    const {changeRegCompleted,changeEmail,changeModalStatus} = props;
     const [emailError,setEmailError] = useState('empty');
     const [pswLength,setPswLength] = useState(false);
     const [pswDigit,setPswDigit] = useState(false);
@@ -16,8 +16,6 @@ function Reg(props) {
     const [passwordShown,setPasswordShown] = useState(false);
     const [usedEmail,setUsedEmail] = useState(false);
     var sessionEmail,sessionPsw,valuePsw,regApi,email;
-
-    // const {setIsUser} = useContext(AuthContext);
 
     /**
      * Validate email regex
@@ -147,13 +145,6 @@ function Reg(props) {
      */
     function changePswView() {
         setPasswordShown(passwordShown => !passwordShown);
-    }
-
-    /**
-     * Switch to Login from Sign Up
-     */
-    function MoveToLogin() {
-        setOpenLogin(true);
     }
 
     return(
@@ -306,10 +297,10 @@ function Reg(props) {
                 }
 
                 <div className="modal-signin__forget">
-                    <a>
-                        Forgot your password or email?
+                    <a data-modal='forgot' onClick={changeModalStatus}>
+                        Forgot your password?
                     </a>
-                    <a onClick={MoveToLogin}>
+                    <a data-modal='login' onClick={changeModalStatus}>
                         Already have an account?
                     </a>
                 </div>

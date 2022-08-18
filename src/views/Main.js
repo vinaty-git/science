@@ -1,25 +1,32 @@
 import '../styles/index.scss';
 import Header from '../components/main/Header';
+import SearchFilters from '../components/SearchFilters';
 import React, { useState, useContext } from 'react';
 import AuthContext from '../AuthContext';
 import mainBg from '../icons/bg-main.png';
 
 function Main(props) {
 
-const {setModalOpen,setOpenLogin} = props;
+const {setModalOpen,changeModalStatus} = props;
 const {isUser} = useContext(AuthContext);
 
  return(
     <div className="main landing main--expanded">
         <img className='landing__bg' src={mainBg} />
         <Header 
+            changeModalStatus={changeModalStatus}
             setModalOpen={setModalOpen}
-            setOpenLogin={setOpenLogin}
         />
 
         <div className='main__search'>
-            Search
-            {isUser}
+        <SearchFilters
+                        // textOutput={textOutput}
+                        // typeSearch={typeSearch}
+                        // passSetTextOutput={setTextOutput}
+                        // passQueryStarted={queryStarted}
+                        // passUpdateQuery={updateQuery}
+                        // passSetTypeSearch={setTypeSearch}
+        />
 
         </div>
 

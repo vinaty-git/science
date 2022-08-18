@@ -15,11 +15,23 @@ import Footer from './components/Footer';
 function App() {
 
   const [modalOpen,setModalOpen] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
+  const [modalStatus,setModalStatus] = useState();
+
   const location = useLocation();
 
   function SizeMain() {
       document.querySelector('.main').classList.toggle('main--expanded');
+  }
+
+  /**
+   * Change modal status
+   */
+  function changeModalStatus(event) {
+    var status = event.target.getAttribute('data-modal');
+    if (modalOpen === false) {
+      setModalOpen(true);
+    }
+    setModalStatus(status);
   }
 
   return (
@@ -37,8 +49,8 @@ function App() {
 
         <SignUp 
           setModalOpen={setModalOpen}
-          openLogin={openLogin}
-          setOpenLogin={setOpenLogin}
+          modalStatus={modalStatus}
+          changeModalStatus={changeModalStatus}
         />
           
       </CSSTransition>
@@ -56,12 +68,11 @@ function App() {
       in={true}
       appear={true}>
 
-      {/* <BrowserRouter> */}
       <Routes location={location}>
         <Route path="/" element={
-          <Main 
+          <Main
+          changeModalStatus={changeModalStatus}
           setModalOpen={setModalOpen}
-          setOpenLogin={setOpenLogin}
           />
           } 
         />
@@ -70,7 +81,6 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
-      {/* </BrowserRouter> */}
 
       </CSSTransition>
 
