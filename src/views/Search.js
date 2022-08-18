@@ -300,7 +300,7 @@ function Search() {
     return (
         <div className='main search'>
             {/* <div className=''> */}
-                <div className='search__query'>
+                {/* <div className='search__query'> */}
                     
                     <SearchFilters
                         textOutput={textOutput}
@@ -362,7 +362,7 @@ function Search() {
                         <div className='search__image-waiting'><WaitingSvg /></div>
                     </div>
                     }
-                </div>
+                {/* </div> */}
             {/* </div>         */}
         </div>
     );
