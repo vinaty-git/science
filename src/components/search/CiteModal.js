@@ -8,7 +8,7 @@ import { ImCopy } from "react-icons/im";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 function CiteModal(props) {
-    const {item,index,InitCitation,typeSearch} = props;
+    const {item,index,InitCitation,typeSearch,Library} = props;
     let citeText = React.useRef(); // Реф для нахождения поля с текстом цитаты для копирования в буфер пользователя
     var loadStyle,doi,title;
     var regex = /(<([^>]+)>)/ig; // Удаляем html теги
@@ -93,10 +93,15 @@ function CiteModal(props) {
      * @param {*} doi - doi идентификатор выбранной статьи для fetch в doi.org
      */
      function LoadCite(item) {
-        if (item.id) {
-            doi = item.id;
-        } else if (item.DOI) {
-            doi = item.DOI;
+        if (Library === true) {
+            doi = item.doi;
+        } else {
+            if (item.id) {
+                doi = item.id;
+            } else if (item.DOI) {
+                doi = item.DOI;
+            }
+
         }
         if (!cite[chosenStyle]) {
             setStyleLoading(true); // Включаем отображение анимации загрузки
@@ -149,7 +154,7 @@ function CiteModal(props) {
         return (
             <div className='cites__title'>
                 <span className='cites__span-title'>
-                    <span>{title.replace(regex, "")}</span>
+                    {Library ? item.title : <span>{title.replace(regex, "")}</span>}
                 </span>
             </div>
         );
@@ -241,7 +246,7 @@ function CiteModal(props) {
                     <div className='cites__cont-doi-inner'>
                         <span className='cites__h-doi'>DOI</span>
                         <span className='cites__text-doi'>
-                            {item.DOI ? item.DOI : item.id}
+                            {item.DOI ? item.DOI : Library ? item.doi : item.id}
                         </span>
                         <span className='cites__copy-doi' onClick={(event) => copyDoi(event,index)}><ImCopy />Copy</span>
                         <span className='doi-copied-span'>DOI in your clipboard</span>

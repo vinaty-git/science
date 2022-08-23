@@ -69,7 +69,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.container {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+}
 // .container {
 #root {
   position: relative;
@@ -101,6 +105,12 @@ code {
 }
 
 .sidebar {
+  
+  display: flex;
+  flex-direction: column;
+  width: 4%;
+  min-width: 70px;
+  // transition: all 0.25s linear;
   .sidebar__container {
     opacity: 1;
     transition: opacity 0.15s linear;
@@ -117,13 +127,13 @@ code {
   transition: all 0.25s linear;
 }
 
-.sidebar--collapsed {
-  display: flex;
-  flex-direction: column;
-  width: 4%;
-  min-width: 70px;
-  transition: all 0.25s linear;
-}
+// .sidebar--collapsed {
+//   display: flex;
+//   flex-direction: column;
+//   width: 4%;
+//   min-width: 70px;
+//   transition: all 0.25s linear;
+// }
 
 .sidebar__opener {
   display: flex;
@@ -368,7 +378,8 @@ a.active {
 // BUTTONS 
 
 .tag {
-  padding: 5px 14px;
+  padding: 4px 14px;
+  margin-right: 20px;
   background-color: #fff;
   color: $clr;
   font-size: 14px;
@@ -523,6 +534,7 @@ a.active {
   background-color: $clr;
   transition: all 0.4s;
   &:hover {
+    border: 1px solid $clr-mid-orange;
     background-color: $clr-mid-orange;
     color: #fff;
   }
@@ -1310,9 +1322,8 @@ a.active {
   }
 
   .search-item__flags{
-    position: absolute;
-    top: 3px;
-    right: 20px;
+    position: relative;
+    margin-left: auto;
     span {
       margin: 0 10px;
     }
@@ -1335,10 +1346,18 @@ a.active {
   }
 
   .search-item__publisher {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     width: 100%;
     margin: 10px 0;
+    .tag {
+      height: 19px;
+    }
+    .link-out {
+      width: 172px;
+      height: 20px;
+    }
   }
 
   .search-item__year {
@@ -1392,7 +1411,8 @@ a.active {
   }
 
   .search-item__url {
-    margin-left: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .search-item__identifiers {
@@ -1870,7 +1890,6 @@ a.active {
       }
     }
   }
-
 
   // Effects
 

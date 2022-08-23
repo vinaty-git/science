@@ -197,11 +197,16 @@ function Search() {
                 cache: "force-cache",
                 headers: {
                     "Content-type": "application/json;charset=UTF-8",
-                    "Accept": "application/json",
+                    "Accept": "application/json;charset=UTF-8",
                     "User-Agent": "Kirill (Local beta-testing; mailto:kirill.labutkin@gmail.com) JavaScript/React.js"
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok || response.status > 399 ) {
+                    throw new Error("There was a problem with the server connection");
+                }
+                return response.json();
+            })
             .then(response => {
                 searchOuput = Object.entries(response.data).map(item => {
                     return (item.pop())
@@ -215,7 +220,10 @@ function Search() {
                     setNextLinks('no link');
                 }
                 setSearchResults(searchOuput); // Обновили выдачу поиска 
-            });
+            })
+            .catch(err => {
+                console.error(err);
+            })
         }
     }
 
@@ -267,14 +275,22 @@ function Search() {
             method: 'POST',
             body: JSON.stringify(queryAddBookmark)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok || response.status > 399 ) {
+                throw new Error("There was a problem with the server connection");
+            }
+            return response.json();
+        })
         .then((response) => {
             if (response == false) {
                 console.log("answer already exist");
             } else {
                 setAllBookmarks(response);
             }
-        });
+        })
+        .catch(err => {
+            console.error(err);
+        })
     }
 
     /**

@@ -52,7 +52,7 @@ function Sidebar(props) {
     return (
         
         stateSidebar === 'collapsed' ? (
-            <div id='sidebar' className='sidebar sidebar--collapsed'>
+            <div id='sidebar' className='sidebar'>
                 <div className='sidebar__container'>
                     <div className="sm-logo">
                         <SmLogo />
