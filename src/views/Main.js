@@ -20,12 +20,12 @@ const {isUser} = useContext(AuthContext);
 
         <div className='main__search'>
         <SearchFilters
-                        // textOutput={textOutput}
-                        // typeSearch={typeSearch}
-                        // passSetTextOutput={setTextOutput}
-                        // passQueryStarted={queryStarted}
-                        // passUpdateQuery={updateQuery}
-                        // passSetTypeSearch={setTypeSearch}
+            // textOutput={textOutput}
+            // typeSearch={typeSearch}
+            // passSetTextOutput={setTextOutput}
+            // passQueryStarted={queryStarted}
+            // passUpdateQuery={updateQuery}
+            // passSetTypeSearch={setTypeSearch}
         />
 
         </div>

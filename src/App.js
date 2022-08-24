@@ -16,17 +16,15 @@ function App() {
 
   const [modalOpen,setModalOpen] = useState(false);
   const [modalStatus,setModalStatus] = useState();
-  const [stateSidebar,setStateSidebar] = useState('');
+  const [stateSidebar,setStateSidebar] = useState('expanded');
 
 
   const location = useLocation();
 
   useEffect(() => {
-      if (window.location.pathname === '/') {
-          setStateSidebar('collapsed');
-      } else {
-          setStateSidebar('expanded');
-      }
+    var savedStateSidebar = localStorage.getItem('sidebar');
+    setStateSidebar(savedStateSidebar);
+    console.log(savedStateSidebar);
   },[]);
 
   /**
