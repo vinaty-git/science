@@ -26,6 +26,8 @@ function CiteModal(props) {
         LoadCite(item);
         setErrorCite(null);
         document.body.classList.toggle('ovelaped');
+        // document.getElementById('root').classList.toggle('ovelaped');
+        // document.querySelector('.container').classList.toggle('ovelaped'); 
         document.querySelector('.modal-bgn').classList.toggle('modal-bgn--hidden');
     },[]);
 

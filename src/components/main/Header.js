@@ -22,19 +22,6 @@ function Header(props) {
     return(
         <div className="header">
 
-            <div className="header__logo">
-                {/* <Logo /> */}
-                <img src={Logo} />
-                <div>
-                    <h1>
-                        Scholar
-                    </h1>
-                    <h2>
-                        Free science search engine
-                    </h2>
-                </div>
-            </div>
-
             <div className="header__signin">
                 {isUser === false ?
                     <>
