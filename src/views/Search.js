@@ -12,7 +12,7 @@ function Search() {
 
     var searchOuput,urlApi,tempOffset;
     var timerOff = false;
-    var pagination = []; // Сюда будем записывать обе ссылки полученные по api
+    var pagination = []; // Сюда будем записывать обе ссылки полученные по api 1123
 
     const [itemsNum,setItemsNum] = useState('25'); // Элементов на странице поиск по CrossRef
     const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации, текущий оффсет в виде количества items пропуска
@@ -25,8 +25,15 @@ function Search() {
     const [nextLinks, setNextLinks] = useState('no link'); // State для страницы Следующая страница в поисковой выдаче
     const [allBookmarks, setAllBookmarks] = useState([]); // State закладок добавленных пользователем получаемых из БД
 
+    // Filters 
+    const [filterYear,setFilterYear] = useState('');
+    const [filterAuthor,setFilterAuthor] = useState('');
+    const [filterType,setFilterType] = useState('');
+
     /* Headers для fetch CrossRef */
     const headerCrossRef = {
+        "Content-type": "application/json;charset=UTF-8",
+        // "Accept": "application/json;charset=UTF-8",
         "Accept": "application/json",
         "User-Agent": "Kirill (Local beta-testing; mailto:kirill.labutkin@gmail.com) JavaScript/React.js"
     }
@@ -45,7 +52,12 @@ function Search() {
                     'Accept': 'application/json'
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok || response.status > 399 ) {
+                    throw new Error("There was a problem with the server connection");
+                }
+                return response.json();
+            })
             .then(response => {
                 searchOuput = Object.entries(response.data).map(item => {
                     return (item.pop())
@@ -55,6 +67,9 @@ function Search() {
                 var prevLinksWithoutLast = prevLinks.slice(0,-1);
                 setPrevLinks(prevLinksWithoutLast); // // Убрали последнюю страница из массива ссылок Предыдущая страница
                 setNextLinks(pagination[1][1]); // Переписали ссылку для пагинации Следующая страница
+            })
+            .catch(err => {
+                console.error(err);
             })
         }
     }
@@ -71,7 +86,12 @@ function Search() {
                     'Accept': 'application/json'
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok || response.status > 399 ) {
+                    throw new Error("There was a problem with the server connection");
+                }
+                return response.json();
+            })
             .then(response => {
                 searchOuput = Object.entries(response.data).map(item => {
                     return (item.pop())
@@ -80,6 +100,9 @@ function Search() {
                 pagination = Object.entries(response.links); // Обновили из API ссылки для пагинации
                 setPrevLinks([...prevLinks,pagination[0][1]]); // Добавили текущую страницу в массив страниц Предудущая страница 
                 setNextLinks(pagination[1][1]); // Переписали ссылку для пагинации Следующая страница
+            })
+            .catch(err => {
+                console.error(err);
             })
         }
     }
@@ -97,10 +120,18 @@ function Search() {
                 method: 'POST',
                 body: JSON.stringify(queryCheckBookmarks)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok || response.status > 399 ) {
+                    throw new Error("There was a problem with the server connection");
+                }
+                return response.json();
+            })
             .then(response => {
                 setAllBookmarks(response);
-            });
+            })
+            .catch(err => {
+                console.error(err);
+            })
         }
         CheckBookmarks();
     }, []);
@@ -165,35 +196,81 @@ function Search() {
     /** 
      * Fetch с поисковым запросом к БД
     */
+    
+        
+    const controller = new AbortController();
+    const signal = controller.signal;
     async function updateQuery() {
+
         setQueryStarted(true); /* Запустили Loader */
         setTimeout(() => {
             timerOff = true;
-        },2000); // Если загрузка была уже в течение 2 секунд, то искуственную задержку loader'a выключаем в useEffect
+        },1800); // Если загрузка была уже в течение 1.8 секунд, то искуственную задержку loader'a выключаем в useEffect
         var searchRequest = textOutput; /* Взяли из state, что ввел пользователь */
         setTypeOutcome(typeSearch); /* Обновили state показывающий, какая БД сейчас используется в fetch */
-
+        var myEmail = 'kirill.labutkin@gmail.com';
         /* Если выбран поиск по статьям (works) */
         if (typeSearch === 'works') { // 
-            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=${itemsNum}&offset=${offsetCrossRef}`;
-            try {
-                let response = await fetch(urlApi, {method: 'GET', cache: "force-cache", headers: headerCrossRef});
-                if (response.status === 200) {
-                    searchOuput = Object.entries(await response.json());
-                    setSearchResults(searchOuput); // Обновили выдачу поиска
-                } else {
-                    setSearchResults([]);
-                    throw "An error occured while searching"
-                }
-            } catch (error) {
-                errorSearch(error);
-            }
-        /* Если выбран поиск по статьям (sets) */
-        } else if (typeSearch === 'sets') {
-            urlApi = `https://api.datacite.org/dois?query=${encodeURIComponent(searchRequest)}`;
-
+            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}`;
+            // urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=${itemsNum}&offset=${offsetCrossRef}`;
+            
             fetch(urlApi, {
                 method: 'GET',
+                signal,
+                cache: "force-cache", 
+                headers: headerCrossRef
+            })
+            .then(response => {
+                if (!response.ok || response.status > 399 ) {
+                    setSearchResults([]);
+                    throw new Error("There was a problem with the server connection");
+                }
+                return response.json();
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    searchOuput = Object.entries(response.json());
+                    setSearchResults(searchOuput); // Обновили выдачу поиска
+                    console.log(searchOuput);
+                }
+            }) 
+            .catch(err => {
+                console.error(err);
+            })
+
+        /* Если выбран поиск по статьям (sets) */
+        } else if (typeSearch === 'sets') {
+
+            /* Конструируем запрос */
+            if (filterYear !== '') {
+                var urlYear = '%20AND%20publicationYear:' + encodeURIComponent(filterYear);
+            } else {
+                var urlYear = '';
+            }
+
+            if (filterAuthor !== '') {
+                var urlAuthor = '%20AND%20creators.familyName:' + encodeURIComponent(filterAuthor);
+            } else {
+                var urlAuthor = '';
+            }
+
+            if (filterType !== '') {
+                var urlType = '%20AND%20types.resourceTypeGeneral:' + encodeURIComponent(filterType);
+            } else {
+                var urlType = '';
+            }
+            
+            urlApi = `
+            https://api.datacite.org/dois?query=
+            ${encodeURIComponent(searchRequest)}
+            ${urlYear}
+            ${urlAuthor}
+            ${urlType}
+            `;
+            console.log(urlApi);
+            fetch(urlApi, {
+                method: 'GET',
+                signal,
                 cache: "force-cache",
                 headers: {
                     "Content-type": "application/json;charset=UTF-8",
@@ -227,6 +304,11 @@ function Search() {
         }
     }
 
+    function stopSearch() {
+        setQueryStarted(false);
+        controller.abort();
+    }
+
     /**
      * Если state searchResults изменился, то статус загрузки false и далее отключается анимация загрузки
      */
@@ -249,14 +331,6 @@ function Search() {
      */
     function paginateCommon(props) {
         setSearchResults(searchOuput); 
-    }
-
-    /**
-     * Функция в случае ошибки fetch api БД 
-     * @param {*} error - Текст ошибки из updateQuery() на осн. status
-     */
-    function errorSearch(error) {
-        console.error(error);
     }
     
     /**
@@ -283,7 +357,6 @@ function Search() {
         })
         .then((response) => {
             if (response == false) {
-                console.log("answer already exist");
             } else {
                 setAllBookmarks(response);
             }
@@ -307,12 +380,20 @@ function Search() {
             method: 'POST',
             body: JSON.stringify(queryRemoveBookmark)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok || response.status > 399 ) {
+                throw new Error("There was a problem with the server connection");
+            }
+            return response.json();
+        })
         .then((response) => {
             setAllBookmarks(response);
-        });
+        })
+        .catch(err => {
+            console.error(err);
+        })
     }
-    console.log(searchResults);
+
     return (
         <div className='main search'>
             {/* <div className=''> */}
@@ -325,6 +406,10 @@ function Search() {
                         passQueryStarted={queryStarted}
                         passUpdateQuery={updateQuery}
                         passSetTypeSearch={setTypeSearch}
+                        setFilterYear={setFilterYear}
+                        setFilterAuthor={setFilterAuthor}
+                        setFilterType={setFilterType}
+                        stopSearch={stopSearch}
                     />
 
                     {searchResults == '' ? // Не было отправлено поискового запроса или не было ответа

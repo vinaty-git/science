@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import ForgotPsw from './ForgotPsw';
 import Restored from './Restored';
 import AuthContext from '../../AuthContext';
-
+import { CSSTransition } from 'react-transition-group';
 import signinImage from '../../icons/library-signin.png';
 import { GrClose } from "react-icons/gr";
 
@@ -75,10 +75,15 @@ function SignUp(props) {
     return (
         <div className="modal-signin">
 
+            <CSSTransition 
+                classNames="profiler"
+                timeout={800}
+                in={true}
+            >
             <div className="modal-signin__image">
                 <img src={signinImage} />
             </div>
-
+            </CSSTransition>
             <div className="modal-signin__content">
 
                 <span className='modal-signin__close' onClick={() => HideSignUp()}>
