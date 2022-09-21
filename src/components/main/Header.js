@@ -29,7 +29,7 @@ function Header(props) {
                     <button data-modal='sign-up' className='btn-main btn-main--wide btn-main--outline' onClick={changeModalStatus}>Sign up</button>
                     </>
                 :
-                    <button className='btn-main btn-main--wide' onClick={OpenSignOut}>Logout</button>
+                    <button className='btn-main btn-main--wide btn-main--outline' onClick={OpenSignOut}>Logout</button>
                 }
             </div>
 

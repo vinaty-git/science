@@ -95,7 +95,7 @@ function LoginForm(props) {
                 setNoUserFound(true);
             } else if (response === 'psw wrong') {
                 setWrongPsw(true);
-            } else if (response.length > 220 && response.length < 270 ) {
+            } else if (response.length > 100 && response.length < 160 ) {
                 var token = response;
                 loginCompleted(token);
             } else {
