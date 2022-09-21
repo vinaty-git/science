@@ -12,7 +12,7 @@ function Search() {
 
     var searchOuput,urlApi,tempOffset;
     var timerOff = false;
-    var pagination = []; // Сюда будем записывать обе ссылки полученные по api 1
+    var pagination = []; // Сюда будем записывать обе ссылки полученные по api 1123
 
     const [itemsNum,setItemsNum] = useState('25'); // Элементов на странице поиск по CrossRef
     const [offsetCrossRef,setOffsetCrossRef] = useState(0); // 0 = первая страница пагинации, текущий оффсет в виде количества items пропуска
