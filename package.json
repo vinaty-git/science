@@ -1,7 +1,7 @@
 { 
-  "homepage": "http://vinaty-git.github.io/science",
+  "homepage": "https://vinaty-git.github.io/science",
   "name": "scholar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@jamesgopsill/crossref-client": "^1.0.0",
@@ -21,9 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pagees -d build",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf docs && mv build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
