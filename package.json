@@ -1,7 +1,7 @@
 { 
-  "homepage": "https://vinaty-git.github.io/science",
+  "homepage": "http://vinaty-git.github.io/science",
   "name": "scholar",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@jamesgopsill/crossref-client": "^1.0.0",
