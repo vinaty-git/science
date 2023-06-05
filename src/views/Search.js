@@ -7,6 +7,9 @@ import Spinner from '../components/Spinner';
 import { ReactComponent as WaitingSvg } from '../icons/waiting.svg';
 
 function Search() {
+        
+    const { CrossrefClient } = require("@jamesgopsill/crossref-client");
+    const client = new CrossrefClient();
 
     let firstInit = React.useRef(true);
 
@@ -31,14 +34,17 @@ function Search() {
     const [filterType,setFilterType] = useState('');
 
     /* Headers для fetch CrossRef */
-    const headerCrossRef = {
-        "Content-type": "application/json;charset=UTF-8",
-        // "Accept": "application/json;charset=UTF-8",
-        "Accept": "application/json",
-        "User-Agent": "Kirill (Local beta-testing; mailto:kirill.labutkin@gmail.com) JavaScript/React.js"
-    }
+    // const headerCrossRef = {
+    //     "Content-type": "application/json;charset=UTF-8",
+    //     // "Accept": "application/json;charset=UTF-8",
+    //     "Accept": "application/json",
+    //     "User-Agent": "Kirill (Local beta-testing; mailto:kirill.labutkin@gmail.com) JavaScript/React.js"
+    // }
 
-    
+    useEffect(()=>{
+        document.querySelector('body').scrollTo(0,0);
+    },[]);
+
     /**
      * Пагинация поискового запроса на основании ссылок из json по API, если fetch происходит по data sets
      */
@@ -130,7 +136,7 @@ function Search() {
                 setAllBookmarks(response);
             })
             .catch(err => {
-                console.error(err);
+                console.log(err);
             })
         }
         CheckBookmarks();
@@ -151,8 +157,10 @@ function Search() {
         } else if (tempOffset > (10000 - itemsNum)) {
             tempOffset = 10000 - itemsNum;
             setOffsetCrossRef(tempOffset);
-        } else if(tempOffset > (searchResults[3][1]['total-results'] - itemsNum)) {
-            setOffsetCrossRef((searchResults[3][1]['total-results'] - itemsNum));
+        // } else if(tempOffset > (searchResults[3][1]['total-results'] - itemsNum)) {
+        //     setOffsetCrossRef((searchResults[3][1]['total-results'] - itemsNum));
+        } else if(tempOffset > (searchResults['totalResults'] - itemsNum)) {
+        setOffsetCrossRef((searchResults['totalResults'] - itemsNum));
         } else {
             setOffsetCrossRef(tempOffset);
         }
@@ -164,7 +172,7 @@ function Search() {
     function goToPage() {
         var inputPagination = document.getElementById('paginate-input').value;
         var onlyDigits = parseInt(inputPagination.replace(/\D/g, ''));
-        var totalItems = Math.floor(searchResults[3][1]['total-results']);
+        var totalItems = Math.floor(searchResults['totalResults']);
         if (totalItems > 10000) {
             totalItems = 10000;
         }
@@ -200,6 +208,9 @@ function Search() {
         
     const controller = new AbortController();
     const signal = controller.signal;
+    var launchTimer;
+    var counterN = 0;
+
     async function updateQuery() {
 
         setQueryStarted(true); /* Запустили Loader */
@@ -208,39 +219,32 @@ function Search() {
         },1800); // Если загрузка была уже в течение 1.8 секунд, то искуственную задержку loader'a выключаем в useEffect
         var searchRequest = textOutput; /* Взяли из state, что ввел пользователь */
         setTypeOutcome(typeSearch); /* Обновили state показывающий, какая БД сейчас используется в fetch */
-        var myEmail = 'kirill.labutkin@gmail.com';
+        // var myEmail = 'kirill.labutkin@gmail.com';
+
+        // Запустить проверку по времени
+
+        launchTimer = setInterval(checkResult,1000);
+
         /* Если выбран поиск по статьям (works) */
-        if (typeSearch === 'works') { // 
-            urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}`;
-            // urlApi = `http://api.crossref.org/works?query=${encodeURIComponent(searchRequest)}&rows=${itemsNum}&offset=${offsetCrossRef}`;
+        if (typeSearch === 'works') {
             
-            fetch(urlApi, {
-                method: 'GET',
-                signal,
-                cache: "force-cache", 
-                headers: headerCrossRef
-            })
-            .then(response => {
-                if (!response.ok || response.status > 399 ) {
-                    setSearchResults([]);
-                    throw new Error("There was a problem with the server connection");
+            // setSearchResults([]);
+
+            const search = {
+                query: encodeURIComponent(searchRequest),
+            }
+
+            client.works(search).then(r => {
+                if (r.ok && r.status == 200) {
+                    searchOuput = r.content.message;
+                    setSearchResults(searchOuput);
                 }
-                return response.json();
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    searchOuput = Object.entries(response.json());
-                    setSearchResults(searchOuput); // Обновили выдачу поиска
-                    console.log(searchOuput);
-                }
-            }) 
-            .catch(err => {
-                console.error(err);
             })
 
         /* Если выбран поиск по статьям (sets) */
         } else if (typeSearch === 'sets') {
-
+            searchOuput = ''
+            setSearchResults([]);
             /* Конструируем запрос */
             if (filterYear !== '') {
                 var urlYear = '%20AND%20publicationYear:' + encodeURIComponent(filterYear);
@@ -267,7 +271,6 @@ function Search() {
             ${urlAuthor}
             ${urlType}
             `;
-            console.log(urlApi);
             fetch(urlApi, {
                 method: 'GET',
                 signal,
@@ -296,11 +299,19 @@ function Search() {
                 } else {
                     setNextLinks('no link');
                 }
-                setSearchResults(searchOuput); // Обновили выдачу поиска 
+                setSearchResults(searchOuput); // Обновили выдачу поиска
             })
             .catch(err => {
                 console.error(err);
             })
+        }
+    }
+
+    function checkResult() {
+        counterN ++;
+        if (counterN == 12) {
+            clearInterval(launchTimer);
+            stopSearch();
         }
     }
 
@@ -313,7 +324,7 @@ function Search() {
      * Если state searchResults изменился, то статус загрузки false и далее отключается анимация загрузки
      */
     useEffect(() => {
-        if (searchResults.length > 0) {
+        if (searchResults?.length > 0 || searchResults?.items?.length > 0) {
             if (timerOff) {
                 setQueryStarted(false);
                 timerOff = false;

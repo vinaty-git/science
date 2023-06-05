@@ -6,12 +6,12 @@ import { BsHouse } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 
 export const MenuData = [
-    {
-        title: "Main",
-        icon: <BsHouse />,
-        link: "/",
-        class: "menu__item"
-    },
+    // {
+    //     title: "Main",
+    //     icon: <BsHouse />,
+    //     link: "/",
+    //     class: "menu__item"
+    // },
     {
         title: "Search",
         icon: <BsSearch />,

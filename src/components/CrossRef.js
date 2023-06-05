@@ -21,8 +21,11 @@ function CrossRef(props) {
     } = props;
 
     var tempTotalPages;
-    const allItems = props.searchResults[3][1]['items']; // Массив всех статей
-    const totalResults = props.searchResults[3][1]['total-results']; // Сколько статей найдено
+    // const allItems = props.searchResults[3][1]['items']; // Массив всех статей
+    const allItems = props.searchResults['items']; // Массив всех статей
+    // const totalResults = props.searchResults[3][1]['total-results']; // Сколько статей найдено
+    const totalResults = props.searchResults['totalResults']; // Сколько статей найдено
+    // const totalResults = 'test';
 
     const [fullDesc,setFullDesc] = useState({}); // В каких item открыто full desc. Index: true/false
     const [openedCites,setOpenedCites] = useState({}); // State текущего открытого модального окна с Citation formatter
@@ -135,7 +138,6 @@ function CrossRef(props) {
 
             {allItems.map((item,index) => 
                 <div key={index} className='search-item block'>
-
                     <CrossRefHeader 
                         item={item}
                         index={index}

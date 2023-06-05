@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-
 import CiteModal from '../components/search/CiteModal';
 import Spinner from '../components/Spinner';
 import '../styles/library.scss';
@@ -21,6 +20,10 @@ function Library() {
 
     let firstInit = React.useRef(true);
     var userId = 2; // Temporary user id 
+
+    useEffect(()=>{
+        document.querySelector('body').scrollTo(0,0);
+    },[]);
 
     /**
      * Открыть список subjects для DB Commons только
@@ -393,7 +396,7 @@ function Library() {
                 <h2>Library</h2>
                 <p>In the library section stored all you bookmarks. You can add new bookmarks in the Search section.</p>
                 <div>
-                    <h4>Switcher</h4>
+                    {/* <h4>Switcher</h4> */}
                     <div className='search__btn-types'>
                         <button data-type='works' className='search__btn-type sm-btn-sec sm-btn-sec--active' onClick={(event) => changeLibrary(event)}>Works</button>
                         <button  data-type='sets' className='search__btn-type sm-btn-sec' onClick={(event) => changeLibrary(event)}>Sets</button>

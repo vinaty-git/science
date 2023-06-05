@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group'
 import './styles/App.css';
 
@@ -11,7 +11,7 @@ import Search from './views/Search';
 import Library from './views/Library';
 import Settings from './views/Settings';
 import Notfound from './views/Notfound';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 function App() {
 
@@ -33,7 +33,6 @@ function App() {
   useEffect(() => {
     var savedStateSidebar = localStorage.getItem('sidebar');
     setStateSidebar(savedStateSidebar);
-    console.log(savedStateSidebar);
   },[]);
 
   /**
@@ -50,8 +49,16 @@ function App() {
     setModalStatus(status);
   }
 
+
+
+  // Scroll to top if path changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <>
+
       {initLoad === true ?
         <InitLoad />
       :
@@ -92,13 +99,15 @@ function App() {
         appear={true}>
 
         <Routes location={location}>
-          <Route path="/" element={
-            <Main
-            changeModalStatus={changeModalStatus}
-            setModalOpen={setModalOpen}
-            />
-            } 
-          />
+
+          <Route path="/" element={ <Navigate to="/search" />} />
+            {/* // element={ */}
+            {/* // <Main */}
+            {/* // changeModalStatus={changeModalStatus} */}
+            {/* // setModalOpen={setModalOpen} */}
+            {/* // /> */}
+            {/* // }  */}
+            {/* // /> */}
           <Route path="/search" element={<Search />} />
           <Route path="/library" element={<Library />} />
           <Route path="/settings" element={<Settings />} />
@@ -107,7 +116,7 @@ function App() {
 
         </CSSTransition>
         
-        <Footer />
+        {/* <Footer /> */}
 
         </div>
       

@@ -24,14 +24,6 @@ $clr-bg: var(--clr-bg);
 html {
   overflow-x: hidden;
 }
-// .test {
-//   position: absolute;
-//   top: 50px;
-//   right: 50px;
-//   z-index: 10;
-//   width: 200px;
-//   display: block;
-// }
 
 body {
   margin: 0;
@@ -42,6 +34,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
 }
+
 .debugger {
   // display: flex;
   display: none;
@@ -54,6 +47,7 @@ body {
   background-color: green;
   color: #fff;
 }
+
 .ovelaped {
   height: auto;
   // margin: 0;
@@ -308,7 +302,7 @@ code {
 
 .menu {
   width: 90%;
-  padding: 8% 5%;
+  padding: 20% 5% 8% 5%;
   font-size: 24px;
   .menu__list {
     list-style-type: none;
@@ -393,7 +387,7 @@ a.active {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 100px;
   align-items: center;
 }
 .sm-menu__list {
@@ -2172,6 +2166,15 @@ a.active {
     }
   }
 
+  // Settings Screen
+
+  .settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
   // Effects
 
   .modal_sign-appear {
@@ -2319,3 +2322,162 @@ a.active {
     to {transform: rotate(360deg);}
   }
 
+// Prompt responsive redesign 05.06.23
+@media screen and (max-width: 1100px) {
+
+  // Sidebar
+
+  .sidebar__opener {
+    display: none;
+    visibility: hidden;
+  }
+
+  .sidebar {
+    display: inline-flex;
+    width: 100%;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sm-logo {
+    flex-direction: row;
+    width: 20%;
+    margin: 0;
+    gap: 1%;
+    img {
+      width: 60%;
+    }
+  }
+  .sm-logo__text {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .sm-menu {
+    flex-direction: row;
+    margin-top: 0;
+    width: 55%;
+    gap: 20%;
+    .sm-menu__item:nth-of-type(3) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  .menu__item svg {
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .sidebar__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap:10%;
+  }
+
+  .menu__item {
+    padding: 5% 10%;
+  }
+  .sm-menu__item {
+    margin: 3% 0 3% 1%;
+  }
+
+  .sm-menu__title {
+    display: none;
+  }
+
+  // Main
+
+  .container {
+    margin: 0;
+    margin-top: 120px;
+  }
+
+  .search__heading {
+    width: 90%;
+    h2 {
+      margin-left: 5%;
+    }
+  }
+
+  .search__btn-types {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5%;
+    margin-bottom: 20px;
+  }
+  .search__type-span {
+    margin-left: 0;
+  }
+
+  .search__form {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+    max-height: 100%;
+  }
+
+  .search__input {
+    height: 48px;
+    width: 80%;
+  }
+
+  .search__input-notification {
+    height: 48px;
+  }
+
+  .search__results {
+    overflow-y: hidden;
+  }
+
+  .search__top-pagination {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .search-item__title {
+    overflow: scroll;
+    height: 60px;
+  }
+
+  .search__results {
+    width: 92%;
+    overflow: hidden;
+  }
+
+  .search-item .search-item__publisher {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-item .search-item__flags {
+    margin-left: 0;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .sm-btn-sec {
+    height: 48px;
+  }
+  .search-item .search-item__url {
+    margin-left: 0;
+  }
+
+  .search-item__ref-container {
+    overflow-x: scroll  ;
+  }
+  
+}
+
+@media screen and (min-width: 600px) and (max-width: 1099px) {
+  .menu__item svg {
+    width: 6vw;
+    height: 6vw;
+  }
+  .sm-logo img {
+    width: 40%;
+  }
+}

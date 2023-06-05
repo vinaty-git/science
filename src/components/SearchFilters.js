@@ -84,7 +84,7 @@ function SearchFilters(props) {
      * @param {*} event 
      */
     function openFilters(event) {
-        document.querySelector('.search__all-options').classList.toggle('search__all-options--active');
+        document.querySelector('.search__all-options')?.classList.toggle('search__all-options--active');
         event.target.classList.toggle('btn-main--reverse');
         var settingsBtn = event.target.querySelector('.btn-main__title');
         if (settingsBtn.textContent === 'Open Options') {
@@ -186,13 +186,21 @@ function SearchFilters(props) {
                             <span>Stop Searching</span>
                         </button>
                     }
-                    <button type="button" onClick={openFilters} className='search__btn-settings btn-main btn-main--reverse' >
-                    <AiOutlineFileSearch /><span className='btn-main__title'>Close Options</span>
-                    </button>
+                    {typeSearch !== 'works' ? 
+                        <button 
+                        type="button" 
+                        onClick={openFilters} 
+                        className='search__btn-settings btn-main btn-main--reverse' 
+                        >
+                        <AiOutlineFileSearch /><span className='btn-main__title'>Close Options</span>
+                        </button>
+                    : ''
+                    }
                 </div>
             </div>
-
-            <div className='search__options'>
+                
+            {typeSearch !== 'works' ?
+                <div className='search__options'>
 
                 <div className='search__all-options search__all-options--active'>
                     <div className='search__inner-all-options'>
@@ -298,7 +306,7 @@ function SearchFilters(props) {
                                     <option value='Workflow'>Workflow</option>
                                     <option value='Other'>Other</option>
                                 </select>
-                           
+                        
                             }
                             <span className='search__option-span'>Select type</span>
                         </div>
@@ -307,6 +315,8 @@ function SearchFilters(props) {
                 </div>
 
             </div>
+            : ''
+            }
 
         </div>
     );

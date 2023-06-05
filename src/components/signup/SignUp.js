@@ -40,7 +40,7 @@ function SignUp(props) {
             return response.text();
         })
         .then(response => {
-            console.log(response);
+            // console.log(response);
         });
     }
 

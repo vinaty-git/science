@@ -1,7 +1,7 @@
 function Settings() {
     return(
-       <div className="main">
-           Settings
+       <div className="main settings">
+           Once there will be a settings window
        </div>
     );   
    }

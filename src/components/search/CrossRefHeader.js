@@ -50,10 +50,16 @@ function CrossRefHeader(props) {
             <div className='search-item__publisher'>
                 <span>{item.publisher ? item.publisher : "No information about the publisher provided"}</span>
 
-                <span className='search-item__year'>
+                {/* <span className='search-item__year'>
                     {item.published ? item.published['date-parts'][0][0] ? item.published['date-parts'][0][0] 
                     : "No publication date provided" : "No publication date provided"}
+                </span> */}
+
+                <span className='search-item__year'>
+                    {item.published ? item.published['dateParts'][0][0] ? item.published['dateParts'][0][0] 
+                    : "No publication date provided" : "No publication date provided"}
                 </span>
+
                 {item.resource.primary.URL ?
                     <span className='search-item__url'>
                         <a href={item.resource.primary.URL} target="_blank" rel="noopener noreferrer" className='link-out'>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import SideLogo from './sidebar/SideLogo';
-import Profile from './sidebar/Profile';
+// import Profile from './sidebar/Profile';
 import Menu from '../components/Menu';
 // import AuthContext from '../App';
 import { CSSTransition } from 'react-transition-group'
@@ -57,11 +57,11 @@ function Sidebar(props) {
                         <p>{isUser ? 'Logged in' : 'NOT Loged in'}</p>
                         <button onClick={Debugger}>Login/Logut</button>
                     </div>
-
+{/* 
                     <Profile 
                         stateSidebar={stateSidebar}
                         changeModalStatus={changeModalStatus}
-                    />
+                    /> */}
 
                     <Menu 
                         stateSidebar={stateSidebar}
